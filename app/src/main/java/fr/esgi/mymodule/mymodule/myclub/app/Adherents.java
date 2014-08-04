@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app;
 
+import android.app.TabActivity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,15 +14,16 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 
-public class Adherents extends ActionBarActivity {
+public class Adherents extends TabActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adherents);
 
-        TabHost tabHost = (TabHost) getParent().findViewById(R.id.tabHost);
-        tabHost.setCurrentTab(1);
+
+
 
 
     }

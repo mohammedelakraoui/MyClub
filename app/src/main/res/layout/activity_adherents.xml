@@ -1,49 +1,9 @@
-<TabHost
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tabHost">
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
 
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"></TabWidget>
-
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/Ajouter"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/Supprimer"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/Modifier"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/Rechercher"
-                android:background="@drawable/edit26"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"></LinearLayout>
-
-        </FrameLayout>
-    </LinearLayout>
-</TabHost>
+</LinearLayout>
