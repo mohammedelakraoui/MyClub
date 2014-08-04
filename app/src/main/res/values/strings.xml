@@ -22,5 +22,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
+    <string name="title_activity_ajouter_adherent">AjouterAdherent</string>
+    <string name="title_activity_supprimer_adherent">SupprimerAdherent</string>
+    <string name="title_activity_modifier_adherent">ModifierAdherent</string>
+    <string name="title_activity_rechercher_adherents">RechercherAdherents</string>
 
 </resources>

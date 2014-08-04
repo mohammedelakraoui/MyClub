@@ -1,11 +1,15 @@
 package fr.esgi.mymodule.mymodule.myclub.app;
 
 import android.content.Context;
+import android.content.Intent;
+
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,6 +22,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 public class MainActivity extends ActionBarActivity {
 
     private String[] SlideListViewItems;
@@ -25,11 +30,15 @@ public class MainActivity extends ActionBarActivity {
     DrawerLayout drawer;
     Activity context;
     private WebView webview;
+    private ImageView home;
+
     protected void onCreate(Bundle savedInstanceState) {
         //TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         context=this;
         setContentView(R.layout.activity_main);
+       // setContentView(R.layout.activity_main);
+
         // get the UI webview
         webview=(WebView) findViewById(R.id.webView);
         // get slide list items from strings.xml
@@ -50,6 +59,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -62,12 +75,35 @@ public class MainActivity extends ActionBarActivity {
 
             ViewGroup vg=(ViewGroup)view;
             TextView txt=(TextView)vg.findViewById(R.id.title);
-            //show selected item
+            redirect(position);
 
-            Toast.makeText(context, txt.getText().toString(), Toast.LENGTH_LONG).show();
+            //show selected item
+            //Toast.makeText(context, position+"", Toast.LENGTH_LONG).show();
+           // Toast.makeText(context, txt.getText().toString(), Toast.LENGTH_LONG).show();
 
         }
     }
 
+    private  void redirect(int pos)
+    {
+
+        switch (pos)
+        {
+            case 0:  // gestion des adherents
+
+                Intent intent = new Intent(this,Adherents.class);
+                startActivity(intent);
+                break;
+            case 1:  // gestion des salles
+                break;
+            case 2:  // gestion des evenements
+                break;
+            case 3:  // gestion des gestion des activités
+                break;
+            case 4:  // Maps
+                break;
+        }
+
+    }
 
 }
