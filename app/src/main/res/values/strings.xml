@@ -32,5 +32,6 @@
     <string name="title_activity_entrainements">Entrainements</string>
     <string name="title_activity_activites">Activites</string>
     <string name="title_activity_maps">Maps</string>
+    <string name="title_activity_my">MyActivity</string>
 
 </resources>
