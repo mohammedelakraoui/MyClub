@@ -91,16 +91,24 @@ public class MainActivity extends ActionBarActivity {
         {
             case 0:  // gestion des adherents
 
-                Intent intent = new Intent(this,Adherents.class);
-                startActivity(intent);
+                Intent intAdh = new Intent(this,Adherents.class);
+                startActivity(intAdh);
                 break;
             case 1:  // gestion des salles
+                Intent intSalles = new Intent(this,Salles.class);
+                startActivity(intSalles);
                 break;
             case 2:  // gestion des evenements
+                Intent intEnvent = new Intent(this,Entrainements.class);
+                startActivity(intEnvent);
                 break;
             case 3:  // gestion des gestion des activités
+                Intent intactivite = new Intent(this,Activites.class);
+                startActivity(intactivite);
                 break;
             case 4:  // Maps
+                Intent intMaps = new Intent(this,Maps.class);
+                startActivity(intMaps);
                 break;
         }
 

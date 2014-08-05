@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\MyClub" />
-            <option value="C:\MyClub\app" />
+            <option value="C:\Users\melakraoui\Projet_GestClub\MyClub" />
+            <option value="C:\Users\melakraoui\Projet_GestClub\MyClub\app" />
           </set>
         </option>
       </GradleProjectSettings>

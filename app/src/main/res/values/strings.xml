@@ -26,5 +26,11 @@
     <string name="title_activity_supprimer_adherent">SupprimerAdherent</string>
     <string name="title_activity_modifier_adherent">ModifierAdherent</string>
     <string name="title_activity_rechercher_adherents">RechercherAdherents</string>
+    <string name="title_activity_ajouter_adherents">AjouterAdherents</string>
+    <string name="title_activity_salles">Salles</string>
+    <string name="title_activity_evenements">evenements</string>
+    <string name="title_activity_entrainements">Entrainements</string>
+    <string name="title_activity_activites">Activites</string>
+    <string name="title_activity_maps">Maps</string>
 
 </resources>

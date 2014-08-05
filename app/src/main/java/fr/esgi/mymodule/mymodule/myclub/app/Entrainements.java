@@ -1,26 +1,18 @@
 package fr.esgi.mymodule.mymodule.myclub.app;
 
-import android.app.TabActivity;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
-import  fr.esgi.mymodule.mymodule.myclub.app.*;
 
-public class Adherents extends ActionBarActivity {
 
+public class Entrainements extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adherents);
+        setContentView(R.layout.activity_entrainements);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup();
@@ -45,17 +37,14 @@ public class Adherents extends ActionBarActivity {
         tabHost.addTab(spec2);
         tabHost.addTab(spec3);
         tabHost.addTab(spec4);
-
-
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.adherents, menu);
+        getMenuInflater().inflate(R.menu.entrainements, menu);
         return true;
     }
 
