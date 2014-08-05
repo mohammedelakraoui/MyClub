@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import fr.esgi.mymodule.mymodule.myclub.app.R;
+import fr.esgi.mymodule.mymodule.myclub.app.*;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -20,7 +20,7 @@ public class Maps extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+       // setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
     }
 
