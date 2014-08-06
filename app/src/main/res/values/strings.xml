@@ -33,5 +33,11 @@
     <string name="title_activity_activites">Activites</string>
     <string name="title_activity_maps">Maps</string>
     <string name="title_activity_my">MyActivity</string>
+    <string name="commentaire">Votre commentaire ici.</string>
+    <string name="disciplines">Discipline souhaitée?</string>
+    <string name="Poid">Poid</string>
+    <string name="KG">KG</string>
+    <string name="id_adherent">Id Adherent</string>
+    <string name="title_activity_test">test</string>
 
 </resources>

@@ -1,13 +1,15 @@
 package fr.esgi.mymodule.mymodule.myclub.app;
 
+import android.app.ActivityGroup;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 
-public class Adherents extends ActionBarActivity {
-
+public class Adherents extends ActivityGroup {
+    private   Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,15 +17,16 @@ public class Adherents extends ActionBarActivity {
         setContentView(R.layout.activity_adherents);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+        tabHost.setup(this.getLocalActivityManager());
 
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
-        spec1.setContent(R.id.Ajouter);
+        spec1.setContent(new Intent(this,AjouterAdherent.class));
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
 
+       // intent = new Intent().setClass(this, test.class);
         TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
         spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
-        spec2.setContent(R.id.Modifier);
+        spec2.setContent(new Intent(this,Maps.class));
 
         TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
         spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));
@@ -37,7 +40,6 @@ public class Adherents extends ActionBarActivity {
         tabHost.addTab(spec2);
         tabHost.addTab(spec3);
         tabHost.addTab(spec4);
-
 
 
     }
