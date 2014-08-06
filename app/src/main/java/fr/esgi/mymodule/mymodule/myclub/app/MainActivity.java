@@ -99,8 +99,8 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intactivite);
                 break;
             case 4:  // Maps
-                Intent intMaps = new Intent(this,Maps.class);
-                startActivity(intMaps);
+            //    Intent intMaps = new Intent(this,Maps.class);
+              //  startActivity(intMaps);
                 break;
         }
 
