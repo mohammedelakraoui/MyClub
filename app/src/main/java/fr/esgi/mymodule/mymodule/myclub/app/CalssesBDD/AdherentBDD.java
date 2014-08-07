@@ -90,9 +90,16 @@ public class AdherentBDD {
         return bdd.delete(TABLE_Adherent ,COL_ID + " = " +id, null);
     }
 
-    public Adherent getAdherentWithTitre(String nom){
+
+    public Adherent getAdherentWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
         Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_Nom + " LIKE \"" + nom +"\"", null, null, null, null);
+        return cursorToLivre(c);
+    }
+
+    public Adherent getAdherentWithId(String id){
+        //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
         return cursorToLivre(c);
     }
 
@@ -107,6 +114,7 @@ public class AdherentBDD {
         //On créé un livre
         Adherent adherent = new Adherent();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        adherent.setId(c.getInt(NUM_COL_ID));
         adherent.setNom(c.getString(NUM_COL_Nom));
         adherent.setPrenom(c.getString(NUM_COL_Prenom));
         adherent.setSexe(c.getString(NUM_COL_SEXE));

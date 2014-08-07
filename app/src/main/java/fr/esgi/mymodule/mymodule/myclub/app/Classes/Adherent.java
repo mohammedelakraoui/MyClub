@@ -4,6 +4,9 @@ package fr.esgi.mymodule.mymodule.myclub.app.Classes;
  * Created by melakraoui on 07/08/2014.
  */
 public class Adherent {
+
+
+    private  int id;
     private String nom;
     private  String prenom;
     private  String sexe;
@@ -12,7 +15,9 @@ public class Adherent {
     private String phone;
     private  String discipline;
 
-    public Adherent(){};
+
+
+public Adherent(){};
 
     public Adherent(String nom, String prenom, String sexe, int poid, int age, String phone, String discipline) {
         this.nom = nom;
@@ -22,6 +27,26 @@ public class Adherent {
         this.age = age;
         this.phone = phone;
         this.discipline = discipline;
+    }
+    @Override
+    public String toString() {
+        return "Adherent{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", poid=" + poid +
+                ", age=" + age +
+                ", phone='" + phone + '\'' +
+                ", discipline='" + discipline + '\'' +
+                '}';
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDiscipline() {
