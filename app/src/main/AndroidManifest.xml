@@ -32,11 +32,7 @@
             android:name=".Activites"
             android:label="@string/title_activity_activites" >
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -46,17 +42,18 @@
             android:name=".Maps"
             android:label="@string/title_activity_maps" >
         </activity>
-        <activity
-            android:name=".test"
-            android:label="@string/title_activity_test" >
-        </activity>
-        <activity
-            android:name=".MyActivity"
-            android:label="@string/title_activity_my" >
-        </activity>
+
         <activity
             android:name=".AjouterAdherent"
             android:label="@string/title_activity_ajouter_adherent" >
+        </activity>
+        <activity
+            android:name=".ModifierAdherent"
+            android:label="@string/title_activity_modifier__adherent" >
+        </activity>
+        <activity
+            android:name=".Afficher"
+            android:label="@string/title_activity_supprimer_adhrent" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

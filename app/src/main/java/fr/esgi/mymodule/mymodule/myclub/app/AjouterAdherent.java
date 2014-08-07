@@ -4,14 +4,48 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class AjouterAdherent extends ActionBarActivity {
+
+    Spinner listedesciplines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_adherent);
+       listedesciplines=(Spinner) findViewById(R.id.spinner);
+
+
+        ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.simple_list_item_1);
+
+        adp3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listedesciplines.setAdapter(adp3);
+        listedesciplines.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+
+                String ss=listedesciplines.getSelectedItem().toString();
+                Toast.makeText(getBaseContext(), ss, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+
+            }
+
+        });
+
     }
 
 

@@ -20,21 +20,21 @@ public class Adherents extends ActivityGroup {
         tabHost.setup(this.getLocalActivityManager());
 
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
-        spec1.setContent(new Intent(this,AjouterAdherent.class));
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
+        spec1.setContent(new Intent(this,AjouterAdherent.class));
 
        // intent = new Intent().setClass(this, test.class);
         TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
         spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
-        spec2.setContent(new Intent(this,Maps.class));
+        spec2.setContent(new Intent(this,ModifierAdherent.class));
 
         TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
         spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));
         spec3.setContent(R.id.Supprimer);
 
-        TabHost.TabSpec spec4=tabHost.newTabSpec("Rechercher");
+        TabHost.TabSpec spec4=tabHost.newTabSpec("Afficher");
         spec4.setIndicator("",getResources().getDrawable(R.drawable.search));
-        spec4.setContent(R.id.Rechercher);
+        spec4.setContent(new Intent(this,Afficher.class));
 
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);

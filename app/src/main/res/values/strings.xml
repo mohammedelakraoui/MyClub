@@ -6,6 +6,18 @@
     <string name="action_settings">Settings</string>
     <string name="imgdesc">Description de l image </string>
 
+
+
+    <string-array name="desciplines">
+        <item>Musculation</item>
+        <item>Cardio</item>
+        <item>Fitness</item>
+        <item>cours chorégraphiés( Salsa,Zumba..)</item>
+        <item>Raquette</item>
+    </string-array>
+
+
+
     <string-array name="titles">
         <item>Gestion des adhérents</item>
         <item>Gestion des salles </item>
@@ -39,5 +51,7 @@
     <string name="KG">KG</string>
     <string name="id_adherent">Id Adherent</string>
     <string name="title_activity_test">test</string>
+    <string name="title_activity_modifier__adherent">Modifier_Adherent</string>
+    <string name="title_activity_supprimer_adhrent">SupprimerAdhrent</string>
 
 </resources>
