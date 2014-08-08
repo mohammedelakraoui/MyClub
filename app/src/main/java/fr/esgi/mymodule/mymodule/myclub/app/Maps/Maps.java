@@ -1,4 +1,4 @@
-package fr.esgi.mymodule.mymodule.myclub.app;
+package fr.esgi.mymodule.mymodule.myclub.app.Maps;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,19 +6,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class ModifierAdherent extends ActionBarActivity {
+public class Maps extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modifier__adherent);
+        setContentView(R.layout.activity_maps);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.modifier__adherent, menu);
+        getMenuInflater().inflate(R.menu.maps, menu);
         return true;
     }
 

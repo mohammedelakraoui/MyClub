@@ -1,4 +1,4 @@
-package fr.esgi.mymodule.mymodule.myclub.app;
+package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -93,7 +93,7 @@ public class AjouterAdherent extends ActionBarActivity {
         //Si un adherent est retourné (donc si l'adherent à bien été ajouté à la BDD)
         if(AdherentFromBdd != null){
             //On affiche les infos du livre dans un Toast
-            Toast.makeText(this,"Vous avez bien ajouté votre adherent", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
             //On modifie le titre du livre
       //      AdherentFromBdd.setNom("J'ai modifié le Nom d Adherent");
             //Puis on met à jour la BDD
@@ -135,26 +135,6 @@ public class AjouterAdherent extends ActionBarActivity {
 
     public void annuller(View v)
     {
-       AdherentBDD db=new AdherentBDD(this);
-        db.open();
-
-
-        //Pour vérifier que l'on a bien créé notre adherent dans la BDD
-        //on extrait le adherent de la BDD grâce au Nom du adherent que l'on a créé précédemment
-        Adherent AdherentFromBdd = db.getAdherentWithNom(nom.getText().toString());
-        //Si un adherent est retourné (donc si l'adherent à bien été ajouté à la BDD)
-        if(AdherentFromBdd != null){
-            //On affiche les infos du livre dans un Toast
-            Toast.makeText(this,AdherentFromBdd.toString(), Toast.LENGTH_LONG).show();
-            //On modifie le titre du livre
-            //      AdherentFromBdd.setNom("J'ai modifié le Nom d Adherent");
-            //Puis on met à jour la BDD
-            //       adherentBDD.updateAdherent(AdherentFromBdd.getId(), AdherentFromBdd);
-        }else
-        {
-            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
-
-        }
 
 
         nom.setText("Nom");

@@ -15,6 +15,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapter;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites.Activites;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements.Entrainements;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles.Salles;
+
 public class MainActivity extends ActionBarActivity {
 
     private String[] SlideListViewItems;

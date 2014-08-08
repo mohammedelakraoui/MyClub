@@ -1,23 +1,24 @@
-package fr.esgi.mymodule.mymodule.myclub.app;
+package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class Afficher extends ActionBarActivity {
+public class ModifierAdherent extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_afficher_adhrent);
+        setContentView(R.layout.activity_modifier__adherent);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.supprimer_adhrent, menu);
+        getMenuInflater().inflate(R.menu.modifier__adherent, menu);
         return true;
     }
 

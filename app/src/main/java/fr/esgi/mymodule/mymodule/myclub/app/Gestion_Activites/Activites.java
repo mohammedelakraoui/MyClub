@@ -1,10 +1,12 @@
-package fr.esgi.mymodule.mymodule.myclub.app;
+package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+
+import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 
 public class Activites extends ActionBarActivity {

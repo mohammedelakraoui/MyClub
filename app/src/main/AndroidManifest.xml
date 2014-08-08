@@ -17,43 +17,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Adherents"
+            android:name=".Gestion_Adherents.Adherents"
             android:label="@string/title_activity_adherents" >
         </activity>
         <activity
-            android:name=".Salles"
+            android:name=".Gestion_Salles.Salles"
             android:label="@string/title_activity_salles" >
         </activity>
         <activity
-            android:name=".Entrainements"
+            android:name=".Gestion_Entrainements.Entrainements"
             android:label="@string/title_activity_entrainements" >
         </activity>
         <activity
-            android:name=".Activites"
+            android:name=".Gestion_Activites.Activites"
             android:label="@string/title_activity_activites" >
         </activity>
-
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".Maps"
+            android:name=".Maps.Maps"
             android:label="@string/title_activity_maps" >
         </activity>
-
         <activity
-            android:name=".AjouterAdherent"
+            android:name=".Gestion_Adherents.AjouterAdherent"
             android:label="@string/title_activity_ajouter_adherent" >
         </activity>
         <activity
-            android:name=".ModifierAdherent"
+            android:name=".Gestion_Adherents.ModifierAdherent"
             android:label="@string/title_activity_modifier__adherent" >
         </activity>
         <activity
-            android:name=".Afficher"
+            android:name=".Gestion_Adherents.Afficher"
             android:label="@string/title_activity_supprimer_adhrent" >
+        </activity>
+        <activity
+            android:name=".ItemsAdherent"
+            android:label="@string/title_activity_items_adherent" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

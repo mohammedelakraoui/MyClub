@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 
@@ -72,8 +75,8 @@ public class AdherentBDD {
     }
 
     public int updateAdherent(int id, Adherent adherent){
-        //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
-        //il faut simplement préciser quel livre on doit mettre à jour grâce à l'ID
+        //La mise à jour d'un Adherent dans la BDD fonctionne plus ou moins comme une insertion
+        //il faut simplement préciser quel Adherent on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
         values.put(COL_Nom, adherent.getNom());
         values.put(COL_Prenom, adherent.getPrenom());
@@ -86,32 +89,38 @@ public class AdherentBDD {
     }
 
     public int removeAdherentWithID(int id){
-        //Suppression d'un livre de la BDD grâce à l'ID
+        //Suppression d'un Adherent de la BDD grâce à l'ID
         return bdd.delete(TABLE_Adherent ,COL_ID + " = " +id, null);
     }
 
+    public ArrayList<Adherent> getAllAdherent()
+    {
+        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE},null, null, null, null, null);
+        return cursorToAllAdherent(c);
+
+    }
 
     public Adherent getAdherentWithNom(String nom){
-        //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+        //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son nom)
         Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_Nom + " LIKE \"" + nom +"\"", null, null, null, null);
-        return cursorToLivre(c);
+        return cursorToAdherent(c);
     }
 
     public Adherent getAdherentWithId(String id){
-        //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+        //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son titre)
         Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
-        return cursorToLivre(c);
+        return cursorToAdherent(c);
     }
 
-    //Cette méthode permet de convertir un cursor en un livre
-    private Adherent cursorToLivre(Cursor c){
+    //Cette méthode permet de convertir un cursor en un Adherent
+    private Adherent cursorToAdherent(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
+        //On créé un Adherent
         Adherent adherent = new Adherent();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         adherent.setId(c.getInt(NUM_COL_ID));
@@ -125,10 +134,44 @@ public class AdherentBDD {
         //On ferme le cursor
         c.close();
 
-        //On retourne le livre
+        //On retourne le Adherent
     return adherent;
     }
 
+
+    // get la liste des adherents
+    private ArrayList<Adherent> cursorToAllAdherent(Cursor c){
+
+        ArrayList<Adherent> listAdherent=new ArrayList<Adherent>();
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return null;
+
+        //Sinon on se place sur le premier élément
+        if (c.moveToFirst()) {
+            do {
+                //On créé un Adherent
+                Adherent adherent = new Adherent();
+                //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+                adherent.setId(c.getInt(NUM_COL_ID));
+                adherent.setNom(c.getString(NUM_COL_Nom));
+                adherent.setPrenom(c.getString(NUM_COL_Prenom));
+                adherent.setSexe(c.getString(NUM_COL_SEXE));
+                adherent.setPoid(c.getInt(NUM_COL_Poid));
+                adherent.setAge(c.getInt(NUM_COL_AGE));
+                adherent.setPhone(c.getString(NUM_COL_PHONE));
+                adherent.setDiscipline(c.getString(NUM_COL_DISCIPLINE));
+                listAdherent.add(adherent);
+            } while (c.moveToNext());
+        }
+        if (c != null && !c.isClosed()) {
+            //On ferme le cursor
+            c.close();
+        }
+
+        //On retourne le Adherent
+        return listAdherent;
+    }
 
 
 }

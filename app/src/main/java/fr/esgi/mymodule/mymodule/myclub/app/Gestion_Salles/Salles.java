@@ -1,4 +1,4 @@
-package fr.esgi.mymodule.mymodule.myclub.app;
+package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -6,13 +6,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 
+import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class Entrainements extends ActionBarActivity {
+
+public class Salles extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrainements);
+        setContentView(R.layout.activity_salles);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup();
@@ -44,7 +46,7 @@ public class Entrainements extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.entrainements, menu);
+        getMenuInflater().inflate(R.menu.salles, menu);
         return true;
     }
 
