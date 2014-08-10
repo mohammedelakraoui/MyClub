@@ -1,6 +1,8 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Adapters;
-
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -57,7 +59,7 @@ public class CustomAdapterAdherents extends BaseAdapter{
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            convertView = inflater.inflate(R.layout.activity_afficher_adhrent, parent, false);
+            convertView = inflater.inflate(R.layout.list_item_afficher_adherent, parent, false);
 
             holder = new ViewHolder(convertView);
 
@@ -71,16 +73,18 @@ public class CustomAdapterAdherents extends BaseAdapter{
 
         holder = (ViewHolder) convertView.getTag();
         Adherent adherent = listItem.get(position);
-Log.v("Nom", adherent.getNom());
-           // holder.image.setBackground(R.drawable.myclub);
-           /* holder.Nom.setText(adherent.getNom());
-            holder.Prenom.setText(adherent.getPrenom());
-            holder.Age.setText(adherent.getAge());
-            holder.Poid.setText(adherent.getPoid());
-            holder.Sexe.setText(adherent.getSexe());
-            holder.Discipline.setText(adherent.getDiscipline());*/
+           Bitmap pic= BitmapFactory.decodeResource(convertView.getResources(),R.drawable.myclub);
 
-         //   Drawable btmpDrawable=new BitmapDrawable(convertView.getResources(), R.drawable.myclub);
+           Drawable dr=new BitmapDrawable(convertView.getResources(),PicturesManager.getRoundedCornerImage(pic));
+            holder.image.setBackground(dr);
+            holder.Nom.setText(adherent.getNom().toString());
+            holder.Prenom.setText(adherent.getPrenom().toString());
+            holder.Age.setText(adherent.getAge()+" ans");
+            holder.Poid.setText(adherent.getPoid()+ " KG");
+            holder.Sexe.setText(adherent.getSexe().toString());
+           holder.Discipline.setText(adherent.getDiscipline().toString());
+
+          //  Drawable btmpDrawable=new BitmapDrawable(convertView.getResources(), R.drawable.myclub);
           //  holder.newspic.setBackground(btmpDrawable);
           /*  if(post.getStatutCurrentUser()==3)
             {
@@ -108,13 +112,13 @@ Log.v("Nom", adherent.getNom());
         private final TextView Discipline;
 
         public ViewHolder(View view) {
-            image = (ImageView) view.findViewById(R.id.image);
-            Nom = (TextView) view.findViewById(R.id.Nom);
-            Prenom = (TextView) view.findViewById(R.id.prenom);
-            Poid = (TextView) view.findViewById(R.id.poid);
-            Age = (TextView) view.findViewById(R.id.age);
-            Sexe = (TextView) view.findViewById(R.id.sexe);
-            Discipline = (TextView) view.findViewById(R.id.discipline);
+           image = (ImageView) view.findViewById(R.id.Image_me);
+            Nom = (TextView) view.findViewById(R.id.Name_me);
+            Prenom = (TextView) view.findViewById(R.id.Prenom_me);
+            Poid = (TextView) view.findViewById(R.id.Poid_me);
+            Age = (TextView) view.findViewById(R.id.Age_me);
+            Sexe = (TextView) view.findViewById(R.id.Sexe_me);
+           Discipline = (TextView) view.findViewById(R.id.Discipline_me);
 
         }
     }

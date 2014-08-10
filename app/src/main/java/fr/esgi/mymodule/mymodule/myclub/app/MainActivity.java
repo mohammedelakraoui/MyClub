@@ -18,6 +18,7 @@ import android.widget.TextView;
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapter;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites.Activites;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements.Entrainements;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles.Salles;
 
@@ -105,6 +106,8 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intactivite);
                 break;
             case 4:  // Maps
+                Intent intMaps = new Intent(this,Afficher.class);
+                startActivity(intMaps);
             //    Intent intMaps = new Intent(this,Maps.class);
               //  startActivity(intMaps);
                 break;
