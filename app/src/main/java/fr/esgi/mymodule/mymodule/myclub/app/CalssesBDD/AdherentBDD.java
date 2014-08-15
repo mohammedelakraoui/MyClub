@@ -33,7 +33,7 @@ public class AdherentBDD {
     private static final int NUM_COL_AGE = 5;
     private static final String COL_Phone = "phone";
     private static final int NUM_COL_PHONE = 6;
-    private static final String COL_DISCIPLINE= "phone";
+    private static final String COL_DISCIPLINE= "discipline";
     private static final int NUM_COL_DISCIPLINE = 7;
 
     private SQLiteDatabase bdd;
@@ -60,9 +60,8 @@ public class AdherentBDD {
     }
 
     public long insertAdherent(Adherent adherent){
-        //Création d'un ContentValues (fonctionne comme une HashMap)
+
         ContentValues values = new ContentValues();
-        //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_Nom, adherent.getNom());
         values.put(COL_Prenom, adherent.getPrenom());
         values.put(COL_Sexe, adherent.getSexe());

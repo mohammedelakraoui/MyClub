@@ -70,34 +70,25 @@ public class AjouterAdherent extends ActionBarActivity {
     public void AjouterAdherent(View v)
     {
 
-        //Création d'une instance de ma classe AdherentBDD
         AdherentBDD adherentBDD = new AdherentBDD(this);
 
-        // get selected radio button from radioGroup
         int selectedId = sexe.getCheckedRadioButtonId();
 
-        // find the radiobutton by returned id
        RadioButton sexe_ = (RadioButton) findViewById(selectedId);
 
-        //Création d'un Adherent
         Adherent adherent=new Adherent(nom.getText().toString(),prenom.getText().toString(),sexe_.getText().toString(),Integer.parseInt(poid.getText().toString()),Integer.parseInt(age.getText().toString()),phone.getText().toString(),listedesciplines.getSelectedItem().toString());
 
-        //On ouvre la base de données pour écrire dedans
         adherentBDD.open();
-        //On insère l'adherent que l'on vient de créer
+
         adherentBDD.insertAdherent(adherent);
 
-        //Pour vérifier que l'on a bien créé notre adherent dans la BDD
-        //on extrait le adherent de la BDD grâce au Nom du adherent que l'on a créé précédemment
+
        Adherent AdherentFromBdd = adherentBDD.getAdherentWithNom(adherent.getNom());
-        //Si un adherent est retourné (donc si l'adherent à bien été ajouté à la BDD)
+
         if(AdherentFromBdd != null){
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this,"L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
-            //On modifie le titre du livre
-      //      AdherentFromBdd.setNom("J'ai modifié le Nom d Adherent");
-            //Puis on met à jour la BDD
-     //       adherentBDD.updateAdherent(AdherentFromBdd.getId(), AdherentFromBdd);
+
         }else
         {
             Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();

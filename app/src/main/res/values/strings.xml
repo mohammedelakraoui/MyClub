@@ -53,5 +53,6 @@
     <string name="ajouter">Ajouter</string>
     <string name="title_activity_items_adherent">ItemsAdherent</string>
     <string name="afficherAdherent">Afficher adherent</string>
+    <string name="ID">ID</string>
 
 </resources>

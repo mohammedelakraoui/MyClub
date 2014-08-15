@@ -17,7 +17,40 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"></TableRow>
 
-        <TableRow
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/ID"
+
+            android:layout_column="0" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerID"
+            android:layout_column="7"
+            android:background="#FF938EFF" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </TableRow>
+
+    <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center">
@@ -38,7 +71,8 @@
                 android:text="Prénom"
                 android:ems="10"
                 android:id="@+id/prenom"
-                android:layout_column="6" />
+                android:layout_column="7"
+                android:layout_gravity="right" />
         </TableRow>
 
         <TableRow
@@ -74,10 +108,11 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/poid"
-                android:layout_column="6"
+                android:layout_column="7"
                 android:text="70"
                 android:gravity="center"
-                android:textColor="#ff38c6ff" />
+                android:textColor="#ff38c6ff"
+                android:layout_gravity="right" />
         </TableRow>
 
         <TableRow
@@ -91,7 +126,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/KG"
                 android:id="@+id/textView2"
-                android:layout_column="6"
+                android:layout_column="7"
                 android:gravity="center" />
         </TableRow>
 
@@ -119,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Age?"
-                android:id="@+id/age"
+
                 android:layout_column="0" />
 
             <EditText
@@ -127,8 +162,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText"
-                android:layout_column="6" />
+                android:id="@+id/age"
+                android:layout_column="7"
+                android:layout_gravity="right" />
         </TableRow>
 
         <TableRow
@@ -149,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Phone"
-                android:id="@+id/phone"
+
                 android:layout_column="0" />
 
             <EditText
@@ -157,8 +193,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/editText2"
-                android:layout_column="6" />
+                android:id="@+id/phone"
+                android:layout_column="7"
+                android:layout_gravity="right" />
 
         </TableRow>
 
@@ -170,19 +207,32 @@
 
         </TableRow>
 
-        <TableRow
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/disciplines"
+            android:id="@+id/textView3"
+            android:layout_column="0" />
+    </TableRow>
+
+    <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/disciplines"
-                android:id="@+id/textView3"
-                android:layout_column="0" />
-        </TableRow>
+    </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
@@ -233,8 +283,9 @@
                 android:layout_height="wrap_content"
                 android:text="Modifier"
                 android:id="@+id/button"
-                android:layout_column="7"
-                android:layout_gravity="right" />
+                android:layout_column="11"
+                android:layout_gravity="right"
+                android:onClick="update" />
         </TableRow>
 
         <TableRow

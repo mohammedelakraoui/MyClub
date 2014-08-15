@@ -1,10 +1,13 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Adapters;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
+
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +54,7 @@ public class CustomAdapterAdherents extends BaseAdapter{
         return i;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -82,6 +86,7 @@ public class CustomAdapterAdherents extends BaseAdapter{
             holder.Age.setText(adherent.getAge()+" ans");
             holder.Poid.setText(adherent.getPoid()+ " KG");
             holder.Sexe.setText(adherent.getSexe().toString());
+            holder.phone.setText(adherent.getPhone().toString());
            holder.Discipline.setText(adherent.getDiscipline().toString());
 
           //  Drawable btmpDrawable=new BitmapDrawable(convertView.getResources(), R.drawable.myclub);
@@ -109,6 +114,7 @@ public class CustomAdapterAdherents extends BaseAdapter{
         private final TextView Poid;
         private final TextView Age;
         private final TextView Sexe;
+        private final TextView phone;
         private final TextView Discipline;
 
         public ViewHolder(View view) {
@@ -118,6 +124,7 @@ public class CustomAdapterAdherents extends BaseAdapter{
             Poid = (TextView) view.findViewById(R.id.Poid_me);
             Age = (TextView) view.findViewById(R.id.Age_me);
             Sexe = (TextView) view.findViewById(R.id.Sexe_me);
+            phone=(TextView) view.findViewById(R.id.Phone_me);
            Discipline = (TextView) view.findViewById(R.id.Discipline_me);
 
         }

@@ -11,7 +11,6 @@
         android:layout_marginRight="6dip"
         android:contentDescription="TODO"
         android:src="@drawable/ic_launcher"
-        android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
         android:layout_column="0"
         android:layout_span="12"
@@ -27,8 +26,7 @@
 
         android:layout_marginLeft="106dip"
         android:id="@+id/tableLayout"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false">
+       >
 
         <TableRow
             android:layout_width="fill_parent"
@@ -91,9 +89,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Phone number"
+
+                android:layout_column="8"
+                android:layout_marginRight="60dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Discipline"
                 android:id="@+id/textView3"
-                android:layout_column="8" />
+                android:layout_column="10" />
 
         </TableRow>
 
@@ -156,9 +163,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Phone number"
+                android:id="@+id/Phone_me"
+                android:layout_column="8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Musculation"
                 android:id="@+id/Discipline_me"
-                android:layout_column="8" />
+                android:layout_column="10" />
+
+
 
         </TableRow>
 

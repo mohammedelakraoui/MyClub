@@ -53,7 +53,10 @@
             android:name=".Gestion_Adherents.Afficher"
             android:label="@string/afficherAdherent" >
         </activity>
-
+        <activity
+            android:name=".Modifier_adherent"
+            android:label="@string/title_activity_modifier_adherent" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
