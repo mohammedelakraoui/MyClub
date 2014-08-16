@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity
+
+
             android:name=".Gestion_Adherents.Adherents"
             android:label="@string/title_activity_adherents" >
         </activity>
