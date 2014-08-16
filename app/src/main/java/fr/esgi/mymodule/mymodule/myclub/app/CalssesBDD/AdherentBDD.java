@@ -84,6 +84,7 @@ public class AdherentBDD {
         values.put(COL_Age, adherent.getAge());
         values.put(COL_Phone, adherent.getPhone());
         values.put(COL_DISCIPLINE, adherent.getDiscipline());
+
         return bdd.update(TABLE_Adherent, values, COL_ID + " = " +id, null);
     }
 

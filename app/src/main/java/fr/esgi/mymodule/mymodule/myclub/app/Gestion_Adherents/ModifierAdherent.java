@@ -106,7 +106,7 @@ public class ModifierAdherent extends ActionBarActivity {
 
 
 
-    private void update()
+    private void update(View v)
     {
        adherentBDD.open();
 
@@ -116,7 +116,13 @@ public class ModifierAdherent extends ActionBarActivity {
         adtoUpdate.setPoid(Integer.parseInt(poid.getText().toString()));
         adtoUpdate.setDiscipline(listedesciplines.getSelectedItem().toString());
 
-        adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate);
+        //;
+
+
+            //On affiche les infos du livre dans un Toast
+            Toast.makeText(this,adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate)+"", Toast.LENGTH_LONG).show();
+
+
     }
 
     private void setText(Adherent adherent)
