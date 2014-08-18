@@ -90,6 +90,7 @@ public class AdherentBDD {
 
     public int removeAdherentWithID(int id){
         //Suppression d'un Adherent de la BDD grâce à l'ID
+
         return bdd.delete(TABLE_Adherent ,COL_ID + " = " +id, null);
     }
 

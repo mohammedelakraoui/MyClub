@@ -17,8 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-
-
             android:name=".Gestion_Adherents.Adherents"
             android:label="@string/title_activity_adherents" >
         </activity>
@@ -58,6 +56,10 @@
         <activity
             android:name=".Modifier_adherent"
             android:label="@string/title_activity_modifier_adherent" >
+        </activity>
+        <activity
+            android:name=".Gestion_Salles.Ajouter_salle"
+            android:label="@string/title_activity_ajouter_salle" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,6 +23,8 @@ import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class ModifierAdherent extends ActionBarActivity {
+
+    Button annuller;
     ArrayAdapter<CharSequence> adp3;
     private Spinner spinnerId;
     private ArrayList<Adherent> listId;
@@ -41,7 +44,9 @@ public class ModifierAdherent extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier__adherent);
+
         spinnerId=(Spinner) findViewById(R.id.spinnerID);
+        annuller=(Button) findViewById(R.id.button2);
         nom=(EditText)findViewById(R.id.Nom);
         prenom=(EditText)findViewById(R.id.prenom);
         sexe =(RadioGroup) findViewById(R.id.radiosexe);
@@ -100,13 +105,19 @@ public class ModifierAdherent extends ActionBarActivity {
   });
 
 
+        annuller.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clean();
+            }
+        });
         adherentBDD.close();
     }
 
 
 
 
-    private void update(View v)
+    public void update(View v)
     {
        adherentBDD.open();
 
@@ -116,13 +127,27 @@ public class ModifierAdherent extends ActionBarActivity {
         adtoUpdate.setPoid(Integer.parseInt(poid.getText().toString()));
         adtoUpdate.setDiscipline(listedesciplines.getSelectedItem().toString());
 
-        //;
+          if(adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate)==1) {
+              Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
+              clean();
+
+          }else
+          {
+              Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
+          }
+        adherentBDD.close();
 
 
-            //On affiche les infos du livre dans un Toast
-            Toast.makeText(this,adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate)+"", Toast.LENGTH_LONG).show();
+    }
+    private void clean()
+    {
 
-
+        spinnerId.setSelection(0);
+        this.nom.setText("");
+        this.prenom.setText("");
+        this.age.setText("");
+        this.poid.setText("");
+        this.phone.setText("");
     }
 
     private void setText(Adherent adherent)

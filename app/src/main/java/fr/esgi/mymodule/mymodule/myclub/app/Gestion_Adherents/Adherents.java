@@ -6,32 +6,41 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class Adherents extends ActivityGroup {
     private   Intent intent;
-
+   private  TabHost tabHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adherents);
-
-        TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
+        tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());
+        this.setTabHost(tabHost);
 
+
+
+    }
+
+
+    private void setTabHost(TabHost tabHost)
+    {
+        tabHost.clearAllTabs();
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
         spec1.setContent(new Intent(this,AjouterAdherent.class));
 
-       // intent = new Intent().setClass(this, test.class);
+        // intent = new Intent().setClass(this, test.class);
         TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
         spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
         spec2.setContent(new Intent(this,ModifierAdherent.class));
 
-        TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
+      /*  TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
         spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));
-        spec3.setContent(R.id.Supprimer);
+        spec3.setContent(R.id.Supprimer);*/
 
         TabHost.TabSpec spec4=tabHost.newTabSpec("Afficher");
         spec4.setIndicator("",getResources().getDrawable(R.drawable.search));
@@ -39,10 +48,8 @@ public class Adherents extends ActivityGroup {
 
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);
-        tabHost.addTab(spec3);
+        //    tabHost.addTab(spec3);
         tabHost.addTab(spec4);
-
-
     }
 
 

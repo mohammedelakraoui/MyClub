@@ -8,6 +8,10 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
 
+    <string-array name="menu_gestion">
+        <item>Supprimer</item>
+        <item>Modifier</item>
+    </string-array>
     <string-array name="desciplines">
         <item>Musculation</item>
         <item>Cardio</item>
@@ -54,5 +58,9 @@
     <string name="title_activity_items_adherent">ItemsAdherent</string>
     <string name="afficherAdherent">Afficher adherent</string>
     <string name="ID">ID</string>
+    <string name="title_activity_ajouter_salle">Gestion des salles</string>
+    <string name="Nomsalles">Nom de la salle</string>
+    <string name="coach">Nom du coach responsable</string>
+    <string name="activitePratique">Type d\'activitée</string>
 
 </resources>
