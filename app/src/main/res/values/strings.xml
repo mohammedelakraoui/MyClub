@@ -62,5 +62,7 @@
     <string name="Nomsalles">Nom de la salle</string>
     <string name="coach">Nom du coach responsable</string>
     <string name="activitePratique">Type d\'activitée</string>
+    <string name="title_activity_modifier_salle">Modifier_salle</string>
+    <string name="title_activity_afficher_salles">Afficher_salles</string>
 
 </resources>

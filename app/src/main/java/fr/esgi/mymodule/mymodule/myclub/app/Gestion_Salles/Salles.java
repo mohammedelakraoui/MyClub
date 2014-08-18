@@ -1,5 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
+import android.app.Activity;
+import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +15,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.ModifierAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 
-public class Salles extends ActionBarActivity {
+public class Salles extends ActivityGroup {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,22 +23,24 @@ public class Salles extends ActionBarActivity {
         setContentView(R.layout.activity_salles);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+        tabHost.setup(this.getLocalActivityManager());
+        this.setTabHost(tabHost);
 
- this.setTabHost(tabHost);
+
+
     }
 
     private void setTabHost(TabHost tabHost)
     {
-        tabHost.clearAllTabs();
+
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
-        spec1.setContent(new Intent(this,AjouterAdherent.class));
+        spec1.setContent(new Intent(this,Ajouter_salle.class));
 
         // intent = new Intent().setClass(this, test.class);
         TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
         spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
-        spec2.setContent(new Intent(this,ModifierAdherent.class));
+        spec2.setContent(new Intent(this,Modifier_salle.class));
 
       /*  TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
         spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));

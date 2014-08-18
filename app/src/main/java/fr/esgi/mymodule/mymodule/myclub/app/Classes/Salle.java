@@ -9,13 +9,14 @@ public class Salle {
     private  int capacite;
     private String type_activite ;
     private String  nom_coach;
-public Salle(){}
-    public Salle(String nom_coach, String type_activite, int capacite, String nom_salle, int id) {
+    public Salle(){}
+    public Salle(String nom_salle,int capacite,String nom_coach, String type_activite) {
+
         this.nom_coach = nom_coach;
         this.type_activite = type_activite;
         this.capacite = capacite;
         this.nom_salle = nom_salle;
-        this.id = id;
+
     }
 
     public int getCapacite() {

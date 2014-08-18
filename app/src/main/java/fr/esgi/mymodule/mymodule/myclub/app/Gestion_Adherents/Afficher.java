@@ -41,15 +41,19 @@ public class Afficher extends ActionBarActivity {
       //  tab=(TabHost) findViewById(R.id.t)
          adherentBDD=new AdherentBDD(this);
         adherentBDD.open();
-       list=adherentBDD.getAllAdherent();
+        list=adherentBDD.getAllAdherent();
         adherentBDD.close();
-        Adherent r=list.get(0);
-       // Log.v("Nom", r.getNom());
-         adapter = new CustomAdapterAdherents(this,list);
+        if(list!=null)
+        {
+            Adherent r = list.get(0);
 
-        maListViewPerso.setAdapter(adapter);
+            // Log.v("Nom", r.getNom());
+            adapter = new CustomAdapterAdherents(this, list);
 
-        registerForContextMenu(maListViewPerso);
+            maListViewPerso.setAdapter(adapter);
+
+            registerForContextMenu(maListViewPerso);
+        }
 
     }
 

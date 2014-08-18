@@ -123,7 +123,7 @@ public class SalleBDD {
     }
 
 
-    // get la liste des adherents
+    // get la liste des salles
     private ArrayList<Salle> cursorToAllSalles(Cursor c){
 
         ArrayList<Salle> listsalles=new ArrayList<Salle>();

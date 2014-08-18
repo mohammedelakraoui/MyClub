@@ -61,6 +61,14 @@
             android:name=".Gestion_Salles.Ajouter_salle"
             android:label="@string/title_activity_ajouter_salle" >
         </activity>
+        <activity
+            android:name=".Gestion_Salles.Modifier_salle"
+            android:label="@string/title_activity_modifier_salle" >
+        </activity>
+        <activity
+            android:name=".Gestion_Salles.Afficher_salle"
+            android:label="@string/title_activity_afficher_salles" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
