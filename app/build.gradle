@@ -59,4 +59,5 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.0'
     // You must install or update the Google Repository through the SDK manager to use this dependency.
     compile 'com.google.android.gms:play-services:5.2.08'
+
 }

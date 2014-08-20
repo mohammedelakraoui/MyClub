@@ -64,7 +64,7 @@ public class SalleBDD {
         return bdd.insert(TABLE_Salle, null, values);
     }
 
-    public int updateAdherent(int id, Salle salle ){
+    public int updateSalle(int id, Salle salle ){
         //La mise à jour d'un Adherent dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quel Adherent on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
@@ -76,7 +76,7 @@ public class SalleBDD {
         return bdd.update(TABLE_Salle, values, COL_ID + " = " +id, null);
     }
 
-    public int removeAdherentWithID(int id){
+    public int removeSalleWithID(int id){
         //Suppression d'un Adherent de la BDD grâce à l'ID
 
         return bdd.delete(TABLE_Salle,COL_ID + " = " +id, null);

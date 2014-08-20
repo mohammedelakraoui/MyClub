@@ -9,7 +9,10 @@
     tools:context="fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.AjouterAdherent"
     android:gravity="center">
 
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:focusable="true">
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -307,4 +310,5 @@
         </TableRow>
 
     </TableLayout>
+    </ScrollView>
 </RelativeLayout>
