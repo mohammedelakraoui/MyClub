@@ -8,6 +8,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -92,13 +94,36 @@ public class Modifier_salle extends ActionBarActivity {
 
     private void loadAndPutValues(Salle salle)
     {
+        liste.requestFocus();
+     //   getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         nom_salle.setText(salle.getNom_salle());
-        capacite.setText(salle.getCapacite());
+        capacite.setText(salle.getCapacite()+"");
         nom_coach.setText(salle.getNom_coach());
 
 
     }
 
+    void updatesalle(View v)
+    {
+
+        salleBDD.open();
+Salle salle1=new Salle();
+        salle1.setNom_salle(this.nom_salle.getText().toString());
+        salle1.setCapacite(Integer.parseInt(this.capacite.getText().toString()));
+        salle1.setNom_coach(this.nom_coach.getText().toString());
+        salle1.setType_activite(this.liste.getSelectedItem().toString());
+
+
+        if(salleBDD.updateSalle(salle1.getId(), salle1)==1) {
+            Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
+
+
+        }else
+        {
+            Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
+        }
+        salleBDD.close();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
