@@ -89,6 +89,12 @@ public class SalleBDD {
 
     }
 
+    public Salle searchSalle(String value){
+        //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son nom)
+        Cursor c = bdd.query(TABLE_Salle, new String[] {COL_ID, COL_Nom_salle, COL_capacite,COL_Nom_coach,COL_type_activite}, COL_Nom_salle + " LIKE \"" + value +"\" or "+ COL_Nom_coach + " LIKE \"" + value +"\" or "+ COL_capacite + " LIKE \"" + value +"\" or "+COL_ID + " LIKE \"" + value +"\" or "+COL_type_activite + " LIKE \"" + value +"\"", null, null, null, null);
+        return cursorToSalle(c);
+    }
+
     public Salle getSalleWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son nom)
         Cursor c = bdd.query(TABLE_Salle, new String[] {COL_ID, COL_Nom_salle, COL_capacite,COL_Nom_coach,COL_type_activite}, COL_Nom_salle + " LIKE \"" + nom +"\"", null, null, null, null);
