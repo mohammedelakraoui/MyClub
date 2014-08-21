@@ -5,7 +5,7 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=07:8D:5F:9F:A1:DE:63:5F:B7:0E:87:3B:5D:DA:EB:4D:1B:39:9E:D1%3Bfr.esgi.mymodule.mymodule.myclub.app
+https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DB:F5:0A:B2:9C:39:45:DC:50:B3:44:1A:6A:91:6E:32:37:9A:47:80%3Bfr.esgi.mymodule.mymodule.myclub.app
 
     You can also add your credentials to an existing key, using this line:
     07:8D:5F:9F:A1:DE:63:5F:B7:0E:87:3B:5D:DA:EB:4D:1B:39:9E:D1;fr.esgi.mymodule.mymodule.myclub.app
@@ -14,5 +14,5 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
     string in this file.
     --></string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyDKgA7V3-D7AZQJ4z52Fo5rHg44kdvHKEM</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyA6Wyf4L0E1oLn2BfZf0eQxwBzZs8AmeS4</string>
 </resources>
