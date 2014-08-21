@@ -92,6 +92,40 @@ public class Modifier_salle extends ActionBarActivity {
         });
     }
 
+
+    public void update(View v)
+    {
+        salleBDD.open();
+
+        salle.setNom_salle(this.nom_salle.getText().toString());
+        salle.setCapacite(Integer.parseInt(this.capacite.getText().toString()));
+        salle.setNom_coach(this.nom_coach.getText().toString());
+        salle.setType_activite(this.liste.getSelectedItem().toString());
+
+        if(salleBDD.updateSalle(salle.getId(), salle)==1) {
+            Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
+            clean(v);
+
+        }else
+        {
+            Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
+        }
+        salleBDD.close();
+
+
+    }
+    private void clean( View v)
+    {
+
+        liste.setSelection(0);
+        this.nom_salle.setText("");
+        this.nom_coach.setText("");
+        this.capacite.setText("");
+
+
+    }
+
+
     private void loadAndPutValues(Salle salle)
     {
         liste.requestFocus();

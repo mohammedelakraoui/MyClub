@@ -33,13 +33,22 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:background="#fffaffc8">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
 
+
+                    android:layout_column="0"
+                    android:text="Recherche Multiple" />
                 <EditText
-                    android:layout_width="250dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/search"
-                    android:layout_column="18"
+                    android:layout_column="17"
                     android:textColor="#ffff2b14" />
 
             </TableRow>
@@ -271,18 +280,18 @@
                     android:layout_column="0"
                     android:focusable="true"
                     android:textSize="@dimen/size28"
-                    android:onClick="annuller"
+                    android:onClick="clean"
                     android:layout_gravity="left"
                     android:gravity="left" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ajouter"
+                    android:text="@string/Modifier"
                     android:id="@+id/button"
                     android:layout_column="10"
                     android:textSize="@dimen/size28"
-                    android:onClick="AjouterSalle"
+                    android:onClick="update"
                     android:layout_gravity="right" />
             </TableRow>
 

@@ -21,6 +21,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements.Entrainements;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles.Salles;
+import fr.esgi.mymodule.mymodule.myclub.app.Maps.MapsActivity;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -106,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intactivite);
                 break;
             case 4:  // Maps
-                Intent intMaps = new Intent(this,Afficher.class);
+                Intent intMaps = new Intent(this,MapsActivity.class);
                 startActivity(intMaps);
             //    Intent intMaps = new Intent(this,Maps.class);
               //  startActivity(intMaps);

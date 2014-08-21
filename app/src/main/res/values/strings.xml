@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="Key">07:8D:5F:9F:A1:DE:63:5F:B7:0E:87:3B:5D:DA:EB:4D:1B:39:9E:D1</string>
+    <string name="keyMaps">AIzaSyDKgA7V3-D7AZQJ4z52Fo5rHg44kdvHKEM</string>
     <string name="app_name">MyClub</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -64,5 +66,6 @@
     <string name="activitePratique">Type d\'activitée</string>
     <string name="title_activity_modifier_salle">Modifier_salle</string>
     <string name="title_activity_afficher_salles">Afficher_salles</string>
+    <string name="Modifier">Modifier</string>
 
 </resources>

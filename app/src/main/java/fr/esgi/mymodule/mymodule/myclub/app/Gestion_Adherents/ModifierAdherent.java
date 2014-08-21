@@ -93,7 +93,7 @@ public class ModifierAdherent extends ActionBarActivity {
            //  Toast.makeText(getBaseContext(), adherentBDD.getAdherentWithId(spinnerId.getSelectedItem().toString().trim()).toString() + "", Toast.LENGTH_SHORT).show();
 
               adtoUpdate=adherentBDD.getAdherentWithId(spinnerId.getSelectedItem().toString().trim());
-             setText(adtoUpdate);
+              setText(adtoUpdate);
 
           }
       }
