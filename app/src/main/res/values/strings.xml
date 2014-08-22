@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="Key">07:8D:5F:9F:A1:DE:63:5F:B7:0E:87:3B:5D:DA:EB:4D:1B:39:9E:D1</string>
-    <string name="keyMaps">AIzaSyA6Wyf4L0E1oLn2BfZf0eQxwBzZs8AmeS4</string>
+
+
     <string name="app_name">MyClub</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
