@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
+import android.app.ActionBar;
 import android.app.ActivityGroup;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -50,6 +51,9 @@ public class Afficher_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_salles);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
         maListViewPerso = (ListView) findViewById(R.id.listview_afficher_salles);
         //  tab=(TabHost) findViewById(R.id.t)
         salleBDD = new SalleBDD(this);

@@ -2,6 +2,7 @@ package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,6 +38,9 @@ public class Afficher extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_adhrent);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
         maListViewPerso = (ListView) findViewById(R.id.listview_afficher_adherents);
       //  tab=(TabHost) findViewById(R.id.t)
          adherentBDD=new AdherentBDD(this);

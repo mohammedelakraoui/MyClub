@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         context=this;
         setContentView(R.layout.activity_main);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
        // setContentView(R.layout.activity_main);
 
         // get the UI webview

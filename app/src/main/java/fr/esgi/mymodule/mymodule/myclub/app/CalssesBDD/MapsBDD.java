@@ -55,6 +55,30 @@ public class MapsBDD {
         return bdd;
     }
 
+    public Maps getMapsWithAdresse(String adresse){
+        //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son nom)
+        Cursor c = bdd.query(TABLE_Maps, new String[] {COL_ID, COL_Nom_Club, COL_Adresse,COL_Longtitude,COL_Laltitude}, COL_Adresse + " LIKE \"" + adresse +"\"", null, null, null, null);
+        return cursorToMaps(c);
+    }
+
+    //Cette méthode permet de convertir un cursor en un Adherent
+    private Maps cursorToMaps(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return null;
+
+        c.moveToFirst();
+
+        Maps maps = new Maps();
+        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        maps.setNom_Club(c.getString(NUM_COL_ID));
+        maps.setAdresse(c.getString(NUM_COL_Adresse));
+        maps.setLongtitude(c.getDouble(NUM_COL_Longtitude));
+        maps.setLatitude(c.getDouble(NUM_COL_Laltitude));
+
+        return maps;
+    }
+
     public long insertCoordonnees(Maps maps){
 
         ContentValues values = new ContentValues();

@@ -2,8 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.esgi.mymodule.mymodule.myclub.app.Maps.Maps" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+
+    <item android:id="@+id/ajouterCoordonnes"
+        android:title="@string/AjouterClubAdresse"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:icon="@drawable/adding"
+        android:actionLayout="@layout/search_layout"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item android:id="@+id/Supprimer"
+    android:title="@string/supprimerClub"
+    android:orderInCategory="100"
+    android:icon="@drawable/delete"
+    android:actionLayout="@layout/search_layout"
+    app:showAsAction="ifRoom|collapseActionView" />
+
 </menu>

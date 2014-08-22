@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
+import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +33,9 @@ public class AjouterAdherent extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_adherent);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
 
         nom=(EditText)findViewById(R.id.Nom);
         prenom=(EditText)findViewById(R.id.prenom);

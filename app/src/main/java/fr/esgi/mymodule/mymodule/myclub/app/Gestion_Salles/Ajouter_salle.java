@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
+import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,6 +30,9 @@ public class Ajouter_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_salle);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
         liste=(Spinner) findViewById(R.id.spinnerliste);
         nom_salle =(EditText) findViewById(R.id.NomSalle);
         capacite=(EditText) findViewById(R.id.capacite);

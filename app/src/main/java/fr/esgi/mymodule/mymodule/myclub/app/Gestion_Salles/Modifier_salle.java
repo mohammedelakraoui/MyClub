@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -38,6 +40,14 @@ public class Modifier_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_salle);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+        // add the custom view to the action bar
+        //
+
+       // actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
+           //     | ActionBar.DISPLAY_SHOW_HOME);
+
         search=(EditText) findViewById(R.id.search);
 
         liste=(Spinner) findViewById(R.id.spinnerliste);
@@ -48,6 +58,11 @@ public class Modifier_salle extends ActionBarActivity {
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.select_dialog_item);
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         liste.setAdapter(adp3);
+
+
+
+
+
 
         search.addTextChangedListener(new TextWatcher() {
             @Override

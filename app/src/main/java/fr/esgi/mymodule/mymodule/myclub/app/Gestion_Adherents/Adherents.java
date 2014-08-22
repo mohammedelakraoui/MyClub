@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
+import android.app.ActionBar;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ public class Adherents extends ActivityGroup {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adherents);
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
         tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());
         this.setTabHost(tabHost);
