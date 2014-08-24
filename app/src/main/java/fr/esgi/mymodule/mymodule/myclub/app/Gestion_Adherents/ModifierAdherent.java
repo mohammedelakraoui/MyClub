@@ -45,8 +45,7 @@ public class ModifierAdherent extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier__adherent);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
 
         spinnerId=(Spinner) findViewById(R.id.spinnerID);
         annuller=(Button) findViewById(R.id.button2);

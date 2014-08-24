@@ -28,8 +28,7 @@ public class Salles extends ActivityGroup {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salles);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
 
         final TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());

@@ -51,8 +51,6 @@ public class Afficher_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_salles);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
 
         maListViewPerso = (ListView) findViewById(R.id.listview_afficher_salles);
         //  tab=(TabHost) findViewById(R.id.t)

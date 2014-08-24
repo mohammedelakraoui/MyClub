@@ -30,8 +30,6 @@ public class Ajouter_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_salle);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
 
         liste=(Spinner) findViewById(R.id.spinnerliste);
         nom_salle =(EditText) findViewById(R.id.NomSalle);

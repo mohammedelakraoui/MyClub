@@ -38,8 +38,7 @@ public class Afficher extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_adhrent);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
 
         maListViewPerso = (ListView) findViewById(R.id.listview_afficher_adherents);
       //  tab=(TabHost) findViewById(R.id.t)

@@ -40,8 +40,7 @@ public class Modifier_salle extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_salle);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
         // add the custom view to the action bar
         //
 

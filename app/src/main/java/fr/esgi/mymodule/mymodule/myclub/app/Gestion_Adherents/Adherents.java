@@ -18,8 +18,7 @@ public class Adherents extends ActivityGroup {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adherents);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
 
         tabHost=(TabHost)findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());

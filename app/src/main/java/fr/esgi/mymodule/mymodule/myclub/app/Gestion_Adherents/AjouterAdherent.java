@@ -33,8 +33,7 @@ public class AjouterAdherent extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_adherent);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+
 
 
         nom=(EditText)findViewById(R.id.Nom);

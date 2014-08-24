@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -12,9 +13,12 @@ import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,10 +41,11 @@ import java.util.Map;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.MapsBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Maps;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Salle;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class MapsActivity extends FragmentActivity implements LocationListener, LocationSource{
-
+    private int step=0;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LocationSource.OnLocationChangedListener mListener;
     private LocationManager locationManager;
@@ -79,58 +84,85 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     }
 
 
-    public  void infoLocation()
+    public  void infoLocation(String club_name,String number,String adresse_,String cp_)
     {
 
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
 
+        final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
+        LayoutInflater inflater = this.getLayoutInflater();
         alert.setTitle("Ajouter un club?");
         alert.setMessage("Adresse du nouveau club?");
 
 // Set an EditText view to get user input
 
-        final EditText input = new EditText(MapsActivity.this);
 
-        alert.setView(input);
+       // final EditText input1 = new EditText(MapsActivity.this);
+        final View v_iew=inflater.inflate(R.layout.ajouter_coordonnees, null);
+        alert.setView(v_iew);
+       final EditText nom_club = (EditText)v_iew.findViewById(R.id.maps_nom_club);
+        final EditText numero=(EditText) v_iew. findViewById(R.id.maps_numero);
+        final  EditText adresse=(EditText)v_iew.findViewById(R.id.maps_adresse);
+        final  EditText cp=(EditText)v_iew. findViewById(R.id.maps_cp);
+        final  EditText[]  myEditText={nom_club,numero,adresse,cp};
+
+        if(step!=0)
+        {
+            check(myEditText);
+        }
+        nom_club.setText(club_name);
+        numero.setText(number);
+        adresse.setText(adresse_);
+        cp.setText(cp_);
+
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
             public void onClick(DialogInterface dialog, int whichButton) {
-                String addresse_new_club="";
 
-                addresse_new_club= input.getText().toString();
-                // Do something with value!
-                HashMap<String,Double> coordonnes=getLatitudeLongtitude(addresse_new_club);
-                if(coordonnes.size()>0)
+
+
+                if (check(myEditText)) {
+                    String addresse_new_club = "";
+                    String nom_new_club = "MyClub";
+
+
+                    addresse_new_club = numero.getText().toString() + " " + adresse.getText().toString() + " " + " " + cp.getText().toString();
+                    nom_new_club = nom_club.getText().toString();
+                    // Do something with value!
+                    HashMap<String, Double> coordonnes = getLatitudeLongtitude(addresse_new_club);
+                    if (coordonnes.size() > 0) {
+                        MapsBDD mapsBDD = new MapsBDD(getBaseContext());
+                        Maps maps = new Maps();
+                        mapsBDD.open();
+                        maps.setNom_Club(nom_new_club);
+                        maps.setAdresse(addresse_new_club);
+                        maps.setLongtitude(coordonnes.get(longtitude));
+                        maps.setLatitude(coordonnes.get(latitude));
+                        mapsBDD.insertCoordonnees(maps);
+                        Maps maps1 = mapsBDD.getMapsWithAdresse(maps.getAdresse());
+
+                        if (maps1 != null) {
+                            //On affiche les infos du livre dans un Toast
+                            Toast.makeText(getBaseContext(), "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_LONG).show();
+
+                        }
+
+
+                        mapsBDD.close();
+                    }
+
+
+               }
+                else
                 {
-                    MapsBDD mapsBDD=new MapsBDD(getBaseContext());
-                    Maps maps=new Maps();
-                    mapsBDD.open();
-                    maps.setNom_Club("Forest Hill");
-                    maps.setAdresse(addresse_new_club);
-                    maps.setLongtitude(coordonnes.get(longtitude));
-                    maps.setLatitude(coordonnes.get(latitude));
-                    mapsBDD.insertCoordonnees(maps);
-                    Maps maps1 = mapsBDD.getMapsWithAdresse(maps.getAdresse());
+                    step=1;
+                   infoLocation(nom_club.getText().toString(),numero.getText().toString(), adresse.getText().toString(),cp.getText().toString());
 
-                    if(maps1 != null)
-                    {
-                        //On affiche les infos du livre dans un Toast
-                        Toast.makeText(getBaseContext(), "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
-
-                    }
-                    else
-                    {
-                        Toast.makeText(getBaseContext(),"Error", Toast.LENGTH_LONG).show();
-
-                    }
-
-
-
-                    mapsBDD.close();
                 }
-
-
             }
         });
 
@@ -139,6 +171,10 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                 // Canceled.
             }
         });
+
+
+
+
 
         alert.show();
 
@@ -153,8 +189,10 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
         HashMap<String,Double> coordonnes=new HashMap<String, Double>() ;
         Geocoder geoCoder = new Geocoder(getBaseContext(), Locale.getDefault());
         try {
+        //    geoCoder.getFromLocationNam
             List<Address> addresses = geoCoder.getFromLocationName(addresse_club, 5);
             if (addresses.size() > 0) {
+
 
                 Double lat = (double) (addresses.get(0).getLatitude());
                 Double lon = (double) (addresses.get(0).getLongitude());
@@ -166,14 +204,19 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
 
                 Marker hamburg = mMap.addMarker(new MarkerOptions()
                         .position(user)
-                        .title(addresse_club)
-                        .icon(BitmapDescriptorFactory
-                                .fromResource(R.drawable.club_icon)));
+                        .title(addresse_club));
+                        /*.icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.club_icon)));*/
                 // Move the camera instantly to hamburg with a zoom of 15.
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user, 15));
 
                 // Zoom in, animating the camera.
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+            }
+            else
+            {
+                MessageBox.Show(MapsActivity.this," Erreur dans l'adresse","Selon les resultats Google Maps y un erreur dans l'adresse : [ "+addresse_club+"].");
+                infoLocation("","","","");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -181,6 +224,25 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
       return coordonnes;
     }
 
+private Boolean check(EditText[] edit)
+{
+    Boolean check_=true;
+    for(EditText t:edit)
+    {
+        if(t.getText().toString().trim().matches(""))
+        {
+            t.setBackgroundColor(getResources().getColor(R.color.Red));
+            check_=false;
+        }
+        else
+        {
+            t.setBackgroundColor(getResources().getColor(R.color.defaultColor));
+        }
+    }
+
+return check_;
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,7 +256,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
         switch (item.getItemId()) {
             case R.id.ajouterCoordonnes:
 
-              infoLocation();
+              infoLocation("","","","");
 
                 return true;
 
