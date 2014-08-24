@@ -20,6 +20,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,6 +48,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class MapsActivity extends FragmentActivity implements LocationListener, LocationSource{
+
     private int step=0;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LocationSource.OnLocationChangedListener mListener;
@@ -53,6 +57,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     private  final  String latitude="latitude";
     private  Maps maps;
     private MapsBDD mapsBDD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +137,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                     // Do something with value!
                     HashMap<String, Double> coordonnes = getLatitudeLongtitude(addresse_new_club);
                     if (coordonnes.size() > 0) {
+
                         MapsBDD mapsBDD = new MapsBDD(getBaseContext());
                         Maps maps = new Maps();
                         mapsBDD.open();
@@ -143,7 +149,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                         Maps maps1 = mapsBDD.getMapsWithAdresse(maps.getAdresse());
 
                         if (maps1 != null) {
-                            //On affiche les infos du livre dans un Toast
+                            //On affiche les infos  dans un Toast
                             Toast.makeText(getBaseContext(), "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
 
                         } else {
@@ -225,10 +231,18 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     }
 
 private Boolean check(EditText[] edit)
+
 {
     Boolean check_=true;
-    for(EditText t:edit)
+    for(final EditText t:edit)
     {
+
+        t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                t.setBackgroundColor(getResources().getColor(R.color.defaultColor));
+            }
+        });
         if(t.getText().toString().trim().matches(""))
         {
             t.setBackgroundColor(getResources().getColor(R.color.Red));
@@ -250,6 +264,7 @@ return check_;
         inflater.inflate(R.menu.maps, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -264,6 +279,7 @@ return check_;
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onPause()
     {
@@ -285,6 +301,7 @@ return check_;
             mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
         }
     }
+
     @Override
     public void onResume()
     {
@@ -324,29 +341,38 @@ return check_;
         ArrayList<Maps> mapsList=new ArrayList<Maps>();
 
         mapsList=mapsBDD.getAllcoordonnees();
-        for(Maps map:mapsList)
-        {
+    if(mapsList!=null) {
+        for (final Maps map : mapsList) {
 
             final LatLng pos = new LatLng(map.getLongtitude(), map.getLatitude());
-            Marker hamburg = mMap.addMarker(new MarkerOptions()
+            final Marker hamburg = mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .title(map.getNom_Club() + " : \n " + map.getAdresse()));
-                //    .icon(BitmapDescriptorFactory
-                     //       .fromResource(R.drawable.club_icon)));
+
+
+            //    .icon(BitmapDescriptorFactory
+            //       .fromResource(R.drawable.club_icon)));
             // Move the camera instantly to hamburg with a zoom of 15.
+
+            //   mMap.addMarker(hamburg);
+
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
 
             // Zoom in, animating the camera.
             mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
 
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
-            {
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 
                 @Override
                 public boolean onMarkerClick(Marker arg0) {
-                //    if(arg0.getTitle().equals("MyHome")) // if marker source is clicked
-                        Toast.makeText(MapsActivity.this, "Event pour la gestion de la Maps (modifier+ supprimer)"+arg0.getTitle(),Toast.LENGTH_LONG).show();// display toast
+                    //    if(arg0.getTitle().equals("MyHome")) // if marker source is clicked
+                    //  Toast.makeText(MapsActivity.this, "Event pour la gestion de la Maps (modifier+ supprimer)"+arg0.getTitle(),Toast.LENGTH_LONG).show();// display toast
+                    //  arg0.setTitle("hello");
+                    arg0.showInfoWindow();
+
+                    menuMaps(map, arg0);
+
                     return true;
                 }
 
@@ -355,12 +381,105 @@ return check_;
 
             //   mMap.addMarker(new MarkerOptions().position(new LatLng(map.getLongtitude(),map.getLatitude())).title(map.getNom_Club()+" : \n "+map.getAdresse()));
         }
-
+    }
 
         mapsBDD.close();
 
 
     }
+
+    private void menuMaps(final Maps maps, final Marker marker)
+    {
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        alert.setTitle("Gestion des clubs?");
+        alert.setMessage("Choisissez votre choix!:");
+
+        final View v_iew=inflater.inflate(R.layout.gestion_club_on_maps, null);
+        alert.setView(v_iew);
+
+       final RadioGroup choix =(RadioGroup) v_iew. findViewById(R.id.radiogestion_maps);
+        final TextView nom_club_PoPup =(TextView) v_iew. findViewById(R.id.Nom_club_PopUp);
+        final TextView adresse_club_PoPuP =(TextView) v_iew. findViewById(R.id.information_popup);
+        nom_club_PoPup.setText(maps.getNom_Club());
+        adresse_club_PoPuP.setText(maps.getAdresse()+ " info sup :[Longtitude ="+maps.getLongtitude()+" ; Latitude="+maps.getLatitude()+"]");
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int whichButton) {
+                final int selectedId = choix.getCheckedRadioButtonId();
+              RadioButton myChoix=  (RadioButton) v_iew.findViewById(selectedId);
+
+                // suppression
+            if(myChoix.getText().toString().contains("Supprimer"))
+            {
+                Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
+                supprimer(maps,marker);
+
+
+            }
+                // modification
+                if(myChoix.getText().toString().contains("modifier"))
+                {
+
+                }
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+
+
+
+
+        alert.show();
+
+
+    }
+
+
+    private void supprimer(final Maps map,final Marker marker ) {
+
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        alert.setTitle("Supprimer un club?");
+        alert.setMessage("Vous-voulez vraiment supprimer ce club?!:"+ map.toString());
+
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int whichButton) {
+                mapsBDD.open();
+               mapsBDD.removeCoordonneesWithID(map.getId());
+                mapsBDD.close();
+                marker.remove();
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+
+
+
+
+        alert.show();
+
+
+    }
+
+
 
 
 

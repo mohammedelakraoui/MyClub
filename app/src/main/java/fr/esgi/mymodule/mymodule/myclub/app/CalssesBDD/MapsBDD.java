@@ -129,7 +129,8 @@ public class MapsBDD {
                 //On créé un Adherent
                 Maps maps = new Maps();
                 //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-                maps.setNom_Club(c.getString(NUM_COL_ID));
+                maps.setId(c.getInt(NUM_COL_ID));
+                maps.setNom_Club(c.getString(NUM_COL_Nom_club));
                 maps.setAdresse(c.getString(NUM_COL_Adresse));
                 maps.setLongtitude(c.getDouble(NUM_COL_Longtitude));
                 maps.setLatitude(c.getDouble(NUM_COL_Laltitude));

@@ -3,7 +3,7 @@
 
 
     <color name="Red">#FFFF8D32</color>
-    <color name="defaultColor"></color>
+    <color name="defaultColor">#FFFFFFFF</color>
     <string name="app_name">MyClub</string>
     <string name="hello_world">Hello world!</string>
     <string name="AjouterClubAdresse">Ajouter adresse</string>

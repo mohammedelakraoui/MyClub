@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:focusable="true">
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dp">
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#fffeff9c">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="..................."
+                    android:id="@+id/Nom_club_PopUp"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="25dp"
+                android:background="#fffeff9c">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="................"
+                    android:id="@+id/information_popup"
+                    android:layout_column="0" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+                <RadioGroup
+                    android:id="@+id/radiogestion_maps"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Supprimer"
+                    android:id="@+id/supression_maps"
+                    android:layout_column="30"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="false"
+                    android:textColor="@color/Red"
+                    android:textSize="28sp" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modifier"
+                    android:id="@+id/modification_maps"
+                    android:layout_column="30"
+                    android:textSize="28sp" />
+
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/tableRow"
+                android:gravity="center">
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/tableRow5"
+                android:padding="25dp" >
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/tableRow2"
+                android:gravity="center">
+
+
+
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

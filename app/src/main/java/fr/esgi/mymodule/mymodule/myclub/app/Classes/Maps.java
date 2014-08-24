@@ -18,6 +18,7 @@ public class Maps {
 
 
 
+    private int id;
 
     private  String Nom_Club;
     private String Adresse;
@@ -31,6 +32,7 @@ public class Maps {
         Latitude = latitude;
         Adresse = adresse;
         Nom_Club = nom_Club;
+
     }
 
 
@@ -38,11 +40,19 @@ public class Maps {
 
 @Override
     public String toString() {
-        return "Maps{"+Nom_Club+" " +
+        return "Maps{ID="+id+",Nom Club="+Nom_Club+" " +
                 "adresse='" + Adresse + '\'' +
                 ", Latitude=" + Latitude +
                 ", Longtitude=" + Longtitude +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom_Club() {
