@@ -158,6 +158,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
 
                         }
 
+
                         mapsBDD.close();
                     }
                   /*  else
