@@ -151,15 +151,22 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                         if (maps1 != null) {
                             //On affiche les infos  dans un Toast
                             Toast.makeText(getBaseContext(), "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+                            setUpMap();
 
                         } else {
                             Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_LONG).show();
 
                         }
 
-
                         mapsBDD.close();
                     }
+                  /*  else
+                    {
+                        Toast.makeText(getBaseContext(), "Verifirez l'adresse SVP", Toast.LENGTH_LONG).show();
+                        step=1;
+                        infoLocation(nom_club.getText().toString(),numero.getText().toString(), adresse.getText().toString(),cp.getText().toString());
+
+                    }*/
 
 
                }
@@ -218,6 +225,8 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
 
                 // Zoom in, animating the camera.
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
+
             }
             else
             {
@@ -373,6 +382,8 @@ return check_;
 
                     menuMaps(map, arg0);
 
+
+
                     return true;
                 }
 
@@ -403,7 +414,7 @@ return check_;
         final TextView nom_club_PoPup =(TextView) v_iew. findViewById(R.id.Nom_club_PopUp);
         final TextView adresse_club_PoPuP =(TextView) v_iew. findViewById(R.id.information_popup);
         nom_club_PoPup.setText(maps.getNom_Club());
-        adresse_club_PoPuP.setText(maps.getAdresse()+ " info sup :[Longtitude ="+maps.getLongtitude()+" ; Latitude="+maps.getLatitude()+"]");
+        adresse_club_PoPuP.setText(maps.getAdresse());//+ " info sup :[Longtitude ="+maps.getLongtitude()+" ; Latitude="+maps.getLatitude()+"]");
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
@@ -414,6 +425,7 @@ return check_;
                 // suppression
             if(myChoix.getText().toString().contains("Supprimer"))
             {
+
                 Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
                 supprimer(maps,marker);
 
@@ -422,6 +434,7 @@ return check_;
                 // modification
                 if(myChoix.getText().toString().contains("modifier"))
                 {
+
 
                 }
 
@@ -456,10 +469,13 @@ return check_;
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int whichButton) {
-                mapsBDD.open();
-               mapsBDD.removeCoordonneesWithID(map.getId());
-                mapsBDD.close();
+
+               marker.setVisible(false);
                 marker.remove();
+                mapsBDD.open();
+                mapsBDD.removeCoordonneesWithID(map.getId());
+                mapsBDD.close();
+
 
             }
         });
