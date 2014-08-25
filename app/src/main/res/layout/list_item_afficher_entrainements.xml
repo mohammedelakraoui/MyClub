@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:id="@+id/tableLayout"
+        android:layout_margin="20dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            android:background="#768fa0c6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Nom de la seance"
+                android:layout_marginRight="60dp"
+                android:id="@+id/textView4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Date de l'envenement"
+                android:layout_marginRight="60dp"
+                android:id="@+id/textView5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Heur"
+                android:id="@+id/textView"
+                android:layout_column="0"
+                android:layout_marginRight="60dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="COACH responsable de la salle"
+
+                android:layout_column="2"
+                android:layout_marginRight="60dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/nom_salle_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:text="Nom"
+                android:textSize="22sp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/capacite_salle_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prenom"
+                android:textSize="22sp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="70 KG"
+                android:id="@+id/type_activite_me"
+                android:layout_column="0"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="30ans"
+                android:id="@+id/coach_responsable_me"
+                android:layout_column="2"
+                android:layout_margin="5dp" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

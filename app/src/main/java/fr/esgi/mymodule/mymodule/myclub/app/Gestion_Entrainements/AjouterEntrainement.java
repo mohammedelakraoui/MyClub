@@ -65,6 +65,7 @@ public class AjouterEntrainement extends ActionBarActivity {
         if(entrainement1 != null){
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+            clean();
 
         }else
         {
@@ -77,6 +78,13 @@ public class AjouterEntrainement extends ActionBarActivity {
 
     }
 
+    private void clean()
+    {
+        nom_seance_entrainement.setText("");
+        date_entrainement.setText("");
+        nombre_places_entrainement.setText("");
+        commentaire.setText("");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

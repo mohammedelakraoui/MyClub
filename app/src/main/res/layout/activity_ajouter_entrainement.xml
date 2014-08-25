@@ -66,10 +66,10 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/date_entrainement"
-                    android:layout_column="6" />
+                    android:layout_column="6"
+                    android:inputType="date" />
 
             </TableRow>
 
@@ -180,13 +180,13 @@
                 android:gravity="center">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
                     android:ems="10"
                     android:id="@+id/commentaire_entrainement"
                     android:layout_column="0"
                     android:layout_span="8"
-                    android:inputType="textAutoComplete|textMultiLine" />
+                    android:inputType="textAutoComplete" />
             </TableRow>
 
             <TableRow
@@ -262,7 +262,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Annuler"
-                    android:id="@+id/button4" />
+                    android:id="@+id/button4"
+                    android:onClick="clean" />
             </TableRow>
 
         </TableLayout>

@@ -72,5 +72,6 @@
     <string name="title_activity_testmaps">testmaps</string>
     <string name="supprimerClub">Supprimer un Club</string>
     <string name="title_activity_ajouter_entrainement">AjouterEntrainement</string>
+    <string name="title_activity_afficher_entrainements">AfficherEntrainements</string>
 
 </resources>
