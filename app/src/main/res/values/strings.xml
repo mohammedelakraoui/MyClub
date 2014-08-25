@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="Red">#FFFF8D32</color>
     <color name="defaultColor">#FFFFFFFF</color>
+
     <string name="app_name">MyClub</string>
     <string name="hello_world">Hello world!</string>
     <string name="AjouterClubAdresse">Ajouter adresse</string>
@@ -71,5 +71,6 @@
     <string name="Modifier">Modifier</string>
     <string name="title_activity_testmaps">testmaps</string>
     <string name="supprimerClub">Supprimer un Club</string>
+    <string name="title_activity_ajouter_entrainement">AjouterEntrainement</string>
 
 </resources>

@@ -19,7 +19,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
 
     private static final String CREATE_Adherents = "create table adherents(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom TEXT,prenom TEXT,sexe TEXT,poid INTEGER, age INTEGER,phone TEXT,discipline TEXT);";
   //  private static final String CREATE_Activites = "create table activites(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom TEXT,prenom TEXT,sexe TEXT,poid INTEGER, age INTEGER,phone TEXT,discipline TEXT);";
-  //  private static final String CREATE_Entrainements = "create table entrainements(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom TEXT,prenom TEXT,sexe TEXT,poid INTEGER, age INTEGER,phone TEXT,discipline TEXT);";
+    private static final String CREATE_Entrainements = "create table entrainements(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom_seance_entrainement TEXT,date_entrainement date,heur_entrainement TEXT,nombre_places INTEGER,commentaire TEXT);";
     private static final String CREATE_Salles = "create table salles(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom_salle TEXT,capacite INTEGER,nom_coach TEXT,type_activite TEXT);";
     private static final String CREATE_Maps = "create table maps(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom_club TEXT,adresse TEXT,longtitude DOUBLE,laltitude DOUBLE);";
 
@@ -30,6 +30,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
     //on crée la table à partir de la requête écrite dans la variable CREATE_BDD
+        sqLiteDatabase.execSQL(CREATE_Entrainements);
         sqLiteDatabase.execSQL(CREATE_Adherents);
         sqLiteDatabase.execSQL(CREATE_Salles);
         sqLiteDatabase.execSQL(CREATE_Maps);
@@ -41,6 +42,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
          //On peut faire ce qu'on veut ici moi j'ai décidé de supprimer la table et de la recréer
         //comme ça lorsque je change la version les id repartent de 0
 
+        sqLiteDatabase.execSQL("DROP TABLE " + entrainemets + ";");
         sqLiteDatabase.execSQL("DROP TABLE " + adherents + ";");
         sqLiteDatabase.execSQL("DROP TABLE " + salles + ";");
         sqLiteDatabase.execSQL("DROP TABLE "+ MAPS+";");

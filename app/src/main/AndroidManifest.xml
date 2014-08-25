@@ -70,7 +70,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-
+        <activity
+            android:name=".Gestion_Entrainements.AjouterEntrainement"
+            android:label="@string/title_activity_ajouter_entrainement" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -85,7 +88,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <uses-library android:name="com.google.android.maps" />
-
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.READ_PROFILE" />

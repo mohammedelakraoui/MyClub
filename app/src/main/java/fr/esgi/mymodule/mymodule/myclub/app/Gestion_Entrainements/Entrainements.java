@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements;
 
+import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +14,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.ModifierAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 
-public class Entrainements extends ActionBarActivity {
+public class Entrainements extends ActivityGroup {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +22,17 @@ public class Entrainements extends ActionBarActivity {
         setContentView(R.layout.activity_entrainements);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+        tabHost.setup(this.getLocalActivityManager());
 
-     this.setTabHost(tabHost);
+       this.setTabHost(tabHost);
+
     }
     private void setTabHost(TabHost tabHost)
     {
         tabHost.clearAllTabs();
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
-        spec1.setContent(new Intent(this, AjouterAdherent.class));
+        spec1.setContent(new Intent(this, AjouterEntrainement.class));
 
         // intent = new Intent().setClass(this, test.class);
         TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
