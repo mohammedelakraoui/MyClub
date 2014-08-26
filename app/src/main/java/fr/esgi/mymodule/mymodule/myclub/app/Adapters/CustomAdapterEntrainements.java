@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
@@ -79,7 +80,7 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         holder = (ViewHolder) convertView.getTag();
         final ViewHolder my_holder=holder;
 
-        Entrainement entrainement = listItem.get(position);
+        final Entrainement entrainement = listItem.get(position);
 
 
         holder.Nom_seance_entrainement.setText(entrainement.getNom_seance_entrainement().toString()+"");
@@ -93,12 +94,9 @@ public class CustomAdapterEntrainements extends BaseAdapter{
            public void onClick(View view) {
 
 
+
                my_holder.myRow.setBackgroundColor(context.getResources().getColor(R.color.modify));
-               my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
-               my_holder.Date_seance_entrainement.setFocusableInTouchMode(true);
-               my_holder.Heur_seance_entrainement.setFocusableInTouchMode(true);
-               my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
-               my_holder.Commentaire_seance_entrainement.setFocusableInTouchMode(true);
+               setEditableOption(my_holder,true);
 
 
            }
@@ -108,6 +106,17 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setEditableOption(my_holder,false);
+                EntrainementBDD entrainementBDD =new EntrainementBDD(context);
+                entrainement.setNom_seance_entrainement(my_holder.Nom_seance_entrainement.getText().toString());
+                entrainement.setDate_entrainement(my_holder.Date_seance_entrainement.getText().toString());
+                entrainement.setHeur_entrainement(my_holder.Heur_seance_entrainement.getText().toString());
+                entrainement.setNombre_places_entrainement(Integer.parseInt(my_holder.Nombre_places_seance_entrainement.getText().toString()));
+                entrainement.setCommentaire(my_holder.Commentaire_seance_entrainement.getText().toString());
+                entrainementBDD.open();
+                entrainementBDD.updateEntrainement(entrainement.getId(),entrainement);
+                entrainementBDD.close();
+                Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -117,12 +126,58 @@ public class CustomAdapterEntrainements extends BaseAdapter{
             @Override
             public void onClick(View view) {
 
+            disabledKeyBoard(my_holder);
+            restValueOnClickCancel(my_holder,entrainement);
             }
         });
 
 
         return convertView;
     }
+
+    private void restValueOnClickCancel(ViewHolder holder,Entrainement entrainement)
+    {
+        holder.Nom_seance_entrainement.setText(entrainement.getNom_seance_entrainement().toString()+"");
+        holder.Date_seance_entrainement.setText(entrainement.getDate_entrainement().toString()+"");
+        holder.Heur_seance_entrainement.setText(entrainement.getHeur_entrainement()+"");
+        holder.Nombre_places_seance_entrainement.setText(entrainement.getNombre_places_entrainement()+ "");
+        holder.Commentaire_seance_entrainement.setText(entrainement.getCommentaire().toString()+"");
+
+    }
+
+    private void enabledKeyBoard()
+    {
+        InputMethodManager imm = (InputMethodManager)context.getSystemService( Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+    }
+
+    private void disabledKeyBoard(ViewHolder holder)
+    {
+
+        InputMethodManager imm = (InputMethodManager)context.getSystemService( Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(holder.Nom_seance_entrainement.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(holder.Date_seance_entrainement.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(holder.Heur_seance_entrainement.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(holder.Nombre_places_seance_entrainement.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(holder.Commentaire_seance_entrainement.getWindowToken(), 0);
+
+
+    }
+
+    private void setEditableOption(ViewHolder holder,boolean switch_val)
+    {
+
+
+
+        holder.Nom_seance_entrainement.setFocusableInTouchMode(switch_val);
+        holder.Date_seance_entrainement.setFocusableInTouchMode(switch_val);
+        holder.Heur_seance_entrainement.setFocusableInTouchMode(switch_val);
+        holder.Nombre_places_seance_entrainement.setFocusableInTouchMode(switch_val);
+        holder.Commentaire_seance_entrainement.setFocusableInTouchMode(switch_val);
+
+    }
+
 
     private static  class ViewHolder {
 

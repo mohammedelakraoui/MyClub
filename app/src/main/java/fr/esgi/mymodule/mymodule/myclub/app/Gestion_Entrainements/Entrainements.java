@@ -43,21 +43,14 @@ public class Entrainements extends ActivityGroup {
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
         spec1.setContent(new Intent(this, AjouterEntrainement.class));
 
-        // intent = new Intent().setClass(this, test.class);
-        TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
-        spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
-        spec2.setContent(new Intent(this,ModifierAdherent.class));
 
-      /*  TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
-        spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));
-        spec3.setContent(R.id.Supprimer);*/
 
         TabHost.TabSpec spec4=tabHost.newTabSpec("Afficher");
         spec4.setIndicator("",getResources().getDrawable(R.drawable.search));
         spec4.setContent(new Intent(this, AfficherEntrainements.class));
 
         tabHost.addTab(spec1);
-        tabHost.addTab(spec2);
+
         //    tabHost.addTab(spec3);
         tabHost.addTab(spec4);
     }

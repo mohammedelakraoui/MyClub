@@ -83,7 +83,7 @@
             android:layout_height="fill_parent"
             android:orientation="horizontal"
             android:layout_marginTop="12dp"
-            android:clickable="true"
+            android:clickable="false"
             android:id="@+id/row_event">
 
             <EditText
@@ -96,7 +96,8 @@
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
-                android:inputType="textCapWords" />
+                android:clickable="true"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/date_seance_entrainement"
@@ -108,7 +109,8 @@
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:clickable="true" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -121,7 +123,8 @@
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
-                android:inputType="time" />
+                android:inputType="time"
+                android:clickable="true" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -134,7 +137,8 @@
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
-                android:inputType="number" />
+                android:inputType="number"
+                android:clickable="true" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,33 +150,34 @@
                 android:inputType="textAutoComplete|textMultiLine"
                 android:focusableInTouchMode="false"
                 android:editable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:clickable="true" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/modify_event"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/modifier"
                 android:clickable="true"
                 android:maxHeight="10dp"
                 android:maxWidth="10dp" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/accept_event"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/accept"
                 android:clickable="true"
                 android:maxHeight="10dp"
                 android:maxWidth="10dp" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/cancel_event"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/cancel"
                 android:clickable="true"
                 android:maxWidth="10dp"
