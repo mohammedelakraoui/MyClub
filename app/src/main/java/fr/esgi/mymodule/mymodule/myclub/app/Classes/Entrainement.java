@@ -1,5 +1,13 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Classes;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements.AfficherEntrainements;
+
 /**
  * Created by melakraoui on 07/08/2014.
  */
@@ -39,6 +47,8 @@ public class Entrainement {
     }
 
     public String getDate_entrainement() {
+
+
         return date_entrainement;
     }
 
@@ -69,4 +79,5 @@ public class Entrainement {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+
 }

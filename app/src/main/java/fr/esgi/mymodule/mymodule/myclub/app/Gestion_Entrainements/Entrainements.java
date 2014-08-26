@@ -6,8 +6,15 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TabHost;
 
+import java.util.ArrayList;
+
+import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterAdherents;
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.AjouterAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.ModifierAdherent;
@@ -15,6 +22,8 @@ import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 
 public class Entrainements extends ActivityGroup {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +54,7 @@ public class Entrainements extends ActivityGroup {
 
         TabHost.TabSpec spec4=tabHost.newTabSpec("Afficher");
         spec4.setIndicator("",getResources().getDrawable(R.drawable.search));
-        spec4.setContent(new Intent(this, Afficher.class));
+        spec4.setContent(new Intent(this, AfficherEntrainements.class));
 
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);

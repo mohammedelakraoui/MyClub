@@ -31,8 +31,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Nom de la seance"
-                android:layout_marginRight="60dp"
-                android:id="@+id/textView4" />
+                android:id="@+id/textView4"
+                android:layout_marginRight="60dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +55,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="COACH responsable de la salle"
+                android:text="Nombre des places"
+
+                android:layout_column="2"
+                android:layout_marginRight="60dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Commentaires"
 
                 android:layout_column="2"
                 android:layout_marginRight="60dp" />
@@ -73,43 +82,78 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:id="@+id/row_event">
 
-            <TextView
-                android:id="@+id/nom_salle_me"
+            <EditText
+                android:id="@+id/nom_seance_entrainement_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-                android:text="Nom"
                 android:textSize="22sp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                />
 
-            <TextView
-                android:id="@+id/capacite_salle_me"
+            <EditText
+                android:id="@+id/date_seance_entrainement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prenom"
                 android:textSize="22sp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:inputType="date"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="70 KG"
-                android:id="@+id/type_activite_me"
+                android:id="@+id/heur_seance_entrainement"
                 android:layout_column="0"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:enabled="true"
+                android:inputType="time"
+                android:focusableInTouchMode="false"
+                />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="30ans"
-                android:id="@+id/coach_responsable_me"
+                android:id="@+id/nombre_places_seance_entrainement"
                 android:layout_column="2"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/commentaire_seance_entrainement"
+                android:layout_column="2"
+                android:layout_margin="5dp"
+                android:enabled="true"
+                android:inputType="textAutoComplete"
+                android:focusableInTouchMode="false"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/modify_event"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/modifier" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/save_event"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/save" />
 
 
         </TableRow>
