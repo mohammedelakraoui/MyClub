@@ -44,10 +44,10 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/nom_sceance_entraintement"
-                    android:layout_column="6" />
+                    android:layout_column="6"
+                    android:inputType="textCapWords" />
             </TableRow>
 
             <TableRow

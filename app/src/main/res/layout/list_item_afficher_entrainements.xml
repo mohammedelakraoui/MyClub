@@ -94,7 +94,9 @@
                 android:layout_margin="5dp"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                />
+                android:editable="true"
+                android:focusable="true"
+                android:inputType="textCapWords" />
 
             <EditText
                 android:id="@+id/date_seance_entrainement"
@@ -105,7 +107,8 @@
                 android:inputType="date"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                />
+                android:editable="true"
+                android:focusable="true" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -115,9 +118,10 @@
                 android:layout_column="0"
                 android:layout_margin="5dp"
                 android:enabled="true"
-                android:inputType="time"
                 android:focusableInTouchMode="false"
-                />
+                android:editable="true"
+                android:focusable="true"
+                android:inputType="time" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -128,7 +132,9 @@
                 android:layout_margin="5dp"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                />
+                android:editable="true"
+                android:focusable="true"
+                android:inputType="number" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,23 +143,40 @@
                 android:layout_column="2"
                 android:layout_margin="5dp"
                 android:enabled="true"
-                android:inputType="textAutoComplete"
+                android:inputType="textAutoComplete|textMultiLine"
                 android:focusableInTouchMode="false"
-                />
+                android:editable="true"
+                android:focusable="true" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/modify_event"
                 android:layout_marginLeft="30dp"
-                android:background="@drawable/modifier" />
+                android:background="@drawable/modifier"
+                android:clickable="true"
+                android:maxHeight="10dp"
+                android:maxWidth="10dp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/save_event"
+                android:id="@+id/accept_event"
                 android:layout_marginLeft="30dp"
-                android:background="@drawable/save" />
+                android:background="@drawable/accept"
+                android:clickable="true"
+                android:maxHeight="10dp"
+                android:maxWidth="10dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel_event"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/cancel"
+                android:clickable="true"
+                android:maxWidth="10dp"
+                android:maxHeight="10dp" />
 
 
         </TableRow>

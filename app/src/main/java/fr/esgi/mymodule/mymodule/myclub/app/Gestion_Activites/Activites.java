@@ -28,7 +28,7 @@ public class Activites extends ActionBarActivity {
     }
     private void setTabHost(TabHost tabHost)
     {
-        tabHost.clearAllTabs();
+
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
         spec1.setContent(new Intent(this, AjouterAdherent.class));

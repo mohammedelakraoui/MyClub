@@ -42,7 +42,6 @@ public class AfficherEntrainements extends ActionBarActivity {
         entrainementBDD.open();
         list=entrainementBDD.getAllEntrainement();
         entrainementBDD.close();
-        Toast.makeText(getApplicationContext(), list.size()+"", Toast.LENGTH_LONG).show();
 
         if(list!=null)
         {

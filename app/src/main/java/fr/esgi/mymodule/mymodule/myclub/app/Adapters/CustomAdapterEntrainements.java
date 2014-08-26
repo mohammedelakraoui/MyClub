@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -87,24 +88,36 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         holder.Nombre_places_seance_entrainement.setText(entrainement.getNombre_places_entrainement()+ "");
         holder.Commentaire_seance_entrainement.setText(entrainement.getCommentaire().toString()+"");
 
-        my_holder.modify_event.setOnLongClickListener( new View.OnLongClickListener() {
-         @Override
-         public boolean onLongClick(View view) {
-
-             my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
-             my_holder.Date_seance_entrainement.setFocusableInTouchMode(true);
-             my_holder.Heur_seance_entrainement.setFocusableInTouchMode(true);
-             my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
-             my_holder.Commentaire_seance_entrainement.setFocusableInTouchMode(true);
+       my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
 
 
-            return false;
-          }
+               my_holder.myRow.setBackgroundColor(context.getResources().getColor(R.color.modify));
+               my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
+               my_holder.Date_seance_entrainement.setFocusableInTouchMode(true);
+               my_holder.Heur_seance_entrainement.setFocusableInTouchMode(true);
+               my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
+               my_holder.Commentaire_seance_entrainement.setFocusableInTouchMode(true);
+
+           }
+       });
+
+
+        my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
         });
 
 
+        my_holder.cancel_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
+            }
+        });
 
 
         return convertView;
@@ -115,7 +128,8 @@ public class CustomAdapterEntrainements extends BaseAdapter{
 
         private final TableRow myRow;
         private  final Button modify_event;
-        private  final Button save_event;
+        private  final Button accept_event;
+        private  final Button cancel_event;
         private final EditText Nom_seance_entrainement;
         private final EditText Date_seance_entrainement;
         private final EditText Heur_seance_entrainement;
@@ -125,7 +139,8 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         public ViewHolder(View view) {
 
             myRow=(TableRow) view.findViewById(R.id.row_event);
-            save_event=(Button) view.findViewById(R.id.save_event);
+            accept_event=(Button) view.findViewById(R.id.accept_event);
+            cancel_event=(Button) view.findViewById(R.id.cancel_event);
             modify_event=(Button) view.findViewById(R.id.modify_event);
             Nom_seance_entrainement = (EditText) view.findViewById(R.id.nom_seance_entrainement_me);
             Date_seance_entrainement = (EditText) view.findViewById(R.id.date_seance_entrainement);
