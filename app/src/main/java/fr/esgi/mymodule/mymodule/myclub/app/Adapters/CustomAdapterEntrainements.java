@@ -100,6 +100,7 @@ public class CustomAdapterEntrainements extends BaseAdapter{
                my_holder.Nom_seance_entrainement.setFocusableInTouchMode(true);
                my_holder.Commentaire_seance_entrainement.setFocusableInTouchMode(true);
 
+
            }
        });
 
