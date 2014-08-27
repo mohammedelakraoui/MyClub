@@ -27,12 +27,7 @@
                 android:background="@drawable/back"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Ajouter"
-                    android:id="@+id/textView" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -41,31 +36,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@drawable/back"
-                >
+             />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Modifier"
-                    android:id="@+id/textView2" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/Supprimer"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/back"
-                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Supprimer"
-                    android:id="@+id/textView3" />
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -75,12 +49,6 @@
                 android:background="@drawable/back"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Rechercher"
-                    android:id="@+id/textView4" />
 
             </LinearLayout>
 

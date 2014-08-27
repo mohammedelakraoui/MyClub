@@ -130,6 +130,34 @@ public class Afficher extends ActionBarActivity {
 
     }
 
+    private void refresh()
+    {
+        adherentBDD=new AdherentBDD(this);
+        adherentBDD.open();
+        list=adherentBDD.getAllAdherent();
+        adherentBDD.close();
+        if(list!=null)
+        {
+            Adherent r = list.get(0);
+
+            // Log.v("Nom", r.getNom());
+            adapter = new CustomAdapterAdherents(this, list);
+
+            maListViewPerso.setAdapter(adapter);
+
+            registerForContextMenu(maListViewPerso);
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        refresh();
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

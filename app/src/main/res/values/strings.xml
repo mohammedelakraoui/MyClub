@@ -4,6 +4,7 @@
     <color name="Red">#FFFF8D32</color>
     <color name="defaultColor">#FFFFFFFF</color>
     <color name="modify">#FFC0FFBE</color>
+
     <string name="app_name">MyClub</string>
     <string name="hello_world">Hello world!</string>
     <string name="AjouterClubAdresse">Ajouter adresse</string>
@@ -11,7 +12,16 @@
     <string name="imgdesc">Description de l image </string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string-array name="menu_list">
+        <item>Supprimer</item>
+        <item>Refresh</item>
+    </string-array>
 
+
+    <string-array name="menu_list_entrainement">
+        <item>Supprimer</item>
+        <item>Refresh</item>
+    </string-array>
     <string-array name="menu_gestion">
         <item>Supprimer</item>
         <item>Modifier</item>
@@ -73,5 +83,7 @@
     <string name="supprimerClub">Supprimer un Club</string>
     <string name="title_activity_ajouter_entrainement">AjouterEntrainement</string>
     <string name="title_activity_afficher_entrainements">AfficherEntrainements</string>
+    <string name="title_activity_ajouter_activite">AjouterActivite</string>
+    <string name="title_activity_afficher_activites">AfficherActivites</string>
 
 </resources>

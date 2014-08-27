@@ -321,7 +321,10 @@ return check_;
 
         if(locationManager != null)
         {
-            mMap.setMyLocationEnabled(true);
+            try {
+                mMap.setMyLocationEnabled(true);
+            }
+            catch(Exception e){}
         }
     }
 

@@ -78,6 +78,14 @@
             android:name=".Gestion_Entrainements.AfficherEntrainements"
             android:label="@string/title_activity_afficher_entrainements" >
         </activity>
+        <activity
+            android:name=".Gestion_Activites.AjouterActivite"
+            android:label="@string/title_activity_ajouter_activite" >
+        </activity>
+        <activity
+            android:name=".Gestion_Activites.AfficherActivites"
+            android:label="@string/title_activity_afficher_activites" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />

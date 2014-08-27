@@ -59,7 +59,7 @@ public class CustomAdapterEntrainements extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-         ViewHolder holder;
+        ViewHolder holder;
 
         if (convertView == null) {
 
@@ -89,23 +89,26 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         holder.Nombre_places_seance_entrainement.setText(entrainement.getNombre_places_entrainement()+ "");
         holder.Commentaire_seance_entrainement.setText(entrainement.getCommentaire().toString()+"");
 
-       my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+        my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
 
 
-               my_holder.myRow.setBackgroundColor(context.getResources().getColor(R.color.modify));
-               setEditableOption(my_holder,true);
+                my_holder.myRow.setBackgroundColor(context.getResources().getColor(R.color.modify));
+                setEditableOption(my_holder,true);
 
 
-           }
-       });
+            }
+        });
 
 
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                disabledKeyBoard(my_holder);
+                my_holder.accept_event.setVisibility(View.INVISIBLE);
+                my_holder.cancel_event.setVisibility(View.INVISIBLE);
                 setEditableOption(my_holder,false);
                 EntrainementBDD entrainementBDD =new EntrainementBDD(context);
                 entrainement.setNom_seance_entrainement(my_holder.Nom_seance_entrainement.getText().toString());
@@ -125,9 +128,10 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         my_holder.cancel_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            disabledKeyBoard(my_holder);
-            restValueOnClickCancel(my_holder,entrainement);
+                my_holder.accept_event.setVisibility(View.INVISIBLE);
+                my_holder.cancel_event.setVisibility(View.INVISIBLE);
+                disabledKeyBoard(my_holder);
+                restValueOnClickCancel(my_holder,entrainement);
             }
         });
 

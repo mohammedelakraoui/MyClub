@@ -1,8 +1,7 @@
-package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements;
+package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -15,39 +14,40 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterAdherents;
-import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
-import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
-import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
-import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
-import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
-import fr.esgi.mymodule.mymodule.myclub.app.R;
+import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterActivites;
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterEntrainements;
-public class AfficherEntrainements extends ActionBarActivity {
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
+import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
+import fr.esgi.mymodule.mymodule.myclub.app.R;
+
+public class AfficherActivites extends ActionBarActivity {
 
     private ListView maListViewPerso;
-    ArrayList<Entrainement> list;
-    CustomAdapterEntrainements adapter;
-    EntrainementBDD entrainementBDD;
+    ArrayList<Activite> list;
+    CustomAdapterActivites adapter;
+    ActiviteBDD activiteBDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_afficher_entrainements);
+        setContentView(R.layout.activity_afficher_activites);
 
-
-        maListViewPerso = (ListView) findViewById(R.id.listview_afficher_entrainement);
+        maListViewPerso = (ListView) findViewById(R.id.listview_afficher_activites);
         //  tab=(TabHost) findViewById(R.id.t)
-        entrainementBDD=new EntrainementBDD(this);
-        entrainementBDD.open();
-        list=entrainementBDD.getAllEntrainement();
-        entrainementBDD.close();
+        activiteBDD=new ActiviteBDD(this);
+        activiteBDD.open();
+
+            list = activiteBDD.getAllActivite();
+
+        activiteBDD.close();
 
         if(list!=null)
         {
 
 
-             adapter = new CustomAdapterEntrainements(this, list);
+            adapter = new CustomAdapterActivites(this, list);
 
             maListViewPerso.setAdapter(adapter);
 
@@ -57,13 +57,21 @@ public class AfficherEntrainements extends ActionBarActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        refresh();
+
+    }
+
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        if (v.getId()==R.id.listview_afficher_entrainement) {
+        if (v.getId()==R.id.listview_afficher_activites) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-            menu.setHeaderTitle(list.get(info.position).getNom_seance_entrainement()+" Date:"+list.get(info.position).getDate_entrainement()+" Heur : "+list.get(info.position).getHeur_entrainement());
-            String[] menuItems = getResources().getStringArray(R.array.menu_list_entrainement);
+            menu.setHeaderTitle(list.get(info.position).getIntitule_activite()+" Date:"+list.get(info.position).getDate_demarrage()+" ;Date fin : "+list.get(info.position).getDate_fin());
+            String[] menuItems = getResources().getStringArray(R.array.menu_list);
             for (int i = 0; i<menuItems.length; i++) {
                 menu.add(Menu.NONE, i, i, menuItems[i]);
             }
@@ -80,7 +88,7 @@ public class AfficherEntrainements extends ActionBarActivity {
         if(menuItemIndex==0)
         {
             // Remove Item
-            AlertDialog.Builder adb = new AlertDialog.Builder(AfficherEntrainements.this);
+            AlertDialog.Builder adb = new AlertDialog.Builder(AfficherActivites.this);
             adb.setTitle("Suppression?");
             adb.setMessage("Voullez-vous vraiment supprimer ce item?");
             final int positionToRemove = info.position;
@@ -91,8 +99,8 @@ public class AfficherEntrainements extends ActionBarActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // *** Here is where I am experiencing issueos ***
 
-                    entrainementBDD.open();
-                    if(entrainementBDD.removeEntrainementWithID(list.get(positionToRemove).getId())==1)
+                    activiteBDD.open();
+                    if(activiteBDD.removeActiviteWithID(list.get(positionToRemove).getId())==1)
                     {
                         list.remove(positionToRemove);
                         adapter.notifyDataSetChanged();
@@ -102,7 +110,7 @@ public class AfficherEntrainements extends ActionBarActivity {
                     {
                         Toast.makeText(getApplicationContext(), "Error: suppression", Toast.LENGTH_LONG).show();
                     }
-                    entrainementBDD.close();
+                    activiteBDD.close();
                 }
             });
             adb.show();
@@ -112,7 +120,7 @@ public class AfficherEntrainements extends ActionBarActivity {
         {
 
 
-        refresh();
+            refresh();
 
 
 
@@ -128,16 +136,16 @@ public class AfficherEntrainements extends ActionBarActivity {
 
     private void refresh()
     {
-        entrainementBDD=new EntrainementBDD(this);
-        entrainementBDD.open();
-        list=entrainementBDD.getAllEntrainement();
-        entrainementBDD.close();
+        activiteBDD=new ActiviteBDD(this);
+        activiteBDD.open();
+        list=activiteBDD.getAllActivite();
+        activiteBDD.close();
 
         if(list!=null)
         {
 
 
-            adapter = new CustomAdapterEntrainements(this, list);
+            adapter = new CustomAdapterActivites(this, list);
 
             maListViewPerso.setAdapter(adapter);
 
@@ -146,10 +154,11 @@ public class AfficherEntrainements extends ActionBarActivity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.afficher_entrainements, menu);
+        getMenuInflater().inflate(R.menu.afficher_activites, menu);
         return true;
     }
 
@@ -163,13 +172,5 @@ public class AfficherEntrainements extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-       refresh();
-
     }
 }

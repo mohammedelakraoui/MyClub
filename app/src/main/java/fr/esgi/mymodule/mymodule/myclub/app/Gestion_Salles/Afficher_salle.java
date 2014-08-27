@@ -73,6 +73,32 @@ public class Afficher_salle extends ActionBarActivity {
 
     }
 
+    private void refresh()
+    {
+        salleBDD = new SalleBDD(this);
+        salleBDD.open();
+        list = salleBDD.getAllSalles();
+        salleBDD.close();
+
+        if (list != null) {
+            Salle s = list.get(0);
+            // Log.v("Nom", r.getNom());
+            adapter = new CustomAdapterSalles(this, list);
+
+            maListViewPerso.setAdapter(adapter);
+
+            registerForContextMenu(maListViewPerso);
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        refresh();
+
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

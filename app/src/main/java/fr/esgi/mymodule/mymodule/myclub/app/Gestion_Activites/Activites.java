@@ -1,5 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
+import android.app.Activity;
+import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +15,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.ModifierAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 
-public class Activites extends ActionBarActivity {
+public class Activites extends ActivityGroup {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class Activites extends ActionBarActivity {
         setContentView(R.layout.activity_activites);
 
         TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+        tabHost.setup(this.getLocalActivityManager());
 
         setTabHost(tabHost);
 
@@ -31,24 +33,15 @@ public class Activites extends ActionBarActivity {
 
         TabHost.TabSpec spec1=tabHost.newTabSpec("Ajouter");
         spec1.setIndicator("",getResources().getDrawable(R.drawable.add));
-        spec1.setContent(new Intent(this, AjouterAdherent.class));
+        spec1.setContent(new Intent(this, AjouterActivite.class));
 
-        // intent = new Intent().setClass(this, test.class);
-        TabHost.TabSpec spec2=tabHost.newTabSpec("Modifier");
-        spec2.setIndicator("",getResources().getDrawable(R.drawable.modifier));
-        spec2.setContent(new Intent(this,ModifierAdherent.class));
-
-      /*  TabHost.TabSpec spec3=tabHost.newTabSpec("Supprimer");
-        spec3.setIndicator("",getResources().getDrawable(R.drawable.delete));
-        spec3.setContent(R.id.Supprimer);*/
 
         TabHost.TabSpec spec4=tabHost.newTabSpec("Afficher");
         spec4.setIndicator("",getResources().getDrawable(R.drawable.search));
-        spec4.setContent(new Intent(this, Afficher.class));
+        spec4.setContent(new Intent(this, AfficherActivites.class));
 
         tabHost.addTab(spec1);
-        tabHost.addTab(spec2);
-        //    tabHost.addTab(spec3);
+
         tabHost.addTab(spec4);
     }
 

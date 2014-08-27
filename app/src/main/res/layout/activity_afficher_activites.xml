@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites.AfficherActivites"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFC6C6C6">
+
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/listview_afficher_activites"
+        android:layout_alignParentStart="false"
+        android:dividerHeight="16dp"
+        android:choiceMode="singleChoice"
+        android:clickable="true"
+        android:longClickable="true"
+
+        android:divider="#FFC6C6C6"
+        android:background="#FFC6C6C6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp" />
+</RelativeLayout>
+

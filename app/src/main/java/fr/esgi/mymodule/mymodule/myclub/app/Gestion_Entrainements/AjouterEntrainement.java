@@ -53,7 +53,7 @@ public class AjouterEntrainement extends ActionBarActivity {
         String heur_=heur_entrainement.getCurrentHour()+":"+heur_entrainement.getCurrentMinute()+" "+(heur_entrainement.is24HourView()? " PM":" AM");
 
 
-       Entrainement entrainement=new Entrainement(nom_seance_entrainement.getText().toString(),date_entrainement.getText().toString(),heur_,Integer.parseInt(nombre_places_entrainement.getText().toString()),this.commentaire.getText().toString());
+        Entrainement entrainement=new Entrainement(nom_seance_entrainement.getText().toString(),date_entrainement.getText().toString(),heur_,Integer.parseInt(nombre_places_entrainement.getText().toString()),this.commentaire.getText().toString());
 
         entrainementBDD.open();
 
