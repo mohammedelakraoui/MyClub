@@ -29,6 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
 
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/listView"
+            android:layout_gravity="center"
+            android:layout_margin="20dp" />
+
     </FrameLayout>
 
     <!-- The main content view -->
@@ -46,12 +53,16 @@
         android:smoothScrollbar="false"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:dividerHeight="20dp"
+        android:dividerHeight="25dp"
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:longClickable="true"
 
         android:drawSelectorOnTop="true"
-        android:fastScrollAlwaysVisible="false" />
+        android:fastScrollAlwaysVisible="false"
+        android:stackFromBottom="false"
+        android:headerDividersEnabled="true"
+        android:padding="10dp"
+        android:divider="#ffa8d8ff" />
 
 </android.support.v4.widget.DrawerLayout>

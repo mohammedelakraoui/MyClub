@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
 
         // html presentation
 
-        String summary = "<html><body><marquee> <h1> MyClub :les activit&egrave;s d'aujourd'hui </h1> </marquee>" +
+        String summary = "<html><body><marquee> <h1> MyClub à la une :les activit&egrave;s d'aujourd'hui </h1> </marquee>" +
                 "</body></html>";
         webview.loadData(summary, "text/html", null);
 
