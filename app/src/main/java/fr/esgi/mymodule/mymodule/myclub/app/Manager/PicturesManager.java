@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Manager;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -36,5 +37,14 @@ public class PicturesManager {
         return output;
 
 
-    }
+}
+
+   public static Bitmap getPicFromPath(String Path)
+   {
+       Bitmap bitmap = BitmapFactory.decodeFile(Path);
+
+       return  bitmap;
+      // return getRoundedCornerImage(bitmap);
+   }
+
 }

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="hello">Hello World, CamTestActivity!</string>
+
+
+    <!-- UI Elements -->
+    <string name="btn_capture">Click</string>
+
+    <!-- Toast Messages -->
+    <string name="take_photo_help">Touch anywhere on screen to take picture</string>
+
+
     <color name="Red">#FFFF8D32</color>
     <color name="defaultColor">#FFFFFFFF</color>
     <color name="modify">#FFC0FFBE</color>
@@ -12,12 +22,11 @@
     <string name="imgdesc">Description de l image </string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+
     <string-array name="menu_list">
         <item>Supprimer</item>
         <item>Refresh</item>
     </string-array>
-
-
     <string-array name="menu_list_entrainement">
         <item>Supprimer</item>
         <item>Refresh</item>
@@ -25,6 +34,7 @@
     <string-array name="menu_gestion">
         <item>Supprimer</item>
         <item>Modifier</item>
+        <item>Refresh</item>
     </string-array>
     <string-array name="desciplines">
         <item>Musculation</item>
@@ -85,5 +95,6 @@
     <string name="title_activity_afficher_entrainements">AfficherEntrainements</string>
     <string name="title_activity_ajouter_activite">AjouterActivite</string>
     <string name="title_activity_afficher_activites">AfficherActivites</string>
+    <string name="title_activity_camera">Camera</string>
 
 </resources>

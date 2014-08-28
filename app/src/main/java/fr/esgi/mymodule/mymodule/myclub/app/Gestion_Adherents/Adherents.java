@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class Adherents extends ActivityGroup {
@@ -55,6 +56,13 @@ public class Adherents extends ActivityGroup {
         tabHost.addTab(spec4);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,6 +1,9 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -16,6 +20,9 @@ import android.widget.Toast;
 import android.content.Intent;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.CamTestActivity;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class AjouterAdherent extends ActionBarActivity {
@@ -28,6 +35,7 @@ public class AjouterAdherent extends ActionBarActivity {
     EditText age;
     EditText phone;
     Spinner listedesciplines;
+    ImageView pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,7 @@ public class AjouterAdherent extends ActionBarActivity {
         setContentView(R.layout.activity_ajouter_adherent);
 
 
-
+        pic=(ImageView) findViewById(R.id.pic);
         nom=(EditText)findViewById(R.id.Nom);
         prenom=(EditText)findViewById(R.id.prenom);
         sexe =(RadioGroup) findViewById(R.id.radiosexe);
@@ -55,7 +63,7 @@ public class AjouterAdherent extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 
                 String ss=listedesciplines.getSelectedItem().toString();
-                Toast.makeText(getBaseContext(), ss, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -68,6 +76,20 @@ public class AjouterAdherent extends ActionBarActivity {
         });
 
     }
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Bundle bdl=this.getIntent().getExtras();
+        if(bdl!=null) {
+            String path = bdl.getString("path");
+            Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(path));
+           pic.setBackground(dr);
+        }
+
+    }
+
 
 
     public void AjouterAdherent(View v)
@@ -127,6 +149,12 @@ public class AjouterAdherent extends ActionBarActivity {
     }
 
 
+    public void cam(View v)
+    {
+        Intent intAdh = new Intent(this,CamTestActivity.class);
+        startActivity(intAdh);
+
+    }
     public void annuller(View v)
     {
 

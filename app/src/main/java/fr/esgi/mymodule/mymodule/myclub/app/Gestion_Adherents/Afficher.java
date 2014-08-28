@@ -60,6 +60,7 @@ public class Afficher extends ActionBarActivity {
 
     }
 
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -120,11 +121,11 @@ public class Afficher extends ActionBarActivity {
 
         }
 
-      //  String[] menuItems = getResources().getStringArray(R.array.menu_gestion);
-     //   String menuItemName = menuItems[menuItemIndex];
-      //  String listItemName = list.get(info.position).getNom();
-       // text.setText(String.format("Selected %s for item %s", menuItemName, listItemName));
-     //  Toast.makeText(getBaseContext(), menuItemIndex+":", Toast.LENGTH_SHORT).show();
+        if(menuItemIndex==2)
+        {
+
+            refresh();
+        }
         return super.onContextItemSelected(item);
 
 

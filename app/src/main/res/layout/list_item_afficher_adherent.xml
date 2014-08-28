@@ -115,65 +115,147 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            android:id="@+id/row_event">
 
-            <TextView
+            <EditText
                 android:id="@+id/Name_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-
-                android:text="Nom"
                 android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
               />
 
-            <TextView
+            <EditText
                 android:id="@+id/Prenom_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Prenom"
+
                 android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 />
 
-            <TextView
+            <EditText
+                android:id="@+id/Poid_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="70 KG"
-                android:id="@+id/Poid_me"
+                android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="numberDecimal"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:layout_column="0" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="30ans"
+                android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="number"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:id="@+id/Age_me"
                 android:layout_column="2" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Male"
+                android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:id="@+id/Sexe_me"
                 android:layout_column="6" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Phone number"
+                android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:id="@+id/Phone_me"
                 android:layout_column="8" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Musculation"
+                android:textSize="22sp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:enabled="true"
+                android:focusableInTouchMode="false"
+                android:editable="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:id="@+id/Discipline_me"
                 android:layout_column="10" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/modify_event"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/modifier"
+                android:clickable="true"
+                android:maxHeight="10dp"
+                android:maxWidth="10dp" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/accept_event"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/accept"
+                android:clickable="true"
+                android:maxHeight="10dp"
+                android:maxWidth="10dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/cancel_event"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/cancel"
+                android:clickable="true"
+                android:maxWidth="10dp"
+                android:maxHeight="10dp"
+                android:visibility="invisible" />
 
 
 
