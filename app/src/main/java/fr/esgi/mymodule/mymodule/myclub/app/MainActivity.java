@@ -3,7 +3,6 @@ package fr.esgi.mymodule.mymodule.myclub.app;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -65,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
         activiteBDD=new ActiviteBDD(this);
         activiteBDD.open();
 
-        list = activiteBDD.getAllActiviteBetweenTowDate();
+        list = activiteBDD.getAllActivite();
 
         activiteBDD.close();
 
@@ -98,12 +97,9 @@ public class MainActivity extends ActionBarActivity {
 
         // html presentation
 
-      //  String summary = "<html><body><marquee> <h1> MyClub :les activit&egrave;s d'aujourd'hui </h1> </marquee>" +
-        //        "</body></html>";
-        //webview.loadData(summary, "text/html", null);
-        webview.setBackgroundColor(Color.TRANSPARENT);
-        webview.loadDataWithBaseURL("file:///android_res/drawable/", "<img align='middle' src='back.gif' width='100%' />", "text/html", "utf-8", null);
-        webview.reload();
+        String summary = "<html><body><marquee> <h1> MyClub  :Liste des activit&egrave;s d'aujourd'hui </h1> </marquee>" +
+                "</body></html>";
+        webview.loadData(summary, "text/html", null);
 
     }
 
