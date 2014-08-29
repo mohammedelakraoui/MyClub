@@ -47,7 +47,7 @@ public class AfficherActivites extends ActionBarActivity {
         {
 
 
-            adapter = new CustomAdapterActivites(this, list);
+            adapter = new CustomAdapterActivites(this, list,1);
 
             maListViewPerso.setAdapter(adapter);
 
@@ -145,7 +145,7 @@ public class AfficherActivites extends ActionBarActivity {
         {
 
 
-            adapter = new CustomAdapterActivites(this, list);
+            adapter = new CustomAdapterActivites(this, list,1);
 
             maListViewPerso.setAdapter(adapter);
 

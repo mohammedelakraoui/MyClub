@@ -72,7 +72,7 @@ public class MainActivity extends ActionBarActivity {
         {
 
 
-            adapter = new CustomAdapterActivites(this, list);
+            adapter = new CustomAdapterActivites(this, list,0);
 
             maListViewPerso.setAdapter(adapter);
 

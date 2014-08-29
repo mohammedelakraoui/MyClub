@@ -35,11 +35,13 @@ public class CustomAdapterActivites extends BaseAdapter {
 
     private final ArrayList<Activite> listItem;
     private final Context context;
+    private int tag;
 
-    public CustomAdapterActivites(Context context, ArrayList<Activite> listItem ) {
+    public CustomAdapterActivites(Context context, ArrayList<Activite> listItem,int tag_news ) {
 
         this.context = context;
         this.listItem = listItem;
+        this.tag=tag_news;
 
     }
     @Override
@@ -79,6 +81,18 @@ public class CustomAdapterActivites extends BaseAdapter {
 
 
         holder = (ViewHolder) convertView.getTag();
+
+        if(tag==0)
+        {
+            holder.modify_event.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            holder.modify_event.setVisibility(View.VISIBLE);
+        }
+
+
+
         final ViewHolder my_holder=holder;
 
         final Activite activite = listItem.get(position);
