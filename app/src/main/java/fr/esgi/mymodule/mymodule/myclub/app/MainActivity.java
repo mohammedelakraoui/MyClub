@@ -104,7 +104,35 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        refresh();
+
+    }
+
+private void refresh()
+{
+
+    activiteBDD.open();
+
+    list = activiteBDD.getAllActiviteBetweenTowDate();
+
+    activiteBDD.close();
+
+    if(list!=null)
+    {
+
+
+        adapter = new CustomAdapterActivites(this, list,0);
+
+        maListViewPerso.setAdapter(adapter);
+
+        registerForContextMenu(maListViewPerso);
+    }
+
+}
 
 
 
