@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
                 "</body></html>";
         webview.loadData(summary, "text/html", null);
 
+
     }
 
 
