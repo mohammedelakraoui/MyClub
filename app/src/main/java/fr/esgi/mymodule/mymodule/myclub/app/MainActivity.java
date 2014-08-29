@@ -105,6 +105,7 @@ public class MainActivity extends ActionBarActivity {
         webview.loadDataWithBaseURL("file:///android_res/drawable/", "<img align='middle' src='back.gif' width='100%' />", "text/html", "utf-8", null);
         webview.reload();
 
+
     }
 
 
