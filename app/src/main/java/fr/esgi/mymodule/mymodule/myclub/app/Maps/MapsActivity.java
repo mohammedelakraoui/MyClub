@@ -88,6 +88,26 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
 
     }
 
+    private void refresh()
+    {
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (locationManager != null) {
+            boolean gpsIsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            boolean networkIsEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+            if (gpsIsEnabled) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000L, 10F, (android.location.LocationListener) this);
+            }
+            if (networkIsEnabled) {
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000L, 10F, (android.location.LocationListener) this);
+            }
+
+        }
+
+        setUpMapIfNeeded();
+
+    }
 
     public  void infoLocation(String club_name,String number,String adresse_,String cp_)
     {
@@ -382,6 +402,7 @@ return check_;
                     //    if(arg0.getTitle().equals("MyHome")) // if marker source is clicked
                     //  Toast.makeText(MapsActivity.this, "Event pour la gestion de la Maps (modifier+ supprimer)"+arg0.getTitle(),Toast.LENGTH_LONG).show();// display toast
                     //  arg0.setTitle("hello");
+
                     arg0.showInfoWindow();
 
                     menuMaps(map, arg0);
@@ -470,15 +491,17 @@ return check_;
         alert.setMessage("Vous-voulez vraiment supprimer ce club?!:"+ map.toString());
 
 
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder ok = alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int whichButton) {
 
-               marker.setVisible(false);
-                marker.remove();
+                //marker.setVisible(false);
+
                 mapsBDD.open();
                 mapsBDD.removeCoordonneesWithID(map.getId());
+                // marker.remove();
                 mapsBDD.close();
+
 
 
             }
@@ -487,6 +510,7 @@ return check_;
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Canceled.
+
             }
         });
 

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
@@ -87,6 +88,16 @@ public class ActiviteBDD {
 
         return bdd.delete(TABLE_Activite ,COL_ID + " = " +id, null);
     }
+
+
+    public ArrayList<Activite> getAllActiviteBetweenTowDate()
+
+    {
+        Cursor c = bdd.query(TABLE_Activite, new String[] {COL_ID, COL_Intitule, COL_Date_demarrage,COL_Date_fin,COL_Type_activite,COL_Commentaire},COL_Date_demarrage+" >=date('now') and  "+COL_Date_fin +"<=date('now')", null, null, null, null);
+        return cursorToAllActivites(c);
+
+    }
+
 
     public ArrayList<Activite> getAllActivite()
     {

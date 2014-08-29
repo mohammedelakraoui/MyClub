@@ -23,6 +23,17 @@ public class Activite {
         this.commentaires=commentaire;
     }
 
+    @Override
+    public String toString() {
+        return "Activite{" +
+                "id=" + id +
+                ", intitule_activite='" + intitule_activite + '\'' +
+                ", date_demarrage='" + date_demarrage + '\'' +
+                ", date_fin='" + date_fin + '\'' +
+                ", type_activite='" + type_activite + '\'' +
+                ", commentaires='" + commentaires + '\'' +
+                '}';
+    }
 
     public String getCommentaires() {
         return commentaires;

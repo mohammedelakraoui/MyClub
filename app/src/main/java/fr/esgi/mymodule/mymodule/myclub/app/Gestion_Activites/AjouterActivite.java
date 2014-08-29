@@ -80,6 +80,15 @@ public class AjouterActivite extends ActionBarActivity {
     }
 
 
+    public void aff(View v)
+    {
+        ActiviteBDD activiteBDD=new ActiviteBDD(AjouterActivite.this);
+        activiteBDD.open();
+        Toast.makeText(this,activiteBDD.getAllActivite().get(0).toString(), Toast.LENGTH_LONG).show();
+   activiteBDD.close();
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
