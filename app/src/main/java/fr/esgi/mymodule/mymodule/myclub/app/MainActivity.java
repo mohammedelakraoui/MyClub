@@ -59,12 +59,12 @@ public class MainActivity extends ActionBarActivity {
         // Activite d'aujourd'hui
 
 
-        maListViewPerso = (ListView) findViewById(R.id.listview_afficher_activites);
+        maListViewPerso = (ListView) findViewById(R.id.listView_news);
         //  tab=(TabHost) findViewById(R.id.t)
         activiteBDD=new ActiviteBDD(this);
         activiteBDD.open();
 
-      //   list = activiteBDD.get();
+        list = activiteBDD.getAllActiviteBetweenTowDate();
 
         activiteBDD.close();
 
