@@ -16,7 +16,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapter;
+import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterActivites;
+import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterAdherents;
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
+import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
+import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites.Activites;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
@@ -33,6 +41,13 @@ public class MainActivity extends ActionBarActivity {
     private WebView webview;
     private ImageView home;
 
+
+
+    private ListView maListViewPerso;
+    ArrayList<Activite> list;
+    CustomAdapterActivites adapter;
+    ActiviteBDD activiteBDD;
+
     protected void onCreate(Bundle savedInstanceState) {
         //TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
@@ -40,6 +55,32 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getActionBar();
         actionBar.hide();
+
+        // Activite d'aujourd'hui
+
+
+        maListViewPerso = (ListView) findViewById(R.id.listview_afficher_activites);
+        //  tab=(TabHost) findViewById(R.id.t)
+        activiteBDD=new ActiviteBDD(this);
+        activiteBDD.open();
+
+      //  list = activiteBDD.get();
+
+        activiteBDD.close();
+
+        if(list!=null)
+        {
+
+
+            adapter = new CustomAdapterActivites(this, list);
+
+            maListViewPerso.setAdapter(adapter);
+
+            registerForContextMenu(maListViewPerso);
+        }
+
+
+
        // setContentView(R.layout.activity_main);
 
         // get the UI webview
