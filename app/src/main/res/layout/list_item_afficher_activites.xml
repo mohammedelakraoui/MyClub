@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:layout_margin="5dp"
-                android:inputType="textAutoComplete"
+                android:inputType="textAutoComplete|textMultiLine"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
