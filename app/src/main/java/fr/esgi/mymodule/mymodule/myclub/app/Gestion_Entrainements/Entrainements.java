@@ -35,6 +35,7 @@ public class Entrainements extends ActivityGroup {
 
        this.setTabHost(tabHost);
 
+
     }
     private void setTabHost(TabHost tabHost)
     {

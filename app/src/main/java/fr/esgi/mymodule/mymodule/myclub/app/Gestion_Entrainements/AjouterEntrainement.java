@@ -32,6 +32,7 @@ public class AjouterEntrainement extends ActionBarActivity {
     private EditText nombre_places_entrainement;
     private EditText commentaire;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

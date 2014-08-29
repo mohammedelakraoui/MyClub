@@ -26,7 +26,6 @@ public class Activites extends ActivityGroup {
         tabHost.setup(this.getLocalActivityManager());
 
         setTabHost(tabHost);
-
     }
     private void setTabHost(TabHost tabHost)
     {

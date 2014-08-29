@@ -27,6 +27,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
+
 /**
  * Created by melakraoui on 27/08/2014.
  */

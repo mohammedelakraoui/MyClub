@@ -34,7 +34,6 @@ public class CustomAdapterSalles extends BaseAdapter {
 
         this.context = context;
         this.listItem = listItem;
-
     }
     @Override
     public int getCount() {

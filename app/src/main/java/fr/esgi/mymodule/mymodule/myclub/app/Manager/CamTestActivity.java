@@ -180,6 +180,7 @@ public class CamTestActivity extends Activity implements SurfaceHolder.Callback 
                 outStream.flush();
                 outStream.close();
 
+
                // Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to " + outFile.getAbsolutePath());
 
                 refreshGallery(outFile);

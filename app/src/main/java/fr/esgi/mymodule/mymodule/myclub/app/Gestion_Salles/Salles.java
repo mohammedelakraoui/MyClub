@@ -42,6 +42,7 @@ public class Salles extends ActivityGroup {
                    // onCreate(savedInstanceState);
                     Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
                 }
+
                 //Modifier
                 if(TAB_MODIFIER.equals(s)) {
                     Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();

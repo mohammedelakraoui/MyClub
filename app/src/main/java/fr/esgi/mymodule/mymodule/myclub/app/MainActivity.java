@@ -94,6 +94,7 @@ public class MainActivity extends ActionBarActivity {
         //Set the adapter for the list view
         drawerListView.setAdapter(new CustomAdapter(this, R.layout.list_item, R.id.title, SlideListViewItems));
 
+
         // html presentation
 
         String summary = "<html><body><marquee> <h1> MyClub à la une :les activit&egrave;s d'aujourd'hui </h1> </marquee>" +

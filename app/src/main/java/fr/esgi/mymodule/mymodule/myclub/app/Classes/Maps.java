@@ -24,7 +24,6 @@ public class Maps {
     private String Adresse;
     private double Latitude;
     private  double Longtitude;
-
    public Maps(){}
 
     public Maps( String nom_Club, String adresse,double longtitude, double latitude) {

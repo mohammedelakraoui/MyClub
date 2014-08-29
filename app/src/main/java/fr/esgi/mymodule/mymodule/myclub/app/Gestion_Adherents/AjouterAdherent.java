@@ -59,6 +59,7 @@ public class AjouterAdherent extends ActionBarActivity {
         listedesciplines.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
 
+
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 

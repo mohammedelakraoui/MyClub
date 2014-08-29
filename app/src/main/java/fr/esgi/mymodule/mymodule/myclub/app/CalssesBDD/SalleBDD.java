@@ -28,7 +28,6 @@ public class SalleBDD {
     private static final int NUM_COL_Nom_coach = 3;
     private static final String COL_type_activite = "type_activite";
     private static final int NUM_COL_type_activite = 4;
-
     private SQLiteDatabase bdd;
 
     private MaBaseSQLite maBaseSQLite;

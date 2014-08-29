@@ -13,7 +13,6 @@ public class Activite {
 
     private String commentaires;
 
-
     public Activite(){};
     public Activite(String intitule_activite, String date_demarrage, String date_fin, String type_activite,String commentaire) {
         this.intitule_activite = intitule_activite;

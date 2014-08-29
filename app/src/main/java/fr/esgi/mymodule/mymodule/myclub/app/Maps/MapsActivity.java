@@ -85,7 +85,6 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
 
 
 
-
     }
 
     private void refresh()

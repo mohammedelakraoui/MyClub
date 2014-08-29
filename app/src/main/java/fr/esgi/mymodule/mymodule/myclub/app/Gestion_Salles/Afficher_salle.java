@@ -59,6 +59,7 @@ public class Afficher_salle extends ActionBarActivity {
         list = salleBDD.getAllSalles();
         salleBDD.close();
 
+
         if (list != null) {
             Salle s = list.get(0);
             // Log.v("Nom", r.getNom());

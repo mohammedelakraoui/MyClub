@@ -34,6 +34,7 @@ public class EntrainementBDD {
     private static final int NUM_COL_Commentaire = 5;
 
 
+
     private SQLiteDatabase bdd;
 
     private MaBaseSQLite maBaseSQLite;

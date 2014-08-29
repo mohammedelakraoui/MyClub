@@ -45,7 +45,6 @@
     </FrameLayout>
 
     <!-- The main content view -->
-
     <!-- The navigation drawer list -->
     <ListView
         android:id="@+id/left_slide"

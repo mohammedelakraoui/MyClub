@@ -35,7 +35,6 @@ public class AfficherEntrainements extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_entrainements);
 
-
         maListViewPerso = (ListView) findViewById(R.id.listview_afficher_entrainement);
         //  tab=(TabHost) findViewById(R.id.t)
         entrainementBDD=new EntrainementBDD(this);

@@ -16,7 +16,6 @@ public class Adherent {
     private  String discipline;
 
 
-
 public Adherent(){};
 
     public Adherent(String nom, String prenom, String sexe, int poid, int age, String phone, String discipline) {

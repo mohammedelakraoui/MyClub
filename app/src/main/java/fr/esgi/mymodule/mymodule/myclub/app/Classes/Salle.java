@@ -16,7 +16,6 @@ public class Salle {
         this.type_activite = type_activite;
         this.capacite = capacite;
         this.nom_salle = nom_salle;
-
     }
 
     public int getCapacite() {

@@ -22,6 +22,7 @@ public class   MessageBox {
             public void onClick(DialogInterface dialog, int which) {
                 // *** Here is where I am experiencing issueos ***
 
+
             }
         });
         adb.show();

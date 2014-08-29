@@ -25,7 +25,6 @@ public class AjouterActivite extends ActionBarActivity {
     EditText type_activite;
     EditText commentaires;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -44,6 +44,7 @@ public class Modifier_salle extends ActionBarActivity {
         // add the custom view to the action bar
         //
 
+
        // actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
            //     | ActionBar.DISPLAY_SHOW_HOME);
 

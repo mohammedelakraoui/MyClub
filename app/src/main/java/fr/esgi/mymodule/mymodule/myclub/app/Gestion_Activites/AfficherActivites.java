@@ -130,7 +130,6 @@ public class AfficherActivites extends ActionBarActivity {
 
         return super.onContextItemSelected(item);
 
-
     }
 
 

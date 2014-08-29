@@ -24,4 +24,3 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp" />
 </RelativeLayout>
-

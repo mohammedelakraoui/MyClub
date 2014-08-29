@@ -24,7 +24,6 @@ public class CustomAdapter extends ArrayAdapter<String> {
         this.context=context;
         groupid=vg;
         this.titles=titles;
-
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

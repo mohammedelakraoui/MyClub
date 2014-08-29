@@ -23,6 +23,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     private static final String CREATE_Salles = "create table salles(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom_salle TEXT,capacite INTEGER,nom_coach TEXT,type_activite TEXT);";
     private static final String CREATE_Maps = "create table maps(id INTEGER PRIMARY KEY   AUTOINCREMENT, nom_club TEXT,adresse TEXT,longtitude DOUBLE,laltitude DOUBLE);";
 
+
     public MaBaseSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

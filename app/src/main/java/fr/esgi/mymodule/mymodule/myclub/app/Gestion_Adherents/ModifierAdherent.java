@@ -97,6 +97,7 @@ public class ModifierAdherent extends ActionBarActivity {
               adtoUpdate=adherentBDD.getAdherentWithId(spinnerId.getSelectedItem().toString().trim());
               setText(adtoUpdate);
 
+
           }
       }
 

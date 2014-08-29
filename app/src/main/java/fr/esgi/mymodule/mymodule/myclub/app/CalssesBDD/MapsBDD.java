@@ -30,6 +30,7 @@ public class MapsBDD {
     private static final String COL_Laltitude = "laltitude";
     private static final int NUM_COL_Laltitude= 4;
 
+
     private SQLiteDatabase bdd;
 
     private MaBaseSQLite maBaseSQLite;

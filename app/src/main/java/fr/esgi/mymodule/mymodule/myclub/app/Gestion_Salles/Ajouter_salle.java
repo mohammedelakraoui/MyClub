@@ -39,6 +39,7 @@ public class Ajouter_salle extends ActionBarActivity {
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         liste.setAdapter(adp3);
 
+
     }
 
 public void  AjouterSalle(View v)

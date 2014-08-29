@@ -18,7 +18,6 @@ public class Entrainement {
     private String heur_entrainement;
     private int nombre_places_entrainement;
     private String commentaire;
-
     public Entrainement()
     {}
 

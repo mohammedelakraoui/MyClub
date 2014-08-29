@@ -61,7 +61,6 @@ public class Adherents extends ActivityGroup {
         super.onResume();
 
 
-
     }
 
     @Override

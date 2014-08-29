@@ -27,7 +27,6 @@
                 android:background="@drawable/back"
                 >
 
-
             </LinearLayout>
 
             <LinearLayout
