@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
         activiteBDD=new ActiviteBDD(this);
         activiteBDD.open();
 
-      //  list = activiteBDD.get();
+      //   list = activiteBDD.get();
 
         activiteBDD.close();
 
