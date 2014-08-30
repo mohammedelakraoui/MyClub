@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class ModifierAdherent extends ActionBarActivity {
@@ -40,7 +42,7 @@ public class ModifierAdherent extends ActionBarActivity {
     EditText age;
     EditText phone;
     Spinner listedesciplines;
-
+EditText[] editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,10 @@ public class ModifierAdherent extends ActionBarActivity {
         age=(EditText)findViewById(R.id.age);
         phone =(EditText) findViewById(R.id.phone);
         listedesciplines=(Spinner) findViewById(R.id.spinner);
+        EditText[] editTexts1={};
+        editTexts=editTexts1;
+
+
 
         adherent=new Adherent();
         adherentBDD=new AdherentBDD(getBaseContext());
@@ -122,23 +128,29 @@ public class ModifierAdherent extends ActionBarActivity {
 
     public void update(View v)
     {
-       adherentBDD.open();
+        if(ManagerError.check(editTexts,ModifierAdherent.this)) {
+            adherentBDD.open();
 
-        adtoUpdate.setNom(this.nom.getText().toString());
-        adtoUpdate.setPrenom(this.prenom.getText().toString());
-        adtoUpdate.setAge(Integer.parseInt(this.age.getText().toString()));
-        adtoUpdate.setPoid(Integer.parseInt(poid.getText().toString()));
-        adtoUpdate.setDiscipline(listedesciplines.getSelectedItem().toString());
+            adtoUpdate.setNom(this.nom.getText().toString());
+            adtoUpdate.setPrenom(this.prenom.getText().toString());
+            adtoUpdate.setAge(Integer.parseInt(this.age.getText().toString()));
+            adtoUpdate.setPoid(Integer.parseInt(poid.getText().toString()));
+            adtoUpdate.setDiscipline(listedesciplines.getSelectedItem().toString());
 
-          if(adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate)==1) {
-              Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
-              clean();
+            if (adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate) == 1) {
+                Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
+                clean();
 
-          }else
-          {
-              Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
-          }
-        adherentBDD.close();
+            } else {
+                Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
+            }
+            adherentBDD.close();
+        }
+        else
+        {
+            MessageBox.Show(ModifierAdherent.this, "Error", "Verifiez les champs SVP !");
+        }
+
 
 
     }

@@ -10,7 +10,7 @@
         android:layout_alignParentTop="false"
         android:layout_marginRight="6dip"
         android:contentDescription="TODO"
-        android:src="@drawable/ic_launcher"
+
         android:layout_alignParentStart="false"
         android:layout_column="0"
         android:layout_span="12"
@@ -128,26 +128,26 @@
                 android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
-              />
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
+                android:maxLength="10" />
 
             <EditText
                 android:id="@+id/Prenom_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prenom"
+
 
                 android:textSize="22sp"
                 android:layout_margin="5dp"
                 android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
-                />
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
+                android:maxLength="10" />
 
             <EditText
                 android:id="@+id/Poid_me"
@@ -159,10 +159,11 @@
                 android:inputType="numberDecimal"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
-                android:layout_column="0" />
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_column="0"
+                android:maxLength="3" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -173,11 +174,12 @@
                 android:inputType="number"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
                 android:id="@+id/Age_me"
-                android:layout_column="2" />
+                android:layout_column="2"
+                android:maxLength="3" />
 
 
             <EditText
@@ -189,11 +191,12 @@
                 android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
                 android:id="@+id/Sexe_me"
-                android:layout_column="6" />
+                android:layout_column="6"
+                android:maxLength="10" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -204,27 +207,36 @@
                 android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
-                android:editable="true"
-                android:focusable="true"
-                android:clickable="true"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
                 android:id="@+id/Phone_me"
-                android:layout_column="8" />
+                android:layout_column="8"
+                android:maxLength="12" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Musculation"
                 android:textSize="22sp"
                 android:layout_margin="5dp"
-                android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
+                android:singleLine="false"
                 android:clickable="true"
                 android:id="@+id/Discipline_me"
-                android:layout_column="10" />
+                android:layout_column="10"
+
+
+                android:inputType="textAutoComplete|textMultiLine"
+
+                 />
+
+
+
 
             <Button
                 android:layout_width="30dp"

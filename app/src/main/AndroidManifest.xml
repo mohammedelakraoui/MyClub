@@ -90,6 +90,11 @@
             android:name=".Manager.CamTestActivity"
             android:label="@string/title_activity_camera" >
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -104,9 +109,11 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <uses-library android:name="com.google.android.maps" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permision.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permision.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->

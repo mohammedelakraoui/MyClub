@@ -14,6 +14,8 @@ import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class AjouterActivite extends ActionBarActivity {
@@ -24,7 +26,7 @@ public class AjouterActivite extends ActionBarActivity {
     EditText date_fin;
     EditText type_activite;
     EditText commentaires;
-
+EditText[] editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,36 +37,43 @@ public class AjouterActivite extends ActionBarActivity {
          date_fin=(EditText) findViewById(R.id.date_fin);
          type_activite=(EditText) findViewById(R.id.type_d_activite);
          commentaires=(EditText) findViewById(R.id.commentaire_activite);
+        EditText[] editTexts1={intitule_activite,date_demarrage,date_fin,type_activite,commentaires};
     }
 
 
-    public void AjouterActivite(View v)
-    {
+    public void AjouterActivite(View v) {
 
+        if(ManagerError.check(editTexts,AjouterActivite.this))
+        {
         ActiviteBDD activiteBDD = new ActiviteBDD(this);
 
 
-        Activite activite=new Activite(intitule_activite.getText().toString(),date_demarrage.getText().toString(),date_fin.getText().toString(),type_activite.getText().toString(),commentaires.getText().toString());
+        Activite activite = new Activite(intitule_activite.getText().toString(), date_demarrage.getText().toString(), date_fin.getText().toString(), type_activite.getText().toString(), commentaires.getText().toString());
 
         activiteBDD.open();
 
         activiteBDD.insertActivite(activite);
 
 
-       Activite    activite1 = activiteBDD.getActiviteWithNom(activite.getIntitule_activite());
+        Activite activite1 = activiteBDD.getActiviteWithNom(activite.getIntitule_activite());
 
-        if(activite1 != null){
+        if (activite1 != null) {
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
             clean();
 
-        }else
-        {
-            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
 
         }
 
         activiteBDD.close();
+    }
+        else
+        {
+            MessageBox.Show(AjouterActivite.this, "Error", "Verifiez les champs SVP !");
+        }
+
 
 
     }

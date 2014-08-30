@@ -49,8 +49,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/Nom"
-                android:layout_column="6"
-                android:onClick="cleanNom" />
+                android:layout_column="6" />
 
         </TableRow>
 
@@ -83,8 +82,7 @@
 
                 android:ems="10"
                 android:id="@+id/prenom"
-                android:layout_column="6"
-                android:onClick="cleanPrenom" />
+                android:layout_column="6" />
         </TableRow>
 
         <TableRow
@@ -102,7 +100,9 @@
                 android:layout_height="wrap_content"
                 android:text="Male"
                 android:id="@+id/male"
-                android:layout_column="0" />
+                android:layout_column="0"
+
+                android:checked="true" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                 android:text="70"
                 android:gravity="center"
                 android:textColor="#ff38c6ff"
-                android:onClick="cleanPoid" />
+                android:maxLength="3" />
         </TableRow>
 
         <TableRow
@@ -200,7 +200,8 @@
                 android:ems="10"
 
                 android:id="@+id/age"
-                android:layout_column="6" />
+                android:layout_column="6"
+                android:maxLength="3" />
         </TableRow>
 
         <TableRow
@@ -230,7 +231,8 @@
                 android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/phone"
-                android:layout_column="6" />
+                android:layout_column="6"
+                android:maxLength="12" />
 
         </TableRow>
 

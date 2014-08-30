@@ -23,6 +23,8 @@ import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.SalleBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Salle;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class Modifier_salle extends ActionBarActivity {
@@ -35,6 +37,8 @@ public class Modifier_salle extends ActionBarActivity {
     EditText capacite;
     EditText  nom_coach;
     Spinner liste;
+
+    EditText[] editTexts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class Modifier_salle extends ActionBarActivity {
         capacite=(EditText) findViewById(R.id.capacite);
         nom_coach=(EditText) findViewById(R.id.nomresponsable);
 
+        EditText[] editTexts1={nom_salle,capacite,nom_coach};
+        editTexts=editTexts1;
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.select_dialog_item);
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         liste.setAdapter(adp3);
@@ -108,8 +114,9 @@ public class Modifier_salle extends ActionBarActivity {
     }
 
 
-    public void update(View v)
-    {
+    public void update(View v) {
+        if(ManagerError.check(editTexts,Modifier_salle.this))
+        {
         salleBDD.open();
 
         salle.setNom_salle(this.nom_salle.getText().toString());
@@ -117,15 +124,20 @@ public class Modifier_salle extends ActionBarActivity {
         salle.setNom_coach(this.nom_coach.getText().toString());
         salle.setType_activite(this.liste.getSelectedItem().toString());
 
-        if(salleBDD.updateSalle(salle.getId(), salle)==1) {
+        if (salleBDD.updateSalle(salle.getId(), salle) == 1) {
             Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
             clean(v);
 
-        }else
-        {
+        } else {
             Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
         }
         salleBDD.close();
+    }
+        else
+        {
+            MessageBox.Show(Modifier_salle.this, "Error", "Verifiez les champs SVP !");
+        }
+
 
 
     }

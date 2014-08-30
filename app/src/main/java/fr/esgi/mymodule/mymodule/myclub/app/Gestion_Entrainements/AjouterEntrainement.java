@@ -21,6 +21,9 @@ import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.AjouterAdherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class AjouterEntrainement extends ActionBarActivity {
@@ -31,7 +34,7 @@ public class AjouterEntrainement extends ActionBarActivity {
     private TimePicker heur_entrainement;
     private EditText nombre_places_entrainement;
     private EditText commentaire;
-
+private  EditText[] editTextForCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +46,21 @@ public class AjouterEntrainement extends ActionBarActivity {
           heur_entrainement=(TimePicker)findViewById(R.id.heur_entrainement);
           nombre_places_entrainement=(EditText)findViewById(R.id.nombre_place_entrainement);
           commentaire=(EditText)findViewById(R.id.commentaire_entrainement);
+          EditText[] editTexts={nom_seance_entrainement,date_entrainement,nombre_places_entrainement,commentaire};
+          editTextForCheck=editTexts;
 
     }
 
-    public void AjouterEntrainement(View v)
-    {
+    public void AjouterEntrainement(View v) {
 
+        if(ManagerError.check(editTextForCheck, AjouterEntrainement.this))
+        {
         EntrainementBDD entrainementBDD = new EntrainementBDD(this);
 
-        String heur_=heur_entrainement.getCurrentHour()+":"+heur_entrainement.getCurrentMinute()+" "+(heur_entrainement.is24HourView()? " PM":" AM");
+        String heur_ = heur_entrainement.getCurrentHour() + ":" + heur_entrainement.getCurrentMinute() + " " + (heur_entrainement.is24HourView() ? " PM" : " AM");
 
 
-        Entrainement entrainement=new Entrainement(nom_seance_entrainement.getText().toString(),date_entrainement.getText().toString(),heur_,Integer.parseInt(nombre_places_entrainement.getText().toString()),this.commentaire.getText().toString());
+        Entrainement entrainement = new Entrainement(nom_seance_entrainement.getText().toString(), date_entrainement.getText().toString(), heur_, Integer.parseInt(nombre_places_entrainement.getText().toString()), this.commentaire.getText().toString());
 
         entrainementBDD.open();
 
@@ -63,20 +69,22 @@ public class AjouterEntrainement extends ActionBarActivity {
 
         Entrainement entrainement1 = entrainementBDD.getEntrainementWithNom(entrainement.getNom_seance_entrainement());
 
-        if(entrainement1 != null){
+        if (entrainement1 != null) {
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
             clean();
 
-        }else
-        {
-            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
 
         }
 
         entrainementBDD.close();
-
-
+    }
+else
+        {
+            MessageBox.Show(AjouterEntrainement.this,"Error","Verifiez-vous les zones de saisi");
+        }
     }
 
     private void clean()

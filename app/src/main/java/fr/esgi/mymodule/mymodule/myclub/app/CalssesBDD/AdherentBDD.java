@@ -4,11 +4,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.ArrayAdapter;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 
 /**
  * Created by melakraoui on 07/08/2014.
@@ -36,7 +42,9 @@ public class AdherentBDD {
     private static final int NUM_COL_PHONE = 6;
     private static final String COL_DISCIPLINE= "discipline";
     private static final int NUM_COL_DISCIPLINE = 7;
-
+    private static final String COL_PIC= "pic";
+    private static final int NUM_COL_PIC = 8;
+private Context c;
     private SQLiteDatabase bdd;
 
     private MaBaseSQLite maBaseSQLite;
@@ -44,6 +52,7 @@ public class AdherentBDD {
     public AdherentBDD(Context context){
         //On crée la BDD et sa table
         maBaseSQLite = new MaBaseSQLite(context, NOM_BDD, null, VERSION_BDD);
+        c=context;
     }
 
     public void open(){
@@ -62,6 +71,15 @@ public class AdherentBDD {
 
     public long insertAdherent(Adherent adherent){
 
+      ///  Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.thumbnail);
+
+     /*   ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        adherent.getPic().compress(Bitmap.CompressFormat.PNG, 100, out);
+
+        byte[] buffer=out.toByteArray();*/
+
+
         ContentValues values = new ContentValues();
         values.put(COL_Nom, adherent.getNom());
         values.put(COL_Prenom, adherent.getPrenom());
@@ -70,6 +88,7 @@ public class AdherentBDD {
         values.put(COL_Age, adherent.getAge());
         values.put(COL_Phone, adherent.getPhone());
         values.put(COL_DISCIPLINE, adherent.getDiscipline());
+        values.put(COL_PIC,adherent.getPic());
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_Adherent, null, values);
     }
@@ -85,7 +104,7 @@ public class AdherentBDD {
         values.put(COL_Age, adherent.getAge());
         values.put(COL_Phone, adherent.getPhone());
         values.put(COL_DISCIPLINE, adherent.getDiscipline());
-
+        values.put(COL_PIC,adherent.getPic());
         return bdd.update(TABLE_Adherent, values, COL_ID + " = " +id, null);
     }
 
@@ -97,20 +116,20 @@ public class AdherentBDD {
 
     public ArrayList<Adherent> getAllAdherent()
     {
-        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE},null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE,COL_PIC},null, null, null, null, null);
         return cursorToAllAdherent(c);
 
     }
 
     public Adherent getAdherentWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son nom)
-        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_Nom + " LIKE \"" + nom +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE,COL_PIC}, COL_Nom + " LIKE \"" + nom +"\"", null, null, null, null);
         return cursorToAdherent(c);
     }
 
     public Adherent getAdherentWithId(String id){
         //Récupère dans un Cursor les valeurs correspondant à un Adherent contenu dans la BDD (ici on sélectionne le Adherent grâce à son titre)
-        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_Adherent, new String[] {COL_ID, COL_Nom, COL_Prenom,COL_Sexe,COL_Poid,COL_Age,COL_Phone,COL_DISCIPLINE,COL_PIC}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
         return cursorToAdherent(c);
     }
 
@@ -122,6 +141,7 @@ public class AdherentBDD {
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
+
         //On créé un Adherent
         Adherent adherent = new Adherent();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
@@ -133,6 +153,7 @@ public class AdherentBDD {
         adherent.setAge(c.getInt(NUM_COL_AGE));
         adherent.setPhone(c.getString(NUM_COL_PHONE));
         adherent.setDiscipline(c.getString(NUM_COL_DISCIPLINE));
+        adherent.setPic(c.getString(NUM_COL_PIC));
         //On ferme le cursor
         c.close();
 
@@ -152,6 +173,7 @@ public class AdherentBDD {
         //Sinon on se place sur le premier élément
         if (c.moveToFirst()) {
             do {
+               // MessageBox.Show(this.c,"",c.toString());
                 //On créé un Adherent
                 Adherent adherent = new Adherent();
                 //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
@@ -163,6 +185,8 @@ public class AdherentBDD {
                 adherent.setAge(c.getInt(NUM_COL_AGE));
                 adherent.setPhone(c.getString(NUM_COL_PHONE));
                 adherent.setDiscipline(c.getString(NUM_COL_DISCIPLINE));
+                adherent.setPic(c.getString(NUM_COL_PIC));
+
                 listAdherent.add(adherent);
             } while (c.moveToNext());
         }

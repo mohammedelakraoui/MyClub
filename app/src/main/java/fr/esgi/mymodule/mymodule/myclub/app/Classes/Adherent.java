@@ -1,5 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Classes;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by melakraoui on 07/08/2014.
  */
@@ -14,11 +16,12 @@ public class Adherent {
     private int age;
     private String phone;
     private  String discipline;
+    private String pic;
 
 
 public Adherent(){};
 
-    public Adherent(String nom, String prenom, String sexe, int poid, int age, String phone, String discipline) {
+    public Adherent(String nom, String prenom, String sexe, int poid, int age, String phone, String discipline,String pic) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -26,7 +29,17 @@ public Adherent(){};
         this.age = age;
         this.phone = phone;
         this.discipline = discipline;
+        this.pic=pic;
     }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
     @Override
     public String toString() {
         return "Adherent{" +

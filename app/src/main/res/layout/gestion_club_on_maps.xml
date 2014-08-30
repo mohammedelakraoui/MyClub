@@ -101,14 +101,6 @@
                     android:textSize="28sp" />
 
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modifier"
-                    android:id="@+id/modification_maps"
-                    android:layout_column="30"
-                    android:textSize="28sp" />
-
                 </RadioGroup>
             </TableRow>
 

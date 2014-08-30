@@ -125,7 +125,8 @@
                 android:text="70"
                 android:gravity="center"
                 android:textColor="#ff38c6ff"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:maxLength="3" />
         </TableRow>
 
         <TableRow
@@ -177,7 +178,8 @@
                 android:ems="10"
                 android:id="@+id/age"
                 android:layout_column="7"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:maxLength="3" />
         </TableRow>
 
         <TableRow
@@ -208,7 +210,8 @@
                 android:ems="10"
                 android:id="@+id/phone"
                 android:layout_column="7"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:maxLength="12" />
 
         </TableRow>
 

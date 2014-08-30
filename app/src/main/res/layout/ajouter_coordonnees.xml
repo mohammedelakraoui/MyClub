@@ -39,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/maps_nom_club"
                 android:layout_column="9"
-                android:textColor="#ff2f49ff" />
+                android:textColor="#ff2f49ff"
+                android:inputType="text" />
         </TableRow>
 
         <TableRow
@@ -71,7 +72,8 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/maps_numero"
-                android:layout_column="9" />
+                android:layout_column="9"
+                android:maxLength="3" />
         </TableRow>
 
         <TableRow
@@ -130,7 +132,8 @@
                 android:ems="10"
                 android:id="@+id/maps_cp"
                 android:layout_column="9"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="5" />
 
         </TableRow>
 

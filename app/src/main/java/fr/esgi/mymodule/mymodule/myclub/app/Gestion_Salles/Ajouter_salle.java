@@ -17,6 +17,8 @@ import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.SalleBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Salle;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 public class Ajouter_salle extends ActionBarActivity {
@@ -25,7 +27,7 @@ public class Ajouter_salle extends ActionBarActivity {
       EditText capacite;
       EditText  nom_coach;
       Spinner liste;
-
+EditText[] editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +40,16 @@ public class Ajouter_salle extends ActionBarActivity {
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.select_dialog_item);
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         liste.setAdapter(adp3);
+        EditText[] editTexts1={nom_salle,capacite,nom_coach};
+        editTexts=editTexts1;
 
 
     }
 
 public void  AjouterSalle(View v)
 {
+    if(ManagerError.check(editTexts,Ajouter_salle.this))
+    {
     SalleBDD salleBDD = new SalleBDD(this);
     Salle salle=new Salle(nom_salle.getText().toString(),Integer.parseInt(capacite.getText().toString()),nom_coach.getText().toString(),liste.getSelectedItem().toString());
     salleBDD.open();
@@ -60,6 +66,12 @@ public void  AjouterSalle(View v)
     {
         Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
 
+    }
+
+}
+    else
+    {
+        MessageBox.Show(Ajouter_salle.this, "Error", "Verifiez-vous les zones de saisi");
     }
 
 }

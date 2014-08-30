@@ -382,16 +382,11 @@ return check_;
                     .title(map.getNom_Club() + " : \n " + map.getAdresse()));
 
 
-            //    .icon(BitmapDescriptorFactory
-            //       .fromResource(R.drawable.club_icon)));
-            // Move the camera instantly to hamburg with a zoom of 15.
-
-            //   mMap.addMarker(hamburg);
-
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
 
             // Zoom in, animating the camera.
             mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
 
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -402,9 +397,10 @@ return check_;
                     //  Toast.makeText(MapsActivity.this, "Event pour la gestion de la Maps (modifier+ supprimer)"+arg0.getTitle(),Toast.LENGTH_LONG).show();// display toast
                     //  arg0.setTitle("hello");
 
+                  // arg0.remove();
                     arg0.showInfoWindow();
 
-                    menuMaps(map, arg0);
+                   menuMaps(map, hamburg);
 
 
 
@@ -429,7 +425,7 @@ return check_;
         final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
         LayoutInflater inflater = this.getLayoutInflater();
         alert.setTitle("Gestion des clubs?");
-        alert.setMessage("Choisissez votre choix!:");
+        alert.setMessage("Verifiez avant la supression!:");
 
         final View v_iew=inflater.inflate(R.layout.gestion_club_on_maps, null);
         alert.setView(v_iew);
@@ -447,20 +443,23 @@ return check_;
               RadioButton myChoix=  (RadioButton) v_iew.findViewById(selectedId);
 
                 // suppression
+                if(myChoix==null) return;
             if(myChoix.getText().toString().contains("Supprimer"))
             {
+                marker.remove();
+             //   Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
+              //  supprimer(maps,marker);
 
-                Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
-                supprimer(maps,marker);
+                mapsBDD.open();
+
+                mapsBDD.removeCoordonneesWithID(maps.getId());
+                mapsBDD.close();
+
+
 
 
             }
-                // modification
-                if(myChoix.getText().toString().contains("modifier"))
-                {
 
-
-                }
 
             }
         });
@@ -483,7 +482,6 @@ return check_;
 
     private void supprimer(final Maps map,final Marker marker ) {
 
-
         final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
         LayoutInflater inflater = this.getLayoutInflater();
         alert.setTitle("Supprimer un club?");
@@ -497,9 +495,12 @@ return check_;
                 //marker.setVisible(false);
 
                 mapsBDD.open();
+                marker.remove();
                 mapsBDD.removeCoordonneesWithID(map.getId());
-                // marker.remove();
+
+
                 mapsBDD.close();
+
 
 
 
@@ -549,14 +550,12 @@ return check_;
     @Override
     public void onProviderEnabled(String provider)
     {
-        // TODO Auto-generated method stub
-        Toast.makeText(this, "provider enabled", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras)
     {
-        // TODO Auto-generated method stub
-        Toast.makeText(this, "status changed", Toast.LENGTH_SHORT).show();
+
     }
 }

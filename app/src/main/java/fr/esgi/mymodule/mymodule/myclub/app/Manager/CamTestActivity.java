@@ -9,6 +9,7 @@ import java.io.IOException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -184,12 +185,14 @@ public class CamTestActivity extends Activity implements SurfaceHolder.Callback 
                // Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to " + outFile.getAbsolutePath());
 
                 refreshGallery(outFile);
+                android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+                android.content.SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("path",outFile.getAbsolutePath() );
+                editor.commit();
 
 
-                Intent intAdh = new Intent(CamTestActivity.this,AjouterAdherent.class);
-                intAdh.putExtra("path",outFile.getAbsolutePath());
                 finish();
-                startActivity(intAdh);
+              //  startActivity(intAdh);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

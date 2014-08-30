@@ -88,14 +88,15 @@ public class CustomAdapterAdherents extends BaseAdapter{
         final ViewHolder my_holder=holder;
 
         final Adherent adherent = listItem.get(position);
-           Bitmap pic= BitmapFactory.decodeResource(convertView.getResources(),R.drawable.myclub);
 
-           Drawable dr=new BitmapDrawable(convertView.getResources(),PicturesManager.getRoundedCornerImage(pic));
+
+            Drawable dr=new BitmapDrawable(convertView.getResources(),PicturesManager.getPicFromPath(adherent.getPic(),context));
             holder.image.setBackground(dr);
+
             holder.Nom.setText(adherent.getNom().toString());
             holder.Prenom.setText(adherent.getPrenom().toString());
-            holder.Age.setText(adherent.getAge()+" ans");
-            holder.Poid.setText(adherent.getPoid()+ " KG");
+            holder.Age.setText(adherent.getAge()+"");
+            holder.Poid.setText(adherent.getPoid()+ "");
             holder.Sexe.setText(adherent.getSexe().toString());
             holder.phone.setText(adherent.getPhone().toString());
            holder.Discipline.setText(adherent.getDiscipline().toString());

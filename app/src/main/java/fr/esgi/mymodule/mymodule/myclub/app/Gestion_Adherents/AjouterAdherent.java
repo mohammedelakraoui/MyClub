@@ -1,6 +1,8 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -18,9 +20,14 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.content.Intent;
+
+import java.io.File;
+
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles.Ajouter_salle;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.CamTestActivity;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
@@ -36,6 +43,9 @@ public class AjouterAdherent extends ActionBarActivity {
     EditText phone;
     Spinner listedesciplines;
     ImageView pic;
+    private String path="";
+
+    private EditText[] editforcheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +61,10 @@ public class AjouterAdherent extends ActionBarActivity {
         age=(EditText)findViewById(R.id.age);
         phone =(EditText) findViewById(R.id.phone);
         listedesciplines=(Spinner) findViewById(R.id.spinner);
+        EditText[] editTexts={nom,prenom,poid,age,phone};
+        editforcheck=editTexts;
 
+        pic.setBackgroundResource(R.drawable.user);
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.simple_list_item_1);
 
         adp3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,6 +85,7 @@ public class AjouterAdherent extends ActionBarActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
 
 
+
             }
 
         });
@@ -79,14 +93,59 @@ public class AjouterAdherent extends ActionBarActivity {
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+        String my_path = prefs.getString("path", "");
+
+        if (!my_path.isEmpty())
+        {
+
+            this.path=my_path;
+
+            Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(my_path,AjouterAdherent.this));
+            pic.setBackground(dr);
+        }
+    }
+
+
+
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+
+        android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+        String my_path = prefs.getString("path","");
+
+        if (!my_path.isEmpty())
+        {
+
+            this.path=my_path;
+            Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(my_path,AjouterAdherent.this));
+            pic.setBackground(dr);
+        }
+
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
     protected void onResume() {
         super.onResume();
 
-        Bundle bdl=this.getIntent().getExtras();
-        if(bdl!=null) {
-            String path = bdl.getString("path");
-            Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(path));
-           pic.setBackground(dr);
+        android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+        String my_path = prefs.getString("path","");
+
+        if (!my_path.isEmpty())
+        {
+
+            this.path=my_path;
+            Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(my_path,AjouterAdherent.this));
+            pic.setBackground(dr);
         }
 
     }
@@ -96,55 +155,55 @@ public class AjouterAdherent extends ActionBarActivity {
     public void AjouterAdherent(View v)
     {
 
-        AdherentBDD adherentBDD = new AdherentBDD(this);
+      if(ManagerError.check(editforcheck,AjouterAdherent.this)==true)
+      {
+          AdherentBDD adherentBDD = new AdherentBDD(this);
 
-        int selectedId = sexe.getCheckedRadioButtonId();
+          int selectedId = sexe.getCheckedRadioButtonId();
 
-       RadioButton sexe_ = (RadioButton) findViewById(selectedId);
-
-        Adherent adherent=new Adherent(nom.getText().toString(),prenom.getText().toString(),sexe_.getText().toString(),Integer.parseInt(poid.getText().toString()),Integer.parseInt(age.getText().toString()),phone.getText().toString(),listedesciplines.getSelectedItem().toString());
-
-        adherentBDD.open();
-
-        adherentBDD.insertAdherent(adherent);
+          RadioButton sexe_ = (RadioButton) findViewById(selectedId);
 
 
-       Adherent AdherentFromBdd = adherentBDD.getAdherentWithNom(adherent.getNom());
 
-        if(AdherentFromBdd != null){
-            //On affiche les infos du livre dans un Toast
-            Toast.makeText(this,"L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+          Adherent adherent=new Adherent(nom.getText().toString(),prenom.getText().toString(),sexe_.getText().toString(),Integer.parseInt(poid.getText().toString()),Integer.parseInt(age.getText().toString()),phone.getText().toString(),listedesciplines.getSelectedItem().toString(),path);
 
-        }else
-        {
-            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
+          adherentBDD.open();
 
-        }
-/*
-        //On extrait le livre de la BDD grâce au nouveau titre
-        livreFromBdd = livreBdd.getLivreWithTitre("J'ai modifié le titre du livre");
-        //S'il existe un livre possédant ce titre dans la BDD
-        if(livreFromBdd != null){
-            //On affiche les nouvelles informations du livre pour vérifier que le titre du livre a bien été mis à jour
-            Toast.makeText(this, livreFromBdd.toString(), Toast.LENGTH_LONG).show();
-            //on supprime le livre de la BDD grâce à son ID
-            livreBdd.removeLivreWithID(livreFromBdd.getId());
-        }
+          adherentBDD.insertAdherent(adherent);
 
-        //On essaye d'extraire de nouveau le livre de la BDD toujours grâce à son nouveau titre
-        livreFromBdd = livreBdd.getLivreWithTitre("J'ai modifié le titre du livre");
-        //Si aucun livre n'est retourné
-        if(livreFromBdd == null){
-            //On affiche un message indiquant que le livre n'existe pas dans la BDD
-            Toast.makeText(this, "Ce livre n'existe pas dans la BDD", Toast.LENGTH_LONG).show();
-        }
-        //Si le livre existe (mais normalement il ne devrait pas)
-        else{
-            //on affiche un message indiquant que le livre existe dans la BDD
-            Toast.makeText(this, "Ce livre existe dans la BDD", Toast.LENGTH_LONG).show();
-        }
-*/
-        adherentBDD.close();
+
+          Adherent AdherentFromBdd = adherentBDD.getAdherentWithNom(adherent.getNom());
+
+          if(AdherentFromBdd != null){
+              //On affiche les infos du livre dans un Toast
+              Toast.makeText(this,"L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+              pic.setBackgroundResource(R.drawable.user);
+
+              android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+              android.content.SharedPreferences.Editor editor = prefs.edit();
+              editor.putString("path","" );
+              editor.commit();
+
+              this.path="";
+              cleanNom(v);
+              cleanPoid(v);
+              cleanPrenom(v);
+
+
+
+          }else
+          {
+              Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
+
+          }
+
+          adherentBDD.close();
+
+      }
+        else
+      {
+          MessageBox.Show(AjouterAdherent.this,"Error","Verifiez les champs SVP !");
+      }
 
 
     }

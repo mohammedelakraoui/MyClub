@@ -70,7 +70,8 @@
                     android:id="@+id/date_debut"
                     android:layout_column="6"
                     android:inputType="date"
-                    android:textColor="#ff38c6ff" />
+                    android:textColor="#ff38c6ff"
+                    android:maxLength="8" />
 
             </TableRow>
 
@@ -103,7 +104,8 @@
                     android:id="@+id/date_fin"
                     android:layout_column="6"
                     android:textColor="#ff38c6ff"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    android:maxLength="8" />
             </TableRow>
 
             <TableRow
