@@ -3,13 +3,11 @@
 
     <string name="hello">Hello World, CamTestActivity!</string>
 
-
     <!-- UI Elements -->
     <string name="btn_capture">Click</string>
 
     <!-- Toast Messages -->
     <string name="take_photo_help">Touch anywhere on screen to take picture</string>
-
 
     <color name="Red">#FFFF8D32</color>
     <color name="defaultColor">#FFFFFFFF</color>
@@ -96,5 +94,6 @@
     <string name="title_activity_ajouter_activite">AjouterActivite</string>
     <string name="title_activity_afficher_activites">AfficherActivites</string>
     <string name="title_activity_camera">Camera</string>
+    <string name="title_activity_login">login</string>
 
 </resources>
