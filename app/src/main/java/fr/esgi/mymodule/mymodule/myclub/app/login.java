@@ -49,6 +49,7 @@ public class login extends ActionBarActivity {
         InputStream is = null;
 
 
+
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
         nameValuePairs.add(new BasicNameValuePair("username","esgi@esgi.fr"));
