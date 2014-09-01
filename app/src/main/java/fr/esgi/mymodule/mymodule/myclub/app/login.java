@@ -18,6 +18,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,10 +28,27 @@ import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import javax.security.auth.login.LoginException;
+
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.JSONParser;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerNetWork;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 
 
+/*
+
+site : myclub.olympe.in
+
+
+
+
+ */
+
+
+
 public class login extends ActionBarActivity {
+
+    private JSONArray response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,94 +63,54 @@ public class login extends ActionBarActivity {
     public void connect(View v)
     {
 
-        String result = null;
-        InputStream is = null;
+
+        String UrlUser = "http://myclub.olympe.in/select.php?username=esgi&password=esgi";
 
 
 
-        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("username","esgi@esgi.fr"));
-        nameValuePairs.add(new BasicNameValuePair("password","esgi"));
-        try
+
+
+
+        if(ManagerNetWork.isNetworkAvailable(this))
         {
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://192.168.40.1:800/select.php");
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            MessageBox.Show(getBaseContext(),"URL",httppost.getURI().toString());
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            is = entity.getContent();
-
-            Log.e("log_tag", "connection success ");
-
-        }
-        catch(Exception e)
-        {
-            Log.e("log_tag", "Error in http connection "+e.toString());
-            Toast.makeText(getApplicationContext(), "Connection fail", Toast.LENGTH_SHORT).show();
-
-        }
-        //convert response to string
-        try{
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null)
+            try
             {
-                sb.append(line + "\n");
+                response = new JSONParser(UrlUser).execute().get();
+                Toast.makeText(getApplicationContext(),"Connecting...Please wait",Toast.LENGTH_LONG).show();
+                MessageBox.Show(login.this,"response",response.toString());
 
+             /*   if (ManagerUser.authenticate(username, Password) == true) {
+
+                    Intent intent = new Intent(this, NewsFeed.class);
+                    intent.putExtra("currentUser", ManagerUser.getCurrentUser()
+                            .toString());
+                    startActivity(intent);
+
+                    android.content.SharedPreferences prefs = getSharedPreferences("UserData", 0);
+                    android.content.SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("currentuser", ManagerUser.getCurrentUser().toString());
+                    editor.commit();*/
+               // }
+               // else {
+                  /*  Toast.makeText(this,"Error Please Check your Username/Password",Toast.LENGTH_LONG).show();
+                    this.UserName.setTextColor(Color.parseColor("#F01414"));
+                    this.UserName.setTextColor(Color.parseColor("#F01414"));
+                    this.UserName.setFocusable(true);
+                    this.UserName.requestFocus();
+                }*/
             }
-            is.close();
-
-            result=sb.toString();
-        }
-        catch(Exception e)
-        {
-            Log.e("log_tag", "Error converting result "+e.toString());
-
-            Toast.makeText(getApplicationContext(), " Input reading fail", Toast.LENGTH_SHORT).show();
-
-        }
-
-        //parse json data
-        try{
-
-
-            JSONObject object = new JSONObject(result);
-            String ch=object.getString("re");
-            if(ch.equals("success"))
+            catch (Exception ex)
             {
-
-                JSONObject no = object.getJSONObject("0");
-
-                //long q=object.getLong("f1");
-                String w= no.getString("f2");
-                long e=no.getLong("f3");
-
-
-                String myString = NumberFormat.getInstance().format(e);
-
-
-
-            }
-
-
-            else
-            {
-
-                Toast.makeText(getApplicationContext(), "Record is not available.. Enter valid number", Toast.LENGTH_SHORT).show();
 
             }
 
 
         }
-        catch(JSONException e)
+        else
         {
-            Log.e("log_tag", "Error parsing data "+e.toString());
-            Toast.makeText(getApplicationContext(), "JsonArray fail", Toast.LENGTH_SHORT).show();
+            ManagerNetWork.alertNetwork(login.this);
         }
-
 
 
 
