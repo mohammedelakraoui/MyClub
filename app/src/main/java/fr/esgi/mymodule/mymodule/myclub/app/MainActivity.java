@@ -16,7 +16,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapter;
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterActivites;
@@ -30,6 +32,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements.Entrainements;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles.Salles;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Maps.MapsActivity;
 
 public class MainActivity extends ActionBarActivity {
@@ -64,7 +67,11 @@ public class MainActivity extends ActionBarActivity {
         activiteBDD=new ActiviteBDD(this);
         activiteBDD.open();
 
-        list = activiteBDD.getAllActivite();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDateandTime = sdf.format(new Date());
+
+
+        list = activiteBDD.getAllActiviteBetweenTowDate(currentDateandTime);
 
         activiteBDD.close();
 
@@ -72,11 +79,12 @@ public class MainActivity extends ActionBarActivity {
         {
 
 
+
             adapter = new CustomAdapterActivites(this, list,0);
 
             maListViewPerso.setAdapter(adapter);
 
-            registerForContextMenu(maListViewPerso);
+         //   registerForContextMenu(maListViewPerso);
         }
 
 
@@ -97,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
 
         // html presentation
 
-        String summary = "<html><body><marquee> <h1> MyClub  :Liste des activit&egrave;s d'aujourd'hui </h1> </marquee>" +
+        String summary = "<html><body><marquee> <h1> MyClub :Liste des activit&egrave;s d'aujourd'hui </h1> </marquee>" +
                 "</body></html>";
         webview.loadData(summary, "text/html", null);
 
@@ -118,8 +126,9 @@ private void refresh()
 {
 
     activiteBDD.open();
-
-    list = activiteBDD.getAllActiviteBetweenTowDate();
+    SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+    String currentDateandTime = sdf.format(new Date());
+    list = activiteBDD.getAllActiviteBetweenTowDate(currentDateandTime);
 
     activiteBDD.close();
 
@@ -131,7 +140,7 @@ private void refresh()
 
         maListViewPerso.setAdapter(adapter);
 
-        registerForContextMenu(maListViewPerso);
+     //   registerForContextMenu(maListViewPerso);
     }
 
 }

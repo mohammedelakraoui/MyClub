@@ -29,9 +29,9 @@ public class ManagerNetWork {
     public static void alertNetwork(Context c)
     {
         AlertDialog.Builder adb = new AlertDialog.Builder(c);
-        adb.setTitle("No NetWork");
-        adb.setMessage("Your mobile is not connected,Please cheeck your wifi/cellulaire network.");
-        adb.setPositiveButton("Ok", null);
+        adb.setTitle("Absence d'internet");
+        adb.setMessage("Votre mobile n'est pas connecté à l'internet Ressayez SVP?.");
+        adb.setPositiveButton("OK", null);
         adb.show();
 
     }

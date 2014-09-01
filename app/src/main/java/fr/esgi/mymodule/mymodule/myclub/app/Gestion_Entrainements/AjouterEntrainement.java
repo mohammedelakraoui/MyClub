@@ -53,6 +53,12 @@ private  EditText[] editTextForCheck;
 
     public void AjouterEntrainement(View v) {
 
+        if(!ManagerError.isDate(date_entrainement.getText().toString().trim()) ) {
+            date_entrainement.setBackgroundColor(getResources().getColor(R.color.Red));
+
+            return;
+        }
+
         if(ManagerError.check(editTextForCheck, AjouterEntrainement.this))
         {
         EntrainementBDD entrainementBDD = new EntrainementBDD(this);

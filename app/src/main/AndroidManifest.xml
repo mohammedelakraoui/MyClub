@@ -80,7 +80,9 @@
         </activity>
         <activity
             android:name=".Gestion_Activites.AfficherActivites"
-            android:label="@string/title_activity_afficher_activites" >
+            android:label="@string/title_activity_afficher_activites"
+
+            >
         </activity>
         <activity
             android:name=".Manager.CamTestActivity"

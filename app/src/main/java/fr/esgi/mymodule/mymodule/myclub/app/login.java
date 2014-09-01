@@ -121,6 +121,7 @@ public class login extends ActionBarActivity {
                     Intent intent = new Intent(this, MainActivity.class);
 
                     startActivity(intent);
+                    finish();
 
 
                 }

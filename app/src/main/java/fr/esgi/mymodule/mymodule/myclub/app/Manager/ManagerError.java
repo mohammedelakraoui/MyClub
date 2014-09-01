@@ -3,6 +3,12 @@ package fr.esgi.mymodule.mymodule.myclub.app.Manager;
 import android.content.Context;
 import android.widget.EditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 /**
@@ -12,16 +18,37 @@ public class ManagerError {
 
     public static boolean check(EditText[] objets,Context c)
     {
-        for(EditText t:objets)
-        {
-            if(t.getText().toString().trim().equals(""))
-            {
-                t.setText("error");
-                t.setTextColor(c.getResources().getColor(R.color.Red));
-                return false;
-            }
+        if(objets!=null) {
+            for (EditText t : objets) {
+                if (t.getText().toString().trim().equals("")) {
+                    t.setText("error");
+                    t.setTextColor(c.getResources().getColor(R.color.Red));
+                    return false;
+                }
 
+            }
         }
         return true;
+    }
+
+    public static Boolean isDate(String date)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyyy", Locale.US);
+        sdf.setLenient(false);
+        try{
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+
+
+       // if(date.length()<8){ return false;}
+        //else {return true;}
+
+
+
+
+
     }
 }

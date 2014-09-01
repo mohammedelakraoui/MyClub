@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -53,6 +55,8 @@ public class AfficherActivites extends ActionBarActivity {
 
             registerForContextMenu(maListViewPerso);
         }
+
+
     }
 
 
@@ -157,7 +161,9 @@ public class AfficherActivites extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getMenuInflater().inflate(R.menu.afficher_activites, menu);
+
         return true;
     }
 

@@ -38,10 +38,16 @@ EditText[] editTexts;
          type_activite=(EditText) findViewById(R.id.type_d_activite);
          commentaires=(EditText) findViewById(R.id.commentaire_activite);
         EditText[] editTexts1={intitule_activite,date_demarrage,date_fin,type_activite,commentaires};
+        editTexts=editTexts1;
     }
 
 
     public void AjouterActivite(View v) {
+        if(!ManagerError.isDate(date_demarrage.getText().toString().trim()) || !ManagerError.isDate(date_fin.getText().toString().trim())) {
+            date_demarrage.setBackgroundColor(getResources().getColor(R.color.Red));
+            date_fin.setBackgroundColor(getResources().getColor(R.color.Red));
+            return;
+        }
 
         if(ManagerError.check(editTexts,AjouterActivite.this))
         {
@@ -60,7 +66,7 @@ EditText[] editTexts;
         if (activite1 != null) {
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
-            clean();
+            clean(v);
 
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -78,7 +84,7 @@ EditText[] editTexts;
 
     }
 
-    private void clean()
+    public void clean(View v)
     {
         intitule_activite.setText("");
         date_demarrage.setText("");

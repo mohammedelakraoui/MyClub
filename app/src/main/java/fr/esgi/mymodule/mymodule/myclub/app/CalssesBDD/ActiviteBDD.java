@@ -91,10 +91,10 @@ public class ActiviteBDD {
     }
 
 
-    public ArrayList<Activite> getAllActiviteBetweenTowDate()
+    public ArrayList<Activite> getAllActiviteBetweenTowDate(String now)
 
     {
-        Cursor c = bdd.query(TABLE_Activite, new String[] {COL_ID, COL_Intitule, COL_Date_demarrage,COL_Date_fin,COL_Type_activite,COL_Commentaire},COL_Date_demarrage+" >=date('now') and  "+COL_Date_fin +"<=date('now')", null, null, null, null);
+        Cursor c = bdd.query(TABLE_Activite, new String[] {COL_ID, COL_Intitule, COL_Date_demarrage,COL_Date_fin,COL_Type_activite,COL_Commentaire},COL_Date_demarrage+" <=Date('"+now+"') and  "+COL_Date_fin +"<=Date('"+now+"');", null, null, null, null);
         return cursorToAllActivites(c);
 
     }
