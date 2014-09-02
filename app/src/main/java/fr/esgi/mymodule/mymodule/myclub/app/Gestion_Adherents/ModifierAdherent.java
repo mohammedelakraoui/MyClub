@@ -59,7 +59,7 @@ EditText[] editTexts;
         age=(EditText)findViewById(R.id.age);
         phone =(EditText) findViewById(R.id.phone);
         listedesciplines=(Spinner) findViewById(R.id.spinner);
-        EditText[] editTexts1={};
+        EditText[] editTexts1={nom,prenom,poid,age,age};
         editTexts=editTexts1;
 
 
@@ -118,7 +118,12 @@ EditText[] editTexts;
         annuller.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clean();
+                spinnerId.setSelection(0);
+                nom.setText("");
+                prenom.setText("");
+                age.setText("");
+                poid.setText("");
+                phone.setText("");
             }
         });
         adherentBDD.close();
@@ -140,7 +145,7 @@ EditText[] editTexts;
 
             if (adherentBDD.updateAdherent(adtoUpdate.getId(), adtoUpdate) == 1) {
                 Toast.makeText(this, "La modification à été bien effectuée", Toast.LENGTH_LONG).show();
-                clean();
+                clean(v);
 
             } else {
                 Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
@@ -155,7 +160,7 @@ EditText[] editTexts;
 
 
     }
-    private void clean()
+    public void clean(View v)
     {
 
         spinnerId.setSelection(0);
