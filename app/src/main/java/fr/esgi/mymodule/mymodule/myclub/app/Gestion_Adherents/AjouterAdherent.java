@@ -248,9 +248,9 @@ public class AjouterAdherent extends Activity {
     public void annuller(View v)
     {
 
-
-        nom.setText("Nom");
-        prenom.setText("Prenom");
+        clean(v);
+        nom.setText("");
+        prenom.setText("");
 
     }
     public  void cleanNom(View v)
