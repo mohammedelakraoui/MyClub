@@ -21,8 +21,8 @@ public class ManagerError {
         if(objets!=null) {
             for (EditText t : objets) {
                 if (t.getText().toString().trim().equals("")) {
-                    t.setText("error");
-                    t.setTextColor(c.getResources().getColor(R.color.Red));
+
+                    t.setBackgroundColor(c.getResources().getColor(R.color.Red));
                     return false;
                 }
 

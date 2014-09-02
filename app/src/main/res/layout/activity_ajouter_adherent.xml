@@ -145,7 +145,6 @@
                 android:ems="10"
                 android:id="@+id/poid"
                 android:layout_column="6"
-                android:text="70"
                 android:gravity="center"
                 android:textColor="#ff38c6ff"
                 android:maxLength="3" />
@@ -322,7 +321,7 @@
                 android:layout_column="100"
                 android:layout_gravity="right"
                 android:textSize="@dimen/size28"
-                android:onClick="ajouterAdherent" />
+                android:onClick="clean" />
         </TableRow>
 
         <TableRow

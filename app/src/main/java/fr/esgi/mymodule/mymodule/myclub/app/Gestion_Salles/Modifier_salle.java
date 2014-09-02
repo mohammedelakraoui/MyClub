@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
@@ -27,7 +28,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class Modifier_salle extends ActionBarActivity {
+public class Modifier_salle extends Activity {
     Salle salle;
     SalleBDD salleBDD;
     ArrayList<Salle> list;
@@ -141,7 +142,7 @@ public class Modifier_salle extends ActionBarActivity {
 
 
     }
-    private void clean( View v)
+    public void clean( View v)
     {
 
         liste.setSelection(0);
@@ -166,9 +167,10 @@ public class Modifier_salle extends ActionBarActivity {
 
     void updatesalle(View v)
     {
-
+        if(ManagerError.check(editTexts,Modifier_salle.this))
+        {
         salleBDD.open();
-Salle salle1=new Salle();
+        Salle salle1=new Salle();
         salle1.setNom_salle(this.nom_salle.getText().toString());
         salle1.setCapacite(Integer.parseInt(this.capacite.getText().toString()));
         salle1.setNom_coach(this.nom_coach.getText().toString());
@@ -184,6 +186,11 @@ Salle salle1=new Salle();
             Toast.makeText(this, "Error:modification!!", Toast.LENGTH_LONG).show();
         }
         salleBDD.close();
+        }
+        else
+        {
+            MessageBox.Show(Modifier_salle.this, "Error", "Verifiez les champs SVP !");
+        }
     }
 
     @Override

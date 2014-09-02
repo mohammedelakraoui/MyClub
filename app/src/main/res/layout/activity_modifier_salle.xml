@@ -134,7 +134,6 @@
                     android:ems="10"
                     android:id="@+id/capacite"
                     android:layout_column="17"
-                    android:text="70"
                     android:gravity="center"
                     android:textColor="#ff38c6ff" />
             </TableRow>

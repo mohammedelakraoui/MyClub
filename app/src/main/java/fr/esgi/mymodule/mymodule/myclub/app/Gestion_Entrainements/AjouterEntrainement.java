@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +27,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class AjouterEntrainement extends ActionBarActivity {
+public class AjouterEntrainement extends Activity {
 
 
     private EditText nom_seance_entrainement;
@@ -78,7 +79,7 @@ private  EditText[] editTextForCheck;
         if (entrainement1 != null) {
             //On affiche les infos du livre dans un Toast
             Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
-            clean();
+            clean(v);
 
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -93,7 +94,7 @@ else
         }
     }
 
-    private void clean()
+    public void clean(View v)
     {
         nom_seance_entrainement.setText("");
         date_entrainement.setText("");

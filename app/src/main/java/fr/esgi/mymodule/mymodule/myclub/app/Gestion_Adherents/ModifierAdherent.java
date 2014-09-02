@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 //import android.support.v7.internal.widget.AdapterViewICS;
@@ -25,7 +26,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class ModifierAdherent extends ActionBarActivity {
+public class ModifierAdherent extends Activity {
 
     Button annuller;
     ArrayAdapter<CharSequence> adp3;

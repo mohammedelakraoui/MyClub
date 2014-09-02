@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,7 +33,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class AjouterAdherent extends ActionBarActivity {
+public class AjouterAdherent extends Activity {
 
 
     EditText nom;
@@ -208,7 +209,7 @@ public class AjouterAdherent extends ActionBarActivity {
               editor.commit();
 
               this.path="";
-              clean();
+              clean(v);
 
 
 
@@ -265,7 +266,7 @@ public class AjouterAdherent extends ActionBarActivity {
         poid.setText("");
     }
 
-    void clean()
+   public  void clean(View v)
     {
 
         nom.setText("");

@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,7 +22,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class Ajouter_salle extends ActionBarActivity {
+public class Ajouter_salle extends Activity {
 
       EditText nom_salle;
       EditText capacite;
