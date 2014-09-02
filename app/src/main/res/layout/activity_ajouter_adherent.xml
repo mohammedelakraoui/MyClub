@@ -321,7 +321,7 @@
                 android:layout_column="100"
                 android:layout_gravity="right"
                 android:textSize="@dimen/size28"
-                android:onClick="clean" />
+                android:onClick="ajouterAdherent" />
         </TableRow>
 
         <TableRow
@@ -348,4 +348,5 @@
         android:layout_alignParentEnd="true"
         android:onClick="cam"
         android:background="@drawable/user" />
+
 </RelativeLayout>

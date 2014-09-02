@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
     ActiviteBDD activiteBDD;
 
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO Auto-generated method stub
+
         super.onCreate(savedInstanceState);
         context=this;
         setContentView(R.layout.activity_main);
@@ -195,7 +195,7 @@ private void refresh()
                 startActivity(intMaps);
             //    Intent intMaps = new Intent(this,Maps.class);
               //  startActivity(intMaps);
-                break;
+
         }
 
     }

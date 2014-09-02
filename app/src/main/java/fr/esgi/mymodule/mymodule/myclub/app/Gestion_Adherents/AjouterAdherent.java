@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +23,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.content.Intent;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
@@ -47,6 +59,8 @@ public class AjouterAdherent extends Activity {
     private String path="";
 
     private EditText[] editforcheck;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +187,7 @@ public class AjouterAdherent extends Activity {
     {
 
 
-        if(path != null)
+        if(!path.isEmpty())
         {
             //Image Assigned
 
@@ -235,6 +249,9 @@ public class AjouterAdherent extends Activity {
         }
 
     }
+
+
+
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)

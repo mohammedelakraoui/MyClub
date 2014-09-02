@@ -44,6 +44,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         imageIds[2]=R.drawable.entrainement;
         imageIds[3]=R.drawable.activite;
         imageIds[4]=R.drawable.placeholder8;
+
         return(imageIds[pos]);
 
     }

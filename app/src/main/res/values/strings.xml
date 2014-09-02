@@ -31,7 +31,6 @@
     </string-array>
     <string-array name="menu_gestion">
         <item>Supprimer</item>
-
         <item>Refresh</item>
     </string-array>
     <string-array name="desciplines">
@@ -47,6 +46,7 @@
         <item>Listes des entrainements </item>
         <item>Gestion des activités </item>
         <item>Votre club </item>
+
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -95,5 +95,6 @@
     <string name="title_activity_afficher_activites">AfficherActivites</string>
     <string name="title_activity_camera">Camera</string>
     <string name="title_activity_login">login</string>
+    <string name="title_activity_syncro">Syncro</string>
 
 </resources>
