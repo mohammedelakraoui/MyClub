@@ -31,7 +31,7 @@
     </string-array>
     <string-array name="menu_gestion">
         <item>Supprimer</item>
-        <item>Modifier</item>
+
         <item>Refresh</item>
     </string-array>
     <string-array name="desciplines">

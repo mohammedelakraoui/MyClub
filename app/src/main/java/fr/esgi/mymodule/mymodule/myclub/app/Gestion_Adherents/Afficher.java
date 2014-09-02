@@ -3,6 +3,7 @@ package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents;
 
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,7 +28,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.*;
-public class Afficher extends ActionBarActivity {
+public class Afficher extends Activity {
 
     private ListView maListViewPerso;
     ArrayList<Adherent> list;
@@ -113,16 +114,16 @@ public class Afficher extends ActionBarActivity {
             adb.show();
         }
         //modifier
-        if(menuItemIndex==1)
+      /*  if(menuItemIndex==1)
         {
 
             Intent intAdh = new Intent(this,Adherents.class);
             intAdh.putExtra("id",list.get(info.position).getId());
             startActivity(intAdh);
 
-        }
+        }*/
 
-        if(menuItemIndex==2)
+        if(menuItemIndex==1)
         {
 
             refresh();

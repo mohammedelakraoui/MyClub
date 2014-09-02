@@ -1,6 +1,7 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Salles;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ActivityGroup;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.R;
 
 import static android.view.ContextMenu.*;
 
-public class Afficher_salle extends ActionBarActivity {
+public class Afficher_salle extends Activity {
 
     private ListView maListViewPerso;
     ArrayList<Salle> list;

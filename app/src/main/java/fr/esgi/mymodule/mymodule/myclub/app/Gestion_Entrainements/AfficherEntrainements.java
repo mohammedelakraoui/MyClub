@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Entrainements;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,7 +24,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Adherents;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 import fr.esgi.mymodule.mymodule.myclub.app.Adapters.CustomAdapterEntrainements;
-public class AfficherEntrainements extends ActionBarActivity {
+public class AfficherEntrainements extends Activity {
 
     private ListView maListViewPerso;
     ArrayList<Entrainement> list;

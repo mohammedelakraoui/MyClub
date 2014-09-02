@@ -322,7 +322,7 @@
                 android:layout_column="100"
                 android:layout_gravity="right"
                 android:textSize="@dimen/size28"
-                android:onClick="AjouterAdherent" />
+                android:onClick="ajouterAdherent" />
         </TableRow>
 
         <TableRow

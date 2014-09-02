@@ -52,6 +52,11 @@ public class AjouterAdherent extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter_adherent);
 
+        android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
+        android.content.SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("path","");
+        editor.commit();
+
 
         pic=(ImageView) findViewById(R.id.pic);
         nom=(EditText)findViewById(R.id.Nom);
@@ -90,6 +95,8 @@ public class AjouterAdherent extends ActionBarActivity {
 
         });
 
+
+
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -99,6 +106,7 @@ public class AjouterAdherent extends ActionBarActivity {
         android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);
         String my_path = prefs.getString("path", "");
 
+
         if (!my_path.isEmpty())
         {
 
@@ -106,6 +114,10 @@ public class AjouterAdherent extends ActionBarActivity {
 
             Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(my_path,AjouterAdherent.this));
             pic.setBackground(dr);
+        }
+        else
+        {
+            pic.setBackgroundResource(R.drawable.user);
         }
     }
 
@@ -146,14 +158,25 @@ public class AjouterAdherent extends ActionBarActivity {
             this.path=my_path;
             Drawable dr=new BitmapDrawable(this.getResources(), PicturesManager.getPicFromPath(my_path,AjouterAdherent.this));
             pic.setBackground(dr);
+        }else
+        {
+            pic.setBackgroundResource(R.drawable.user);
+
         }
 
     }
 
 
 
-    public void AjouterAdherent(View v)
+    public void ajouterAdherent(View v)
     {
+
+
+        if(path != null)
+        {
+            //Image Assigned
+
+
 
       if(ManagerError.check(editforcheck,AjouterAdherent.this)==true)
       {
@@ -185,9 +208,7 @@ public class AjouterAdherent extends ActionBarActivity {
               editor.commit();
 
               this.path="";
-              cleanNom(v);
-              cleanPoid(v);
-              cleanPrenom(v);
+              clean();
 
 
 
@@ -204,13 +225,21 @@ public class AjouterAdherent extends ActionBarActivity {
       {
           MessageBox.Show(AjouterAdherent.this,"Error","Verifiez les champs SVP !");
       }
-
+        }
+        else
+        {
+            //nothing assigned
+            MessageBox.Show(AjouterAdherent.this,"Avertissement","La photo est obligatoire pour la fabrication des badges...!");
+            return;
+        }
 
     }
 
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void cam(View v)
     {
+        pic.setBackground(null);
         Intent intAdh = new Intent(this,CamTestActivity.class);
         startActivity(intAdh);
 
@@ -234,6 +263,17 @@ public class AjouterAdherent extends ActionBarActivity {
     public  void cleanPoid(View v)
     {
         poid.setText("");
+    }
+
+    void clean()
+    {
+
+        nom.setText("");
+        prenom.setText("");
+        age.setText("");
+        poid.setText("");
+        phone.setText("");
+        listedesciplines.setSelection(0);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +25,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class AfficherActivites extends ActionBarActivity {
+public class AfficherActivites extends Activity {
 
     private ListView maListViewPerso;
     ArrayList<Activite> list;
@@ -158,10 +159,11 @@ public class AfficherActivites extends ActionBarActivity {
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         getMenuInflater().inflate(R.menu.afficher_activites, menu);
 
         return true;

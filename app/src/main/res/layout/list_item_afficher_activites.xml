@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:layout_margin="5dp"
-                android:inputType="text"
+                android:inputType="text|textVisiblePassword"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
@@ -143,9 +143,9 @@
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
-                android:inputType="number"
                 android:clickable="true"
-                android:maxLength="30" />
+                android:maxLength="30"
+                android:inputType="text|textVisiblePassword" />
             <EditText
 
                 android:id="@+id/commentaire_me"
@@ -160,9 +160,8 @@
                 android:clickable="true"
 
 
-                android:inputType="text"
                 android:maxLength="20"
-                />
+                android:inputType="textVisiblePassword" />
 
             <Button
                 android:layout_width="30dp"

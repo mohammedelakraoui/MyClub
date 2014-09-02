@@ -94,14 +94,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:layout_margin="5dp"
-                android:inputType="text"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
                 android:focusable="true"
                 android:clickable="true"
 
-                />
+                android:inputType="textVisiblePassword" />
 
             <EditText
                 android:id="@+id/date_seance_entrainement"
@@ -150,7 +149,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:layout_margin="5dp"
-                android:inputType="textAutoComplete"
                 android:enabled="true"
                 android:focusableInTouchMode="false"
                 android:editable="true"
@@ -158,7 +156,7 @@
                 android:clickable="true"
 
 
-             />
+                android:inputType="textVisiblePassword" />
 
             <Button
                 android:layout_width="30dp"
