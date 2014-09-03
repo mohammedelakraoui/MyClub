@@ -464,6 +464,7 @@ return check_;
            //    marker.remove();
 
 
+
              //   mMap.clear();
 
              //   Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
