@@ -157,9 +157,7 @@ public class Afficher_salle extends Activity {
         if(menuItemIndex==1)
         {
 
-            Intent intAdh = new Intent(this,Salles.class);
-            intAdh.putExtra("id",list.get(info.position).getId());
-            startActivity(intAdh);
+         refresh();
 
         }
 

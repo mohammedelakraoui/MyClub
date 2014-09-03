@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,7 +58,12 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     private  final  String latitude="latitude";
     private  Maps maps;
     private MapsBDD mapsBDD;
+     boolean choix=false;
 
+    private  void  setVisible(Boolean b)
+    {
+        choix=b;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -373,54 +379,60 @@ return check_;
         ArrayList<Maps> mapsList=new ArrayList<Maps>();
 
         mapsList=mapsBDD.getAllcoordonnees();
-    if(mapsList!=null) {
-        for (final Maps map : mapsList) {
+        afficherAllMarkers(mapsList);
 
-            final LatLng pos = new LatLng(map.getLongtitude(), map.getLatitude());
-            final Marker hamburg = mMap.addMarker(new MarkerOptions()
-                    .position(pos)
-                    .title(map.getNom_Club() + " : \n " + map.getAdresse()));
-
-
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
-
-            // Zoom in, animating the camera.
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-
-
-
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-
-                @Override
-                public boolean onMarkerClick(Marker arg0) {
-                    //    if(arg0.getTitle().equals("MyHome")) // if marker source is clicked
-                    //  Toast.makeText(MapsActivity.this, "Event pour la gestion de la Maps (modifier+ supprimer)"+arg0.getTitle(),Toast.LENGTH_LONG).show();// display toast
-                    //  arg0.setTitle("hello");
-
-                  // arg0.remove();
-                    arg0.showInfoWindow();
-
-                   menuMaps(map, hamburg);
-
-
-
-                    return true;
-                }
-
-            });
-
-
-            //   mMap.addMarker(new MarkerOptions().position(new LatLng(map.getLongtitude(),map.getLatitude())).title(map.getNom_Club()+" : \n "+map.getAdresse()));
-        }
     }
 
+
+    void afficherAllMarkers(ArrayList<Maps> mapsList)
+    {
+        if(mapsList!=null) {
+            for (final Maps map : mapsList) {
+
+                final LatLng pos = new LatLng(map.getLongtitude(), map.getLatitude());
+                final Marker hamburg = mMap.addMarker(new MarkerOptions()
+                        .position(pos)
+                        .title(map.getNom_Club() + " : \n " + map.getAdresse()));
+
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
+
+                // Zoom in, animating the camera.
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
+
+
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+                    @Override
+                    public boolean onMarkerClick(Marker arg0) {
+
+                        arg0.showInfoWindow();
+                        Log.v("trace", "1");
+                        menuMaps(map, arg0);
+                        Log.v("trace", "4");
+
+
+
+                        return true;
+                    }
+
+                });
+
+
+                //   mMap.addMarker(new MarkerOptions().position(new LatLng(map.getLongtitude(),map.getLatitude())).title(map.getNom_Club()+" : \n "+map.getAdresse()));
+            }
+        }
+
         mapsBDD.close();
+
 
 
     }
 
     private void menuMaps(final Maps maps, final Marker marker)
     {
+
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -443,19 +455,30 @@ return check_;
               RadioButton myChoix=  (RadioButton) v_iew.findViewById(selectedId);
 
                 // suppression
-                if(myChoix==null) return;
+            if(myChoix==null) return;
             if(myChoix.getText().toString().contains("Supprimer"))
             {
-                marker.remove();
+                Log.v("trace", "2");
+
+
+           //    marker.remove();
+
+
+             //   mMap.clear();
+
              //   Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
-              //  supprimer(maps,marker);
+             //  supprimer(maps,marker);
 
-                mapsBDD.open();
+               mapsBDD.open();
 
-                mapsBDD.removeCoordonneesWithID(maps.getId());
+               mapsBDD.removeCoordonneesWithID(maps.getId());
+
+                mMap.clear();
+               afficherAllMarkers(mapsBDD.getAllcoordonnees());
                 mapsBDD.close();
-
-
+               // Log.v("trace", "3");
+              //  mMap.clear();
+               // refresh();
 
 
             }
@@ -491,15 +514,20 @@ return check_;
         AlertDialog.Builder ok = alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int whichButton) {
-
+              ///  marker.remove();  marker.remove();
                 //marker.setVisible(false);
+                Log.v("trace", "3");
+                setVisible(true);
+                //onCreate(Bundle.EMPTY);
 
                 mapsBDD.open();
-                marker.remove();
+
                 mapsBDD.removeCoordonneesWithID(map.getId());
 
 
                 mapsBDD.close();
+
+
 
 
 
