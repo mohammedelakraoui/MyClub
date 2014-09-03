@@ -194,8 +194,8 @@
                     android:ems="10"
                     android:id="@+id/commentaire_activite"
                     android:layout_column="0"
-                    android:layout_span="8"
-                    android:inputType="textAutoComplete" />
+                    android:inputType="textAutoComplete"
+                    android:layout_span="8" />
             </TableRow>
 
             <TableRow

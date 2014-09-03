@@ -16,6 +16,22 @@ import fr.esgi.mymodule.mymodule.myclub.app.R;
  */
 public class ManagerError {
 
+    public static boolean matchesText(EditText[] editTexts,Context c)
+    {
+        if(editTexts!=null)
+        {
+            for(EditText t:editTexts) {
+
+                if(!t.getText().toString().matches("[a-zA-Z.? ]*")) {
+
+                    t.setBackgroundColor(c.getResources().getColor(R.color.Red));
+                    return false;
+
+                }
+                }
+        }
+        return true;
+    }
     public static boolean check(EditText[] objets,Context c)
     {
         if(objets!=null) {

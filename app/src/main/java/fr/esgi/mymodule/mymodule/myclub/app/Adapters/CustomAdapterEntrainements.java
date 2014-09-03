@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
@@ -87,13 +89,17 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         holder.Heur_seance_entrainement.setText(entrainement.getHeur_entrainement()+"");
         holder.Nombre_places_seance_entrainement.setText(entrainement.getNombre_places_entrainement()+ "");
         holder.Commentaire_seance_entrainement.setText(entrainement.getCommentaire().toString()+"");
+        final EditText[] editTexts={holder.Nom_seance_entrainement,holder.Date_seance_entrainement,holder.Heur_seance_entrainement,holder.Nombre_places_seance_entrainement,holder.Commentaire_seance_entrainement};
+        final EditText[] editTexts1={holder.Nom_seance_entrainement,holder.Commentaire_seance_entrainement};
+
 
         my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-
+                my_holder.accept_event.setVisibility(View.VISIBLE);
+                my_holder.cancel_event.setVisibility(View.VISIBLE);
                 my_holder.myRow.setBackgroundColor(context.getResources().getColor(R.color.modify));
                 setEditableOption(my_holder,true);
 
@@ -105,6 +111,7 @@ public class CustomAdapterEntrainements extends BaseAdapter{
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ManagerError.check(editTexts, context) && ManagerError.matchesText(editTexts1,context)) {
                 disabledKeyBoard(my_holder);
                 my_holder.accept_event.setVisibility(View.INVISIBLE);
                 my_holder.cancel_event.setVisibility(View.INVISIBLE);
@@ -119,6 +126,11 @@ public class CustomAdapterEntrainements extends BaseAdapter{
                 entrainementBDD.updateEntrainement(entrainement.getId(),entrainement);
                 entrainementBDD.close();
                 Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    MessageBox.Show(context, "Error", "Verifiez les champs SVP !");
+                }
 
             }
         });

@@ -43,7 +43,8 @@ public class ModifierAdherent extends Activity {
     EditText age;
     EditText phone;
     Spinner listedesciplines;
-EditText[] editTexts;
+    EditText[] checkIfText;
+     EditText[] editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,8 @@ EditText[] editTexts;
         phone =(EditText) findViewById(R.id.phone);
         listedesciplines=(Spinner) findViewById(R.id.spinner);
         EditText[] editTexts1={nom,prenom,poid,age,age};
+        EditText[] editTexts2={nom,prenom};
+        checkIfText=editTexts2;
         editTexts=editTexts1;
 
 
@@ -134,7 +137,7 @@ EditText[] editTexts;
 
     public void update(View v)
     {
-        if(ManagerError.check(editTexts,ModifierAdherent.this)) {
+        if(ManagerError.check(editTexts,ModifierAdherent.this) && ManagerError.matchesText(checkIfText,ModifierAdherent.this)) {
             adherentBDD.open();
 
             adtoUpdate.setNom(this.nom.getText().toString());

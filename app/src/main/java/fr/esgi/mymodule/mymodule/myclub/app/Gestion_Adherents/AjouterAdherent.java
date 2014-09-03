@@ -59,6 +59,7 @@ public class AjouterAdherent extends Activity {
     private String path="";
 
     private EditText[] editforcheck;
+    private EditText[] checkIfText;
 
 
 
@@ -82,6 +83,8 @@ public class AjouterAdherent extends Activity {
         phone =(EditText) findViewById(R.id.phone);
         listedesciplines=(Spinner) findViewById(R.id.spinner);
         EditText[] editTexts={nom,prenom,poid,age,phone};
+        EditText[] editTexts1={nom,prenom};
+        checkIfText=editTexts1;
         editforcheck=editTexts;
 
         pic.setBackgroundResource(R.drawable.user);
@@ -193,7 +196,7 @@ public class AjouterAdherent extends Activity {
 
 
 
-      if(ManagerError.check(editforcheck,AjouterAdherent.this)==true)
+      if(ManagerError.check(editforcheck,AjouterAdherent.this)==true && ManagerError.matchesText(checkIfText,AjouterAdherent.this)==true)
       {
           AdherentBDD adherentBDD = new AdherentBDD(this);
 

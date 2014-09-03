@@ -40,6 +40,7 @@ public class Modifier_salle extends Activity {
     Spinner liste;
 
     EditText[] editTexts;
+    EditText[] checkifText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,8 @@ public class Modifier_salle extends Activity {
         nom_coach=(EditText) findViewById(R.id.nomresponsable);
 
         EditText[] editTexts1={nom_salle,capacite,nom_coach};
+        EditText[] editTexts2={nom_coach,nom_salle};
+        checkifText=editTexts2;
         editTexts=editTexts1;
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,R.array.desciplines, android.R.layout.select_dialog_item);
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
@@ -116,7 +119,7 @@ public class Modifier_salle extends Activity {
 
 
     public void update(View v) {
-        if(ManagerError.check(editTexts,Modifier_salle.this))
+        if(ManagerError.check(editTexts,Modifier_salle.this) && ManagerError.matchesText(checkifText, Modifier_salle.this))
         {
         salleBDD.open();
 
@@ -167,7 +170,7 @@ public class Modifier_salle extends Activity {
 
     void updatesalle(View v)
     {
-        if(ManagerError.check(editTexts,Modifier_salle.this))
+        if(ManagerError.check(editTexts,Modifier_salle.this) && ManagerError.matchesText(checkifText, Modifier_salle.this))
         {
         salleBDD.open();
         Salle salle1=new Salle();

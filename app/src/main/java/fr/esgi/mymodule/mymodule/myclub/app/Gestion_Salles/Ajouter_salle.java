@@ -29,6 +29,7 @@ public class Ajouter_salle extends Activity {
       EditText  nom_coach;
       Spinner liste;
 EditText[] editTexts;
+    EditText[] checkifText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +43,16 @@ EditText[] editTexts;
         adp3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         liste.setAdapter(adp3);
         EditText[] editTexts1={nom_salle,capacite,nom_coach};
+        EditText[] editTexts2={nom_salle,nom_coach};
+        checkifText=editTexts;
         editTexts=editTexts1;
 
 
     }
 
-public void  AjouterSalle(View v)
+public void ajouterSalle(View v)
 {
-    if(ManagerError.check(editTexts,Ajouter_salle.this))
+    if(ManagerError.check(editTexts,Ajouter_salle.this) && ManagerError.matchesText(checkifText, Ajouter_salle.this))
     {
     SalleBDD salleBDD = new SalleBDD(this);
     Salle salle=new Salle(nom_salle.getText().toString(),Integer.parseInt(capacite.getText().toString()),nom_coach.getText().toString(),liste.getSelectedItem().toString());
@@ -59,6 +62,7 @@ public void  AjouterSalle(View v)
 
     if(sallefromDB != null)
     {
+        annuller(v);
         //On affiche les infos du livre dans un Toast
         Toast.makeText(this, "L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
 

@@ -46,10 +46,10 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/Nom"
-                android:layout_column="6" />
+                android:layout_column="6"
+                android:inputType="textVisiblePassword" />
 
         </TableRow>
 
@@ -73,7 +73,6 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
 
 
                 android:textColor="#ff38c6ff"
@@ -82,7 +81,8 @@
 
                 android:ems="10"
                 android:id="@+id/prenom"
-                android:layout_column="6" />
+                android:layout_column="6"
+                android:inputType="textVisiblePassword" />
         </TableRow>
 
         <TableRow

@@ -268,7 +268,7 @@
                 android:id="@+id/button"
                 android:layout_column="10"
                 android:textSize="@dimen/size28"
-                android:onClick="AjouterSalle"
+                android:onClick="ajouterSalle"
                 android:layout_gravity="right" />
         </TableRow>
 

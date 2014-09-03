@@ -35,7 +35,8 @@ public class AjouterEntrainement extends Activity {
     private TimePicker heur_entrainement;
     private EditText nombre_places_entrainement;
     private EditText commentaire;
-private  EditText[] editTextForCheck;
+    private  EditText[] editTextForCheck;
+    private EditText[] checkifText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,8 @@ private  EditText[] editTextForCheck;
           nombre_places_entrainement=(EditText)findViewById(R.id.nombre_place_entrainement);
           commentaire=(EditText)findViewById(R.id.commentaire_entrainement);
           EditText[] editTexts={nom_seance_entrainement,date_entrainement,nombre_places_entrainement,commentaire};
+          EditText[] editTexts1={nom_seance_entrainement,commentaire};
+          checkifText=editTexts1;
           editTextForCheck=editTexts;
 
     }
@@ -60,7 +63,7 @@ private  EditText[] editTextForCheck;
             return;
         }
 
-        if(ManagerError.check(editTextForCheck, AjouterEntrainement.this))
+        if(ManagerError.check(editTextForCheck, AjouterEntrainement.this)==true && ManagerError.matchesText(checkifText, AjouterEntrainement.this)==true)
         {
         EntrainementBDD entrainementBDD = new EntrainementBDD(this);
 

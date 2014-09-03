@@ -2,6 +2,8 @@ package fr.esgi.mymodule.mymodule.myclub.app.Adapters;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.AdherentBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 
 import android.annotation.TargetApi;
@@ -99,7 +101,10 @@ public class CustomAdapterAdherents extends BaseAdapter{
             holder.Poid.setText(adherent.getPoid()+ "");
             holder.Sexe.setText(adherent.getSexe().toString());
             holder.phone.setText(adherent.getPhone().toString());
-           holder.Discipline.setText(adherent.getDiscipline().toString());
+            holder.Discipline.setText(adherent.getDiscipline().toString());
+            final EditText[] editTexts={holder.Nom,holder.Prenom,holder.Age,holder.Poid,holder.Sexe,holder.phone,holder.Discipline};
+             final EditText[] editTexts1={holder.Nom,holder.Prenom,holder.Sexe,holder.Discipline};
+           // final EditText[] editTexts={holder.Nom,holder.Prenom,holder.Age,holder.Poid,holder.Sexe,holder.phone,holder.Discipline};
 
 
         my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
@@ -119,21 +124,29 @@ public class CustomAdapterAdherents extends BaseAdapter{
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                disabledKeyBoard(my_holder);
-                my_holder.accept_event.setVisibility(View.INVISIBLE);
-                my_holder.cancel_event.setVisibility(View.INVISIBLE);
-                setEditableOption(my_holder,false);
-                AdherentBDD adherentBDD =new AdherentBDD(context);
-                adherent.setNom(my_holder.Nom.getText().toString());
-                adherent.setPrenom(my_holder.Prenom.getText().toString());
-                adherent.setAge(Integer.parseInt(my_holder.Age.getText().toString()));
-                adherent.setPoid(Integer.parseInt(my_holder.Poid.getText().toString()));
-                adherent.setSexe(my_holder.Sexe.getText().toString());
-                adherent.setPhone(my_holder.phone.getText().toString());
-                adherentBDD.open();
-                adherentBDD.updateAdherent(adherent.getId(), adherent);
-                adherentBDD.close();
-                Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
+
+
+                if(ManagerError.check(editTexts, context) && ManagerError.matchesText(editTexts1,context)) {
+                    disabledKeyBoard(my_holder);
+                    my_holder.accept_event.setVisibility(View.INVISIBLE);
+                    my_holder.cancel_event.setVisibility(View.INVISIBLE);
+                    setEditableOption(my_holder, false);
+                    AdherentBDD adherentBDD = new AdherentBDD(context);
+                    adherent.setNom(my_holder.Nom.getText().toString());
+                    adherent.setPrenom(my_holder.Prenom.getText().toString());
+                    adherent.setAge(Integer.parseInt(my_holder.Age.getText().toString()));
+                    adherent.setPoid(Integer.parseInt(my_holder.Poid.getText().toString()));
+                    adherent.setSexe(my_holder.Sexe.getText().toString());
+                    adherent.setPhone(my_holder.phone.getText().toString());
+                    adherentBDD.open();
+                    adherentBDD.updateAdherent(adherent.getId(), adherent);
+                    adherentBDD.close();
+                    Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    MessageBox.Show(context, "Error", "Verifiez les champs SVP !");
+                }
 
             }
         });

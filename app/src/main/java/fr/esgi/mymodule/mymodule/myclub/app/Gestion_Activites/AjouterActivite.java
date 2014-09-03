@@ -14,6 +14,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.EntrainementBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Entrainement;
+import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.AjouterAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
@@ -26,7 +27,8 @@ public class AjouterActivite extends ActionBarActivity {
     EditText date_fin;
     EditText type_activite;
     EditText commentaires;
-EditText[] editTexts;
+    EditText[] editTexts;
+    EditText[] checkifText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +39,10 @@ EditText[] editTexts;
          date_fin=(EditText) findViewById(R.id.date_fin);
          type_activite=(EditText) findViewById(R.id.type_d_activite);
          commentaires=(EditText) findViewById(R.id.commentaire_activite);
-        EditText[] editTexts1={intitule_activite,date_demarrage,date_fin,type_activite,commentaires};
-        editTexts=editTexts1;
+         EditText[] editTexts1={intitule_activite,date_demarrage,date_fin,type_activite,commentaires};
+         EditText[] checkifText2={intitule_activite,type_activite,commentaires};
+         checkifText=checkifText2;
+         editTexts=editTexts1;
     }
 
 
@@ -49,7 +53,7 @@ EditText[] editTexts;
             return;
         }
 
-        if(ManagerError.check(editTexts,AjouterActivite.this))
+        if(ManagerError.check(editTexts,AjouterActivite.this)==true  && ManagerError.matchesText(checkifText, AjouterActivite.this)==true)
         {
         ActiviteBDD activiteBDD = new ActiviteBDD(this);
 

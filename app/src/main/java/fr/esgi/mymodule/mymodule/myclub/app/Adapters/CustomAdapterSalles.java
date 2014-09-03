@@ -111,7 +111,7 @@ public class CustomAdapterSalles extends BaseAdapter {
             nom_salle = (TextView) view.findViewById(R.id.nom_salle_me);
             capacite_salle = (TextView) view.findViewById(R.id.capacite_salle_me);
             nom_coach_salle = (TextView) view.findViewById(R.id.coach_responsable_me);
-            activite_salle = (TextView) view.findViewById(R.id.coach_responsable_me);
+            activite_salle = (TextView) view.findViewById(R.id.type_activite_me);
 
         }
     }

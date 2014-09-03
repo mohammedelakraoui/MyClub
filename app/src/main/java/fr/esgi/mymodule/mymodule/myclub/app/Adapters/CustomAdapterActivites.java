@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import fr.esgi.mymodule.mymodule.myclub.app.CalssesBDD.ActiviteBDD;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Activite;
 import fr.esgi.mymodule.mymodule.myclub.app.Classes.Adherent;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
+import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.PicturesManager;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
@@ -106,6 +108,7 @@ public class CustomAdapterActivites extends BaseAdapter {
         holder.date_fin.setText(activite.getDate_fin()+"");
         holder.type.setText(activite.getType_activite()+ "");
         holder.commentaire.setText(activite.getCommentaires().toString()+"");
+        final EditText[] editTexts={holder.intitule,holder.date_debut,holder.date_fin,holder.type,holder.commentaire};
 
         my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,20 +127,27 @@ public class CustomAdapterActivites extends BaseAdapter {
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                disabledKeyBoard(my_holder);
-                my_holder.accept_event.setVisibility(View.INVISIBLE);
-                my_holder.cancel_event.setVisibility(View.INVISIBLE);
-                setEditableOption(my_holder,false);
-                ActiviteBDD activiteBDD =new ActiviteBDD(context);
-                activite.setIntitule_activite(my_holder.intitule.getText().toString());
-                activite.setDate_demarrage(my_holder.date_debut.getText().toString());
-                activite.setDate_fin(my_holder.date_fin.getText().toString());
-                activite.setType_activite(my_holder.type.getText().toString());
-                activite.setCommentaires(my_holder.commentaire.getText().toString());
-                activiteBDD.open();
-                activiteBDD.updateActivite(activite.getId(),activite);
-                activiteBDD.close();
-                Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
+                if(ManagerError.check(editTexts, context) && ManagerError.matchesText(editTexts, context)) {
+                    disabledKeyBoard(my_holder);
+                    my_holder.accept_event.setVisibility(View.INVISIBLE);
+                    my_holder.cancel_event.setVisibility(View.INVISIBLE);
+                    setEditableOption(my_holder, false);
+                    ActiviteBDD activiteBDD = new ActiviteBDD(context);
+                    activite.setIntitule_activite(my_holder.intitule.getText().toString());
+                    activite.setDate_demarrage(my_holder.date_debut.getText().toString());
+                    activite.setDate_fin(my_holder.date_fin.getText().toString());
+                    activite.setType_activite(my_holder.type.getText().toString());
+                    activite.setCommentaires(my_holder.commentaire.getText().toString());
+                    activiteBDD.open();
+                    activiteBDD.updateActivite(activite.getId(), activite);
+                    activiteBDD.close();
+                    Toast.makeText(context, "la modification est bien faite", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    MessageBox.Show(context, "Error", "Verifiez les champs SVP !");
+                }
+
 
             }
         });
