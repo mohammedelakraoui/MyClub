@@ -22,7 +22,7 @@ public class ManagerError {
         {
             for(EditText t:editTexts) {
 
-                if(!t.getText().toString().matches("[a-zA-Z.? ]*")) {
+                if(!t.getText().toString().matches("[0-9a-zA-Zéèçàê.? ]*")) {
 
                     t.setBackgroundColor(c.getResources().getColor(R.color.Red));
                     return false;

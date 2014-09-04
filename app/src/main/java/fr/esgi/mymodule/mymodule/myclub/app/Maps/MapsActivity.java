@@ -408,9 +408,7 @@ return check_;
                     public boolean onMarkerClick(Marker arg0) {
 
                         arg0.showInfoWindow();
-                        Log.v("trace", "1");
                         menuMaps(map, arg0);
-                        Log.v("trace", "4");
 
 
 
@@ -458,17 +456,7 @@ return check_;
             if(myChoix==null) return;
             if(myChoix.getText().toString().contains("Supprimer"))
             {
-                Log.v("trace", "2");
 
-
-           //    marker.remove();
-
-
-
-             //   mMap.clear();
-
-             //   Toast.makeText(MapsActivity.this, "Supression en cours....",Toast.LENGTH_LONG).show();// display toast
-             //  supprimer(maps,marker);
 
                mapsBDD.open();
 
@@ -477,9 +465,7 @@ return check_;
                 mMap.clear();
                afficherAllMarkers(mapsBDD.getAllcoordonnees());
                 mapsBDD.close();
-               // Log.v("trace", "3");
-              //  mMap.clear();
-               // refresh();
+
 
 
             }

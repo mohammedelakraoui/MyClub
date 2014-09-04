@@ -108,7 +108,8 @@ public class CustomAdapterActivites extends BaseAdapter {
         holder.date_fin.setText(activite.getDate_fin()+"");
         holder.type.setText(activite.getType_activite()+ "");
         holder.commentaire.setText(activite.getCommentaires().toString()+"");
-        final EditText[] editTexts={holder.intitule,holder.date_debut,holder.date_fin,holder.type,holder.commentaire};
+        final EditText[] editTexts={holder.intitule,holder.type,holder.commentaire};
+        final EditText[] editTexts1={holder.date_debut,holder.date_fin};
 
         my_holder.modify_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +128,7 @@ public class CustomAdapterActivites extends BaseAdapter {
         my_holder.accept_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ManagerError.check(editTexts, context) && ManagerError.matchesText(editTexts, context)) {
+                if(ManagerError.check(editTexts, context) && ManagerError.matchesText(editTexts1, context)) {
                     disabledKeyBoard(my_holder);
                     my_holder.accept_event.setVisibility(View.INVISIBLE);
                     my_holder.cancel_event.setVisibility(View.INVISIBLE);
@@ -171,7 +172,7 @@ public class CustomAdapterActivites extends BaseAdapter {
     private void restValueOnClickCancel(ViewHolder holder,Activite activite)
     {
         holder.intitule.setText(activite.getIntitule_activite().toString()+"");
-        holder.date_debut.setText(activite.getDate_demarrage().toString()+"");
+        holder.date_debut.setText(activite.getDate_demarrage().toString());
         holder.date_fin.setText(activite.getDate_fin()+"");
         holder.type.setText(activite.getType_activite()+ "");
         holder.commentaire.setText(activite.getCommentaires().toString()+"");

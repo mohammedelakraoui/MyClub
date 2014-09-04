@@ -56,6 +56,7 @@ public class AjouterAdherent extends Activity {
     EditText phone;
     Spinner listedesciplines;
     ImageView pic;
+
     private String path="";
 
     private EditText[] editforcheck;
@@ -217,7 +218,9 @@ public class AjouterAdherent extends Activity {
 
           if(AdherentFromBdd != null){
               //On affiche les infos du livre dans un Toast
+
               Toast.makeText(this,"L'ajout à été effectué correctement", Toast.LENGTH_LONG).show();
+
               pic.setBackgroundResource(R.drawable.user);
 
               android.content.SharedPreferences prefs = getSharedPreferences("path_pic", 0);

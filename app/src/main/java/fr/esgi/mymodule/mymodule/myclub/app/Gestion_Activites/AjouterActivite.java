@@ -1,5 +1,6 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import fr.esgi.mymodule.mymodule.myclub.app.Manager.ManagerError;
 import fr.esgi.mymodule.mymodule.myclub.app.Manager.MessageBox;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
 
-public class AjouterActivite extends ActionBarActivity {
+public class AjouterActivite extends Activity {
 
 
     EditText intitule_activite;

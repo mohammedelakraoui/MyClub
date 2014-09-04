@@ -1,8 +1,10 @@
 package fr.esgi.mymodule.mymodule.myclub.app.Gestion_Activites;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityGroup;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -13,7 +15,6 @@ import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.Afficher;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.AjouterAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.Gestion_Adherents.ModifierAdherent;
 import fr.esgi.mymodule.mymodule.myclub.app.R;
-
 
 public class Activites extends ActivityGroup {
 
