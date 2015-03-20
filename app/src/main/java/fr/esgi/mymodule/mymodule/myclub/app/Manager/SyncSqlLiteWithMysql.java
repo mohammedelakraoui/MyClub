@@ -38,7 +38,7 @@ public class SyncSqlLiteWithMysql {
             Toast.makeText(c, "Syncro..."+adherent.getId()+" adherent(s)", Toast.LENGTH_SHORT).show();
             //http post
             try{
-                String url="http://myclub.olympe.in/insert.php?"
+                url de votre serveur
                         +"nom="+adherent.getNom()
                         +"&prenom="+adherent.getPrenom()
                         +"&sexe="+adherent.getSexe()
